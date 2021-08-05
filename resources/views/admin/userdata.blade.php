@@ -165,21 +165,27 @@
         </div>
       </div>            
     </div>
+
+    <div class="section-body">
+      <ul class="listBox">
+        @foreach($nonmembers as $u)
+          <li>ID:{{ $u->id }}<a href=""> {{ $u->name }}</a>@foreach($u->roles as $p) {{ $p->name }}@endforeach </li>
+        @endforeach
+      </ul>
+    </div>
   </section>
 </div>
 @endsection
-@section('scriptline')
-<script type="text/javascript"> 
-    function display_c(){
-    var refresh=1000; // Refresh rate in milli seconds
-    mytime=setTimeout('display_ct()',refresh)
-    }
-    
-    function display_ct() {
-      var x = new Date()
-      var x1=x.toUTCString();// changing the display to UTC string
-      document.getElementById('datetime').innerHTML = x1;
-      tt=display_c();
-     }
-</script>
+
+@section('scriptlib')
+<!-- JS Libraies -->
+<script src="{{ asset('adminAssets/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+@endsection
+
+@section('scriptpage')
+<!-- Page Specific JS File -->
+<script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
 @endsection

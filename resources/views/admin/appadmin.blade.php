@@ -18,7 +18,7 @@
   <link rel="stylesheet" href="{{ asset('adminAssets/css/custom.css') }}">
 </head>
 
-<body onload=display_ct();>
+<body @if(route('dashboard')) onload=display_ct(); @endif>
     <div id="app">
         <div class="main-wrapper">
           <div class="navbar-bg"></div>
@@ -76,6 +76,7 @@
                   <li class="menu-header">Data</li>
                   <li><a class="nav-link" href="userdata.html"><i class="fas fa-user"></i> <span>Akun</span></a></li>
                   @elserole('admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')
+                  
                   <!-- Home Side Bar -->
                   <li class="menu-header">Halaman Awal</li>
                   <li><a class="nav-link" href="banner.html"><i class="far fa-image"></i> <span>Banner</span></a></li>

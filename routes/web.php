@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,6 +20,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+// Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
-Route::get('/admin', [App\Http\Controllers\AdminController::class, 'index'])->name('dashboard');
+
+Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
+
+Route::middleware('role:superadmin')->get('admin/userdata',[AdminController::class, 'userdata']);
+
+
+Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
+    Route::get('/banner', 'AdminController@index');
+    Route::get('/sambutan', 'AdminController@index');
+    Route::get('/deskripsi', 'AdminController@test');
+
+});
