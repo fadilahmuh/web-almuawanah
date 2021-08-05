@@ -1,5 +1,112 @@
 @extends('admin.appadmin')
 
+@section('modalscontent')
+ <!-- Modal User -->
+ <div class="modal fade" id="userModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Tambah Admin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Username</label>
+          <input type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label>Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fas fa-lock"></i>
+              </div>
+            </div>
+            <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
+          </div>
+          <div id="pwindicator" class="pwindicator">
+            <div class="bar"></div>
+            <div class="label"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fas fa-lock"></i>
+              </div>
+            </div>
+            <input type="password" class="form-control pwstrength" data-indicator="pwindicator">
+          </div>
+          <div id="pwindicator" class="pwindicator">
+            <div class="bar"></div>
+            <div class="label"></div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <select class="form-control selectric">
+            <option>Superadmin</option>
+            <option>Admin Yayasan</option>
+            <option>Admin TKA/TPA</option>
+            <option>Admin MTs</option>
+            <option>Admin MA</option>
+            <option>Admin Pondok Pesantren</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Nomor Hp</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <i class="fas fa-phone"></i>
+              </div>
+            </div>
+            <input type="text" class="form-control phone-number">
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-success">Simpan</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Delete -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Hapus Admin</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda yakin untuk menghapus data ini?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+        <button type="button" class="btn btn-danger">Hapus</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
+
 @section('maincontent')
 <!-- Main Content -->
 <div class="main-content">
@@ -188,4 +295,4 @@
 @section('scriptpage')
 <!-- Page Specific JS File -->
 <script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
-@endsection
+@section('scriptline')

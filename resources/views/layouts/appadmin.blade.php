@@ -73,7 +73,7 @@
     
                   <!-- Admin Side Bar -->
                   <li class="menu-header">Data</li>
-                  <li><a class="nav-link" href="userdata.html"><i class="fas fa-user"></i> <span>Akun</span></a></li>
+                  <li><a class="nav-link" href="/userdata"><i class="fas fa-user"></i> <span>Akun</span></a></li>
     
                   <!-- Home Side Bar -->
                   <li class="menu-header">Halaman Awal</li>

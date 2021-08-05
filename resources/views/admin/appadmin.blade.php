@@ -11,6 +11,13 @@
   <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
 
     @yield('csslib')
+    
+  <!-- Module CSS -->
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/dropzonejs/min/dropzone.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/jquery-selectric/selectric.css') }}">
+
 
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('adminAssets/css/style.css') }}">
@@ -69,28 +76,28 @@
               </div>
               <ul class="sidebar-menu">
                   <!-- Dashboard -->
-                  <li class="active"><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'admin') ? 'active' : '' }}"><a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
     
                   @hasrole('superadmin')
                   <!-- Admin Side Bar -->                  
                   <li class="menu-header">Data</li>
-                  <li><a class="nav-link" href="userdata.html"><i class="fas fa-user"></i> <span>Akun</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'userdata') ? 'active' : '' }}"><a class="nav-link" href="{{ route('userdata') }}"><i class="fas fa-user"></i> <span>Akun</span></a></li>
                   @elserole('admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')
                   
                   <!-- Home Side Bar -->
                   <li class="menu-header">Halaman Awal</li>
-                  <li><a class="nav-link" href="banner.html"><i class="far fa-image"></i> <span>Banner</span></a></li>
-                  <li><a class="nav-link" href="sambutan.html"><i class="fas fa-align-left"></i> <span>Sambutan</span></a></li>
-                  <li><a class="nav-link" href="deskripsi-singkat.html"><i class="fas fa-book-open"></i> <span>Deskripsi Singkat</span></a></li>
-                  <li><a class="nav-link" href="brosur.html"><i class="fas fa-file-invoice"></i> <span>Brosur</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'banner') ? 'active' : '' }}"><a class="nav-link" href="{{ route('banner') }}"><i class="far fa-image"></i> <span>Banner</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'sambutan') ? 'active' : '' }}"><a class="nav-link" href="{{ route('sambutan') }}"><i class="fas fa-align-left"></i> <span>Sambutan</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'deskripsi-singkat') ? 'active' : '' }}"><a class="nav-link" href="{{ route('deskripsi-singkat') }}"><i class="fas fa-book-open"></i> <span>Deskripsi Singkat</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'brosur') ? 'active' : '' }}"><a class="nav-link" href="{{ route('brosur') }}"><i class="fas fa-file-invoice"></i> <span>Brosur</span></a></li>
     
                   <!-- Halaman Side Bar -->
                   <li class="menu-header">Halaman Lainnya</li>
-                  <li><a class="nav-link" href="profile.html"><i class="far fa-address-card"></i> <span>Profile</span></a></li>
-                  <li><a class="nav-link" href="galeri.html"><i class="fas fa-images"></i> <span>Galeri</span></a></li>
-                  <li><a class="nav-link" href="blog.html"><i class="fas fa-bookmark"></i> <span>Blog</span></a></li>
-                  <li><a class="nav-link" href="kontak.html"><i class="fas fa-phone"></i> <span>Kontak</span></a></li>
-                  <li><a class="nav-link" href="credits.html"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('profile') }}"><i class="far fa-address-card"></i> <span>Profile</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'galeri') ? 'active' : '' }}"><a class="nav-link" href="{{ route('galeri') }}"><i class="fas fa-images"></i> <span>Galeri</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'blog') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blog') }}"><i class="fas fa-bookmark"></i> <span>Blog</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'kontak') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kontak') }}"><i class="fas fa-phone"></i> <span>Kontak</span></a></li>
+                  <li class="{{ (request()->segment(1) == 'credits') ? 'active' : '' }}"><a class="nav-link" href="{{ route('credits') }}"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
                   @endhasrole
                 </ul>
                 <!-- IDK -->
@@ -98,6 +105,8 @@
             </aside>
           </div>
           
+          @yield('modalscontent')
+
           @yield('maincontent')
           
     
@@ -120,6 +129,14 @@
   <script src="{{ asset('adminAssets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/moment.min.js') }}"></script>
+
+   <!-- Modules JS Scripts -->
+  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/dropzonejs/min/dropzone.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/cleave-js/dist/cleave.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/cleave-js/dist/addons/cleave-phone.id.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
   <script src="{{ asset('adminAssets/js/stisla.js') }}"></script> 
 
   @yield('scriptlib')
