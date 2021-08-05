@@ -68,36 +68,35 @@
           <div class="main-sidebar">
             <aside id="sidebar-wrapper">
               <div class="sidebar-brand">
-                <a href="index.html">Yayasan Al-Mu'awanah</a>
+                <a href="{{ route('dashboard')}}">Yayasan Al-Mu'awanah</a>
                 <!-- <img src="../assets/img/yayasan.png" alt=""> -->
               </div>
               <div class="sidebar-brand sidebar-brand-sm">
-                <a href="index.html">AM</a>
+                <a href="{{ route('dashboard')}}">AM</a>
               </div>
               <ul class="sidebar-menu">
                   <!-- Dashboard -->
-                  <li class="{{ (request()->segment(1) == 'admin') ? 'active' : '' }}"><a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+                  <li @if(url()->current()==route('dashboard')) class="active" @endif><a href="{{ route('dashboard') }}" class="nav-link"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
     
                   @hasrole('superadmin')
                   <!-- Admin Side Bar -->                  
                   <li class="menu-header">Data</li>
                   <li class="{{ (request()->segment(1) == 'userdata') ? 'active' : '' }}"><a class="nav-link" href="{{ route('userdata') }}"><i class="fas fa-user"></i> <span>Akun</span></a></li>
                   @elserole('admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')
-                  
                   <!-- Home Side Bar -->
                   <li class="menu-header">Halaman Awal</li>
-                  <li class="{{ (request()->segment(1) == 'banner') ? 'active' : '' }}"><a class="nav-link" href="{{ route('banner') }}"><i class="far fa-image"></i> <span>Banner</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'sambutan') ? 'active' : '' }}"><a class="nav-link" href="{{ route('sambutan') }}"><i class="fas fa-align-left"></i> <span>Sambutan</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'deskripsi-singkat') ? 'active' : '' }}"><a class="nav-link" href="{{ route('deskripsi-singkat') }}"><i class="fas fa-book-open"></i> <span>Deskripsi Singkat</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'brosur') ? 'active' : '' }}"><a class="nav-link" href="{{ route('brosur') }}"><i class="fas fa-file-invoice"></i> <span>Brosur</span></a></li>
+                  <li @if(url()->current()==route('banner')) class="active" @endif><a class="nav-link" href="{{ route('banner') }}"><i class="far fa-image"></i> <span>Banner</span></a></li>
+                  <li @if(url()->current()==route('sambutan')) class="active" @endif><a class="nav-link" href="{{ route('sambutan') }}"><i class="fas fa-align-left"></i> <span>Sambutan</span></a></li>
+                  <li @if(url()->current()==route('deskripsi-singkat')) class="active" @endif><a class="nav-link" href="{{ route('deskripsi-singkat') }}"><i class="fas fa-book-open"></i> <span>Deskripsi Singkat</span></a></li>
+                  <li @if(url()->current()==route('brosur')) class="active" @endif><a class="nav-link" href="{{ route('brosur') }}"><i class="fas fa-file-invoice"></i> <span>Brosur</span></a></li>
     
                   <!-- Halaman Side Bar -->
                   <li class="menu-header">Halaman Lainnya</li>
-                  <li class="{{ (request()->segment(1) == 'profile') ? 'active' : '' }}"><a class="nav-link" href="{{ route('profile') }}"><i class="far fa-address-card"></i> <span>Profile</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'galeri') ? 'active' : '' }}"><a class="nav-link" href="{{ route('galeri') }}"><i class="fas fa-images"></i> <span>Galeri</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'blog') ? 'active' : '' }}"><a class="nav-link" href="{{ route('blog') }}"><i class="fas fa-bookmark"></i> <span>Blog</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'kontak') ? 'active' : '' }}"><a class="nav-link" href="{{ route('kontak') }}"><i class="fas fa-phone"></i> <span>Kontak</span></a></li>
-                  <li class="{{ (request()->segment(1) == 'credits') ? 'active' : '' }}"><a class="nav-link" href="{{ route('credits') }}"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+                  <li @if(url()->current()==route('profile')) class="active" @endif><a class="nav-link" href="{{ route('profile') }}"><i class="far fa-address-card"></i> <span>Profile</span></a></li>
+                  <li @if(url()->current()==route('galeri')) class="active" @endif><a class="nav-link" href="{{ route('galeri') }}"><i class="fas fa-images"></i> <span>Galeri</span></a></li>
+                  <li @if(url()->current()==route('blog')) class="active" @endif><a class="nav-link" href="{{ route('blog') }}"><i class="fas fa-bookmark"></i> <span>Blog</span></a></li>
+                  <li @if(url()->current()==route('kontak')) class="active" @endif><a class="nav-link" href="{{ route('kontak') }}"><i class="fas fa-phone"></i> <span>Kontak</span></a></li>
+                  <li @if(url()->current()==route('credits')) class="active" @endif><a class="nav-link" href="{{ route('credits') }}"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
                   @endhasrole
                 </ul>
                 <!-- IDK -->

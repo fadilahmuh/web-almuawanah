@@ -142,7 +142,7 @@
                   <thead  class="text-center">
                     <tr>
                       <th>
-                        No
+                        id
                       </th>
                       <th>Nama Lengkap</th>
                       <th>E-Mail</th>
@@ -152,134 +152,30 @@
                     </tr>
                   </thead>
                   <tbody class="text-center">
+                    @foreach($nonmembers as $u)
                     <tr>
-                      <td>
-                        1
-                      </td>
-                      <td class="text-left">Nama Admin 1</td>
-                      <td class="align-middle">
-                        example@gmail.com
-                      </td>
-                      <td>
-                        081332xxxxxx
-                      </td>
-                      <td><div class="badge badge-success">Superadmin</div></td>
+                      <td>{{ $u->id }}</td>
+                      <td class="text-left">{{ $u->name }}</td>
+                      <td class="align-middle">{{ $u->email }}</td>
+                      <td>{{ $u->no_hp }}</td>
+                      <td><div class="badge badge-success">@foreach($u->roles as $p) {{ $p->name }}@endforeach</div></td>
                       <td>
                         <div class="buttons">
                           <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
                           <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
                         </div>
                       </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        2
-                      </td>
-                      <td class="text-left">Nama Admin 2</td>
-                      <td class="align-middle">
-                        example@gmail.com
-                      </td>
-                      <td>
-                        081332xxxxxx
-                      </td>
-                      <td><div class="badge badge-primary">Yayan Al-Mu'amanah</div></td>
-                      <td>
-                        <div class="buttons">
-                          <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
-                          <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        3
-                      </td>
-                      <td class="text-left">Nama Admin 3</td>
-                      <td class="align-middle">
-                        example@gmail.com
-                      </td>
-                      <td>
-                        081332xxxxxx
-                      </td>
-                      <td><div class="badge badge-light">Guru Mts</div></td>
-                      <td>
-                        <div class="buttons">
-                          <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
-                          <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        4
-                      </td>
-                      <td class="text-left">Nama Admin 4</td>
-                      <td class="align-middle">
-                        example@gmail.com
-                      </td>
-                      <td>
-                        081332xxxxxx
-                      </td>
-                      <td><div class="badge badge-light">Guru TKA/TPA</div></td>
-                      <td>                              
-                        <div class="buttons">
-                          <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
-                          <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        5
-                      </td>
-                      <td class="text-left">Nama Admin 5</td>
-                      <td class="align-middle">
-                        example@gmail.com
-                      </td>
-                      <td>
-                        081332xxxxxx
-                      </td>
-                      <td><div class="badge badge-warning">Pondok Pesantren</div></td>
-                      <td>
-                        <div class="buttons">
-                          <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
-                          <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                        </div>
-                      </td>
-                    </tr>
+                    </tr>  
+                    @endforeach                  
                   </tbody>
                 </table>
               </div>
             </div>
-            <div class="card-footer text-right">
-              <nav class="d-inline-block">
-                <ul class="pagination mb-0">
-                  <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                  </li>
-                  <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#">2</a>
-                  </li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item">
-                    <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                  </li>
-                </ul>
-              </nav>
-            </div>
+
           </div>
         </div>
       </div>            
-    </div>
-
-    <div class="section-body">
-      <ul class="listBox">
-        @foreach($nonmembers as $u)
-          <li>ID:{{ $u->id }}<a href=""> {{ $u->name }}</a>@foreach($u->roles as $p) {{ $p->name }}@endforeach </li>
-        @endforeach
-      </ul>
-    </div>
+    </div>    
   </section>
 </div>
 @endsection
@@ -295,4 +191,4 @@
 @section('scriptpage')
 <!-- Page Specific JS File -->
 <script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
-@section('scriptline')
+@endsection

@@ -26,7 +26,7 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
-Route::middleware('role:superadmin')->get('admin/userdata',[AdminController::class, 'userdata']);
+Route::middleware('role:superadmin')->get('admin/userdata',[AdminController::class, 'userdata'])->name('userdata');
 
 
 Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
@@ -37,7 +37,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
     Route::get('/galeri', [AdminController::class, 'galeri'])->name('galeri');
     Route::get('/blog', [AdminController::class, 'blog'])->name('blog');
-    Route::get('/kontak', [AdminController::class, ''])->name('kontak');
+    Route::get('/kontak', [AdminController::class, 'kontak'])->name('kontak');
     Route::get('/credits', [AdminController::class, 'credits'])->name('credits');
     // Route::get('/', [AdminController::class, ''])->name('');
 });
