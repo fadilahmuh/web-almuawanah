@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BlogController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,8 +38,15 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::get('/brosur', [AdminController::class, 'brosur'])->name('brosur');
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
     Route::get('/galeri', [AdminController::class, 'galeri'])->name('galeri');
-    Route::get('/blog', [AdminController::class, 'blog'])->name('blog');
+    // Route::get('/blog', [AdminController::class, 'blog'])->name('blog');
     Route::get('/kontak', [AdminController::class, 'kontak'])->name('kontak');
     Route::get('/credits', [AdminController::class, 'credits'])->name('credits');
+    Route::resource('blog', BlogController::class)->names([
+        'index' => 'blog',
+    ]);
     // Route::get('/', [AdminController::class, ''])->name('');
 });
+
+// Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin/blog')->group(function(){
+//     Route::resource('/create', BlogController::class);
+// });

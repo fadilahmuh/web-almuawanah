@@ -73,7 +73,7 @@
               <div class="card-body">
                 <div class="text-right">
                   <div>
-                    <a href="#" class="btn btn-icon icon-right btn-success" data-toggle="modal" data-target="#blogModal">
+                    <a href="{{route('blog.create')}}" class="btn btn-icon icon-right btn-success">
                       <i class="fas fa-plus"></i> 
                       Tambah Blog
                     </a>                        
