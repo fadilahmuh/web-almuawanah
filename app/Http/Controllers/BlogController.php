@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use App\Models\Tags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }    
     /**
      * Display a listing of the resource.
      *
@@ -95,14 +100,32 @@ class BlogController extends Controller
      */
     public function add_tag(Request $request)
     {
-        $this->validate($request,[
-            'newtag' => 'required'
-        ]);
+        $rules = array(
+            'nama' => 'required|unique:tags'
+        );    
+        $messages = array(
+                'nama.required' => 'Tag kosong',
+                'nama.unique' => 'Tag sudah dalam data'
+        );
+        // $this->validate($request,[
+        //     'newtag' => 'required|unique'
+        // ]);
+        
+        // $validator = Validator::make($request->all(), [
+        //     'nama' => 'required|unique:tags',
+        // ]);
+        $validator = Validator::make($request->all(), $rules, $messages); 
 
-        Tags::create([
-            'nama' => $request->newtag
-        ]);
+        if ($validator->fails()) {
+            // return redirect()->back()->with('failed', $validator->getMessageBag()->all()[0] + 'Gagal menambahkan Tags');
+            return redirect()->back()->withErrors($validator);
+            // dd($validator->getMessageBag()->all()[0]);
+        } else {
+            Tags::create([
+                'nama' => $request->nama
+            ]);
+            return redirect()->back()->with('success','Tag berhasil ditambahkan');
+        }
 
-        return redirect()->back()->with('success','Tag berhasil ditambahkan');
     }
 }

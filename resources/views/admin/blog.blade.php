@@ -12,10 +12,17 @@
       <div class="section-header">
           <h1>Daftar Blog Website Al-Mu'awanah</h1>
       </div>
+      @if($errors->any())
+        @foreach($errors->getMessages() as $this_error)
+        <div class="alert alert-danger" role="alert">
+          <i class="fas fa-exclamation-triangle  mr-3"></i> {{$this_error[0]}} , Gagal menambahkan Tags.
+        </div> 
+        @endforeach
+      @endif 
       @if(Session::has('success'))
       <div class="alert alert-success" role="alert">
         <i class="fas fa-check mr-3"></i> {{ Session('success') }} 
-      </div> 
+      </div>        
       @endif
       <div class="section-body">
         <h2 class="section-title">Tabel Data Blog</h2>
@@ -142,7 +149,7 @@
             <div class="modal-body">              
               <div class="form-group">
                 <label>Nama Tag</label>
-                <input type="text" class="form-control" name="newtag" id="newtag">
+                <input type="text" class="form-control" name="nama" id="nama">
               </div>              
             </div>
             <div class="modal-footer">
