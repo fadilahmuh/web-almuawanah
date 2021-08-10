@@ -32,7 +32,7 @@ Route::middleware('role:superadmin')->get('admin/userdata',[AdminController::cla
 
 
 Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
-    Route::get('/banner', [AdminController::class, 'userdata'])->name('banner');
+    Route::get('/banner', [AdminController::class, 'banner'])->name('banner');
     Route::get('/sambutan', [AdminController::class, 'sambutan'])->name('sambutan');
     Route::get('/deskripsi-singkat', [AdminController::class, 'deskripsiSingkat'])->name('deskripsi-singkat');
     Route::get('/brosur', [AdminController::class, 'brosur'])->name('brosur');
@@ -44,6 +44,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::resource('blog', BlogController::class)->names([
         'index' => 'blog',
     ]);
+    Route::post('/add_tag',[BlogController::class, 'add_tag'])->name('newtag');
     // Route::get('/', [AdminController::class, ''])->name('');
 });
 

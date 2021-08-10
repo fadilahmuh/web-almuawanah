@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
+use App\Models\Tags;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -13,7 +15,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('admin.blog');
+        $blog = Posts::all();
+        $tags = Tags::all();
+        // dd($blog);
+        return view('admin.blog', compact('blog', 'tags'));
     }
 
     /**
@@ -80,5 +85,24 @@ class BlogController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function add_tag(Request $request)
+    {
+        $this->validate($request,[
+            'newtag' => 'required'
+        ]);
+
+        Tags::create([
+            'nama' => $request->newtag
+        ]);
+
+        return redirect()->back()->with('success','Tag berhasil ditambahkan');
     }
 }
