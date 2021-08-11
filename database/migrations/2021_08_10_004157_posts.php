@@ -17,7 +17,7 @@ class Posts extends Migration
             $table->increments('id');
             $table->string('judul')->nullable(false);
             $table->string('slug')->unique();
-            $table->text('content')->nullable();
+            $table->longText('content')->nullable();
             $table->string('tag')->nullable();
             $table->string('thumbnail')->nullable();
             $table->boolean("is_published")->nullable(false);

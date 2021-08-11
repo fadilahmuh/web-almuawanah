@@ -5,13 +5,20 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use App\Models\Tags;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class BlogController extends Controller
 {
+    private $blog;
+    private $tags;
+
     public function __construct()
     {
         $this->middleware('auth');
+        $this->blog = Posts::all();
+        $this->tags = Tags::all();
     }    
     /**
      * Display a listing of the resource.
@@ -20,10 +27,10 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blog = Posts::all();
-        $tags = Tags::all();
-        // dd($blog);
-        return view('admin.blog', compact('blog', 'tags'));
+        // return view('admin.blog', compact('blog', 'tags'));
+        return view('admin.blog')
+            ->with('blog', $this->blog)
+            ->with('tags', $this->tags);
     }
 
     /**
@@ -44,7 +51,48 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = array(
+            'judul' => 'required',
+            'slug' => 'unique:posts',
+            'content' => 'required',
+            'is_published' => 'required'
+        );    
+        $messages = array(
+            'require.required' => 'Judul Kosong, Tambahkan judul postingan!!',
+            'slug.unique' => 'Judul sudah digunakan, gunakan judul lain!!',
+            'content.require' => 'Tidak ada konten pada postingan!!',
+            'is_published' => 'Status postingan kosong, Pilih status postingan!!'
+
+        );
+        $request->all();
+        $request->request->add(['slug' => Str::of($request->judul)->slug('-')]);        
+        // dd($request->all());
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        } else {
+            Posts::create([
+                'judul' => $request->judul,
+                'slug' => $request->slug,
+                'content' => $request->content,
+                'tag' => $request->tag,
+                'is_published' => $request->is_published,
+                'users_id' => Auth::user()->id
+
+            ]);
+
+            if($request->is_published == 0)
+            {
+                $msg = 'Post berhasil ditambahkan ke Draft.';
+            } else {
+                $msg = 'Post berhasil ditambahkan dam dipublikasikan.';
+            };
+            return redirect()->route('blog')->with('success',$msg);
+        }
+        // return redirect()->back()->withInput();
+        // dd($request);
+        // return ("post the blog");
     }
 
     /**
@@ -55,6 +103,7 @@ class BlogController extends Controller
      */
     public function show($id)
     {
+        
         //
     }
 
@@ -104,8 +153,8 @@ class BlogController extends Controller
             'nama' => 'required|unique:tags'
         );    
         $messages = array(
-                'nama.required' => 'Tag kosong',
-                'nama.unique' => 'Tag sudah dalam data'
+            'nama.required' => 'Tag kosong, Gagal menambahkan Tag.',
+            'nama.unique' => 'Gagal menambahkan, Tag sudah dalam data!!'
         );
         // $this->validate($request,[
         //     'newtag' => 'required|unique'

@@ -12,20 +12,13 @@
 
     @yield('csslib')
     
-  <!-- Module CSS -->
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/dropzonejs/min/dropzone.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/jquery-selectric/selectric.css') }}">
-
-
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('adminAssets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('adminAssets/css/components.css') }}">
   <link rel="stylesheet" href="{{ asset('adminAssets/css/custom.css') }}">
 </head>
 
-<body @if(route('dashboard')) onload=display_ct(); @endif>
+<body @if(url()->current()==route('dashboard')) onload=display_ct(); @endif>
     <div id="app">
         <div class="main-wrapper">
           <div class="navbar-bg"></div>
@@ -122,28 +115,21 @@
 
    <!-- General JS Scripts -->
   <script src="{{ asset('adminAssets/modules/jquery.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/popper.js') }}"></script>
+  {{-- <script src="{{ asset('adminAssets/modules/popper.js') }}"></script> --}}
+  <script src="{{ asset('adminAssets/modules/popper.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/tooltip.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/moment.min.js') }}"></script>
-
-   <!-- Modules JS Scripts -->
-  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/dropzonejs/min/dropzone.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/cleave-js/dist/cleave.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/cleave-js/dist/addons/cleave-phone.id.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
   <script src="{{ asset('adminAssets/js/stisla.js') }}"></script> 
 
   @yield('scriptlib')
 
-  @yield('scriptline')
-
+  
   <script src="{{ asset('adminAssets/js/scripts.js') }}"></script>
-  <script src="{{ asset('adminAssets/js/custom.js') }}"></script>
-
+  
   @yield('scriptpage')
+  
+  @yield('scriptline')
 </body>
 </html>

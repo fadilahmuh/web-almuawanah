@@ -38,6 +38,7 @@
   </section>
 </div>
 @endsection
-@section('scriptline')
 
+@section('scriptpage')
+<script src="{{ asset('adminAssets/js/custom.js') }}"></script>
 @endsection

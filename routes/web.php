@@ -44,7 +44,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::resource('blog', BlogController::class)->names([
         'index' => 'blog',
     ]);
-    Route::post('/add_tag',[BlogController::class, 'add_tag'])->name('newtag');
+    Route::post('/blog/add_tag',[BlogController::class, 'add_tag'])->name('newtag');
     // Route::get('/', [AdminController::class, ''])->name('');
 });
 
