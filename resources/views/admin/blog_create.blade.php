@@ -4,6 +4,7 @@
   <!-- CSS Libraries -->  
   <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
   <link rel="stylesheet" href="{{ asset('adminAssets/modules/jquery-selectric/selectric.css') }}">
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/select2/dist/css/select2.min.css') }}">
 @endsection
 
 @section('maincontent')    
@@ -49,8 +50,22 @@
               <!-- Tags -->
               <div class="form-group">
                 <label>Tags</label>
-                <input type="text" name="tag" class="form-control inputtags" value="{{old('tag')}}">
-              </div>
+                <select class="form-control select2" multiple="" name="tag[]">
+                  @if(old('tag'))
+                    @foreach($tags as $tag)
+                      <option value="{{ $tag->nama }}" @foreach (old('tag') as $ot) @if($ot == $tag->nama) selected @endif @endforeach >{{ $tag->nama }}</option> 
+                    @endforeach               
+                  @else
+                    @foreach($tags as $tag)
+                      <option value="{{ $tag->nama }}">{{ $tag->nama }}</option> 
+                    @endforeach
+                  @endif
+                </select>
+              </div>             
+              {{-- {{ old('tag')[1] ?? "" }} --}}
+              {{-- @foreach(old('tag') as $ot) --}}
+              {{-- {{ $ot->nama }} --}}
+              {{-- @endforeach --}}
               <!-- Status Blog -->
               <div class="form-group">
                 <label>Status</label>
@@ -81,6 +96,8 @@
   <!-- JS Libraies -->  
   <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/select2/dist/js/select2.full.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 @endsection
 
 @section('scriptpage')

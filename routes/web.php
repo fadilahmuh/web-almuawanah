@@ -45,7 +45,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
         'index' => 'blog',
     ]);
     Route::post('/blog/add_tag',[BlogController::class, 'add_tag'])->name('newtag');
-    // Route::get('/', [AdminController::class, ''])->name('');
+    Route::delete('/blog/del_tag/{id}',[BlogController::class, 'del_tag'])->name('deltag');
 });
 
 // Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin/blog')->group(function(){

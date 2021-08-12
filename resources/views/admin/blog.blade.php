@@ -40,16 +40,14 @@
                   </div>
                 </div>
                 <br>
-
-                <div class="clearfix mb-3"></div>
+                
+                <div class="clearfix mb-3"></div>                
 
                 <div class="table-responsive">
                   <table class="table table-striped" id="table-blog">
                     <thead  class="text-center">
                       <tr>
-                        <th>
-                          id
-                        </th>
+                        {{-- <th>id</th> --}}
                         <th>Judul</th>
                         <th>Tag</th>
                         <th>Penulis</th>
@@ -61,22 +59,26 @@
                     <tbody class="text-center">
                       @foreach($blog as $b)
                       <tr>
-                        <td class="align-middle">{{ $b->id }}</td>
+                        {{-- <td class="align-middle">{{ $b->id }}</td> --}}
                         <td class="align-middle">{{ $b->judul }}</td>
-                        <td class="align-middle">{{ $b->tag }}</td>
+                        <td class="align-middle"><div class="badges">@foreach($b->tag as $t)<a href="" class="badge badge-primary">{{ $t }}</a>@endforeach</div></td>
                         <td class="align-middle">{{ $b->users->name }}</td>
                         <td class="align-middle">{{ $b->created_at }}</td>
                         <td class="align-middle">
                           @if ($b->is_published == 1 )
-                          <div class="badge badge-primary">Published</div>
+                          <a href=""  class="badge badge-success text-white">Published</a>
                           @else
-                          <div class="badge badge-warbning">Draft</div>
+                          <a href="" class="badge badge-warning text-white">Draft</a>
                           @endif
                         </td>
                         <td class="align-middle">
                           <div class="buttons">
                             <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
+                            <form action="{{ route('blog.destroy', [$b->id]) }}" method="POST">                              
+                              @csrf
+                              @method('delete')
+                              <button class="del btn btn-icon btn-danger" data-judul="{{ $b->judul }}"><i class="fas fa-trash"></i></button>
+                            </form>
                           </div>
                         </td>
                       </tr>  
@@ -109,7 +111,13 @@
                       <tr>
                       <td>{{ $t->id }}</td>
                       <td>{{ $t->nama }}</td>
-                      <td class="text-center"><a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a></td>                        
+                      <td class="text-center">
+                        <form action="{{ route('deltag', [$t->id]) }}" method="POST">                              
+                          @csrf
+                          @method('delete')  
+                          <button class="del2 btn btn-danger" data-nama="{{ $t->nama }}"><i class="fas fa-trash"></i></button>
+                        </form>                        
+                      </td>                        
                     </tr>  
                       @endforeach
                       @endif
@@ -166,10 +174,49 @@
 <script src="{{ asset('adminAssets/modules/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('adminAssets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
-<script src="{{ asset('adminAssets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
 
 @section('scriptpage')
 <!-- Page Specific JS File -->
 <script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
+@endsection
+
+@section('scriptline')
+  <script>
+    $('.del').click(function(event) {
+      var form =  $(this).closest("form");
+      var judul = $(this).data("judul");
+      event.preventDefault();
+      swal({
+          title: `Hapus postingan "${judul}?"`,
+          text: "Jika postingan ini dihapus maka tidak dapat dikembalikan lagi.",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+        }
+      });
+  });
+
+  $('.del2').click(function(event) {
+      var form =  $(this).closest("form");
+      var nama = $(this).data("nama");
+      event.preventDefault();
+      swal({
+          title: `Hapus Tag "${nama}?"`,
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+        }
+      });
+  });
+  </script>
 @endsection

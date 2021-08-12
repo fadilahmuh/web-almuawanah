@@ -21,4 +21,9 @@ class Posts extends Model
     public function users(){
     	return $this->belongsTo(User::class);
     }
+
+    public function gettagAttribute($value)
+    {
+        return explode(',', $value);
+    }
 }

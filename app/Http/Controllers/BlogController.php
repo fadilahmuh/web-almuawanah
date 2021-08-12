@@ -26,8 +26,8 @@ class BlogController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        // return view('admin.blog', compact('blog', 'tags'));
+    {   
+        // dd($this->blog[1]->tag);
         return view('admin.blog')
             ->with('blog', $this->blog)
             ->with('tags', $this->tags);
@@ -40,7 +40,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        return view('admin.blog_create');
+        return view('admin.blog_create')->with('tags', $this->tags);
     }
 
     /**
@@ -55,19 +55,24 @@ class BlogController extends Controller
             'judul' => 'required',
             'slug' => 'unique:posts',
             'content' => 'required',
-            'is_published' => 'required'
+            'is_published' => 'required',
+            'thumbnail' => 'required|mimes:jpg,bmp,png'
         );    
         $messages = array(
-            'require.required' => 'Judul Kosong, Tambahkan judul postingan!!',
+            'judul.required' => 'Judul Kosong, Tambahkan judul postingan!!',
             'slug.unique' => 'Judul sudah digunakan, gunakan judul lain!!',
-            'content.require' => 'Tidak ada konten pada postingan!!',
-            'is_published' => 'Status postingan kosong, Pilih status postingan!!'
-
+            'content.required' => 'Tidak ada konten pada postingan!!',
+            'is_published' => 'Status postingan kosong, Pilih status postingan!!',
+            'thumbnail.required' => 'Thumbnail postingan kosong, tambahkan thumbnail postingan!!',
+            'thumbnail.mimes' => 'File format thumbnail salah, harap masukan file format jpg,bmp,png'
         );
         $request->all();
         $request->request->add(['slug' => Str::of($request->judul)->slug('-')]);        
-        // dd($request->all());
         $validator = Validator::make($request->all(), $rules, $messages);
+        
+        $tags = collect($request->tag)->implode(',');
+
+        $gambar = $request->thumbnail;
 
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
@@ -76,23 +81,22 @@ class BlogController extends Controller
                 'judul' => $request->judul,
                 'slug' => $request->slug,
                 'content' => $request->content,
-                'tag' => $request->tag,
+                'tag' => $tags,
                 'is_published' => $request->is_published,
-                'users_id' => Auth::user()->id
-
+                'users_id' => Auth::user()->id,
+                'thumbnail' => $gambar->getClientOriginalName()
             ]);
+
+            $gambar->move('public/uploads/posts/', $gambar->getClientOriginalName());
 
             if($request->is_published == 0)
             {
-                $msg = 'Post berhasil ditambahkan ke Draft.';
+                $msg = 'Postingan berhasil ditambahkan ke Draft.';
             } else {
-                $msg = 'Post berhasil ditambahkan dam dipublikasikan.';
+                $msg = 'Postingan berhasil ditambahkan dan dipublikasikan.';
             };
             return redirect()->route('blog')->with('success',$msg);
         }
-        // return redirect()->back()->withInput();
-        // dd($request);
-        // return ("post the blog");
     }
 
     /**
@@ -138,7 +142,9 @@ class BlogController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Posts::findorfail($id)->delete();
+
+        return redirect()->back()->with('success','Post Berhasil Dihapus');
     }
 
     /**
@@ -156,19 +162,11 @@ class BlogController extends Controller
             'nama.required' => 'Tag kosong, Gagal menambahkan Tag.',
             'nama.unique' => 'Gagal menambahkan, Tag sudah dalam data!!'
         );
-        // $this->validate($request,[
-        //     'newtag' => 'required|unique'
-        // ]);
-        
-        // $validator = Validator::make($request->all(), [
-        //     'nama' => 'required|unique:tags',
-        // ]);
+
         $validator = Validator::make($request->all(), $rules, $messages); 
 
         if ($validator->fails()) {
-            // return redirect()->back()->with('failed', $validator->getMessageBag()->all()[0] + 'Gagal menambahkan Tags');
             return redirect()->back()->withErrors($validator);
-            // dd($validator->getMessageBag()->all()[0]);
         } else {
             Tags::create([
                 'nama' => $request->nama
@@ -176,5 +174,12 @@ class BlogController extends Controller
             return redirect()->back()->with('success','Tag berhasil ditambahkan');
         }
 
+    }
+
+    public function del_tag($id)
+    {
+        Tags::findorfail($id)->delete();
+
+        return redirect()->back()->with('success','Tag Berhasil Dihapus');
     }
 }
