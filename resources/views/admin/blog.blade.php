@@ -72,12 +72,13 @@
                           @endif
                         </td>
                         <td class="align-middle">
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#userModal"><i class="fas fa-edit"></i></a>
+                          <div class="btn-toolbar justify-content-center" role="group">
+                            <a href="#" class="btn btn-icon btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Preview"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('blog.edit', [$b->slug]) }}" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('blog.destroy', [$b->id]) }}" method="POST">                              
                               @csrf
                               @method('delete')
-                              <button class="del btn btn-icon btn-danger" data-judul="{{ $b->judul }}"><i class="fas fa-trash"></i></button>
+                              <button class="del btn btn-icon btn-danger" data-judul="{{ $b->judul }}" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"><i class="fas fa-trash"></i></button>
                             </form>
                           </div>
                         </td>

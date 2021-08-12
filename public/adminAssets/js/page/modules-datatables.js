@@ -55,11 +55,11 @@ $("#table-blog").dataTable({
             emptyPanes: "There are no panes to display. :/",
         },
     },
-    // "dom": '<"float-left"fl>'
-    // "searching": false
 });
 
 var table = $('#table-blog').DataTable();
-$('#CustomSearchBox').keyup(function(){  
-    table.search($(this).val()).draw();
+$(document).on("click", ".badge", function(e) {
+    e.preventDefault();
+    var search = $(this).text();
+    table.search(search).draw();  
 });

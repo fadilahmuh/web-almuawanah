@@ -87,7 +87,7 @@ class BlogController extends Controller
                 'thumbnail' => $gambar->getClientOriginalName()
             ]);
 
-            $gambar->move('public/uploads/posts/', $gambar->getClientOriginalName());
+            $gambar->move('uploads/posts/', $gambar->getClientOriginalName());
 
             if($request->is_published == 0)
             {
@@ -112,14 +112,19 @@ class BlogController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for ing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $post = Posts::where('slug', '=', $id)->firstOrFail();
+        // $post = Posts::findorfail($id);
+        // dd($post);
+        return view('admin.blog_edit')
+            ->with('post', $post)
+            ->with('tags', $this->tags);
     }
 
     /**
@@ -131,7 +136,47 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->hasFile('thumbnail'));
+        $old_post = Posts::findorfail($id);
+
+        $rules = array(
+            'judul' => 'required',
+            'slug' => 'unique:posts,slug,'.$id,
+            'content' => 'required',
+            'is_published' => 'required',
+            'thumbnail' => 'mimes:jpg,bmp,png'
+        );    
+        $messages = array(
+            'judul.required' => 'Judul Kosong, Tambahkan judul postingan!!',
+            'slug.unique' => 'Judul sudah digunakan, gunakan judul lain!!',
+            'content.required' => 'Tidak ada konten pada postingan!!',
+            'is_published' => 'Status postingan kosong, Pilih status postingan!!',
+            'thumbnail.mimes' => 'File format thumbnail salah, harap masukan file format jpg,bmp,png'
+        );
+
+        $request->all();
+        $request->request->add(['slug' => Str::of($request->judul)->slug('-')]);        
+        $validator = Validator::make($request->all(), $rules, $messages);
+        $tags = collect($request->tag)->implode(',');
+        $gambar = $request->thumbnail;
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        } else {
+            $old_post->update([
+                'judul' => $request->judul,
+                'slug' => $request->slug,
+                'content' => $request->content,
+                'tag' => $tags,
+                'is_published' => $request->is_published,
+                'users_id' => Auth::user()->id,
+                'thumbnail' => $request->hasFile('thumbnail') ? $gambar->getClientOriginalName() : $old_post->thumbnail,
+            ]);
+
+            $request->hasFile('thumbnail') ? $gambar->move('uploads/posts/', $gambar->getClientOriginalName()): '';
+
+            return redirect()->route('blog')->with('success','Postingan berhasil diubah!!');
+        }
     }
 
     /**
