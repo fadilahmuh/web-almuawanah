@@ -16,7 +16,7 @@
             <div class="hero-inner text-center">
               <h1>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
               <br>
-              <h4 class="lead">Halo {{ Auth::user()->name }}! Selamat datang di Halaman Admin Yayasan Al-Mu'awanah</p>
+              <h4 class="lead">Halo {{ Auth::user()->name }}! Selamat datang di Halaman Admin {{session('divisi')}} Al-Mu'awanah</p>
               <div class="mt-4">
                 <h4>Current Time: <span id="datetime"></span></h4>
               </div>

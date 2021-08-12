@@ -61,7 +61,7 @@
           <div class="main-sidebar">
             <aside id="sidebar-wrapper">
               <div class="sidebar-brand">
-                <a href="{{ route('dashboard')}}">Yayasan Al-Mu'awanah</a>
+                <a href="{{ route('dashboard')}}">{{session('divisi')}} Al-Mu'awanah</a>
                 <!-- <img src="../assets/img/yayasan.png" alt=""> -->
               </div>
               <div class="sidebar-brand sidebar-brand-sm">
@@ -127,7 +127,7 @@
 
   
   <script src="{{ asset('adminAssets/js/scripts.js') }}"></script>
-  
+
   @yield('scriptpage')
   
   @yield('scriptline')

@@ -6,6 +6,9 @@ use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\User;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class AdminController extends Controller
 {
@@ -25,7 +28,7 @@ class AdminController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    {        
         return view('admin.dashboard');
     }
 
