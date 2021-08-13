@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ComponentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +47,11 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     ]);
     Route::post('/blog/add_tag',[BlogController::class, 'add_tag'])->name('newtag');
     Route::delete('/blog/del_tag/{id}',[BlogController::class, 'del_tag'])->name('deltag');
+    
+    Route::prefix('banner')->group(function(){
+        Route::post('/add_banner',[ComponentController::class, 'add_banner'])->name('newbanner');
+        // Route::get('/test_banner',[ComponentController::class, 'test_banner'])->name('testbanner');
+    });
 });
 
 // Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin/blog')->group(function(){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Component;
 use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
@@ -48,7 +49,9 @@ class AdminController extends Controller
 
     public function banner()
     {
-        return view('admin.banner');
+        $this->banners = Component::all();
+        return view('admin.banner')
+            ->with('banners',$this->banners);
     }
     
     public function sambutan()

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Component;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
 class ComponentController extends Controller
@@ -16,70 +17,49 @@ class ComponentController extends Controller
     {
         //
     }
+    
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Component  $component
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Component $component)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Component  $component
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Component $component)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Component  $component
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Component $component)
-    {
-        //
-    }
-
+    // ====BANNER====
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Component  $component
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Component $component)
+    public function add_banner(Request $request)
     {
-        //
+        // dd($request->thumbnail->getClientOriginalName());
+        $rules = array(
+            'divisi' => 'required',
+            'bagian' => 'required',
+            'attachment' => 'required|mimes:jpg,bmp,png'
+        );    
+        $messages = array(
+            'attachment.required' => 'Gambar banner kosong, gagal menambahkan banner.',
+        );
+
+        $request->all();
+        $validator = Validator::make($request->all(), $rules, $messages); 
+        $gambar = $request->attachment;
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        } else {
+            Component::create([
+                'divisi' => $request->divisi,
+                'bagian' => $request->bagian,
+                'judul' => $request->judul,
+                'content' => $request->content,
+                'attachment' => $gambar->getClientOriginalName()
+            ]);
+            $gambar->move('uploads/component/', $gambar->getClientOriginalName());
+
+            return redirect()->back()->with('success','Banner berhasil ditambahkan');
+        }
     }
+
+    // public function test_banner() {
+    //     return ('test banenr yo');
+    // }
+
 }
