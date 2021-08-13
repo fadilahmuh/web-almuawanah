@@ -136,7 +136,6 @@ class BlogController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request->hasFile('thumbnail'));
         $old_post = Posts::findorfail($id);
 
         $rules = array(
@@ -163,6 +162,7 @@ class BlogController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         } else {
+
             $old_post->update([
                 'judul' => $request->judul,
                 'slug' => $request->slug,

@@ -58,8 +58,56 @@ class ComponentController extends Controller
         }
     }
 
-    // public function test_banner() {
-    //     return ('test banenr yo');
-    // }
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_banner(Request $request, $id)
+    {
+        // dd($request->all());
+        $old_banner = Component::findorfail($id);
+
+        $rules = array(
+            'divisi' => 'required',
+            'bagian' => 'required',
+            'attachment' => 'mimes:jpg,bmp,png'
+        );    
+
+        $request->all();
+        $validator = Validator::make($request->all(), $rules); 
+        $gambar = $request->attachment;
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        } else {
+            $old_banner->update([
+                'divisi' => $request->divisi,
+                'bagian' => $request->bagian,
+                'judul' => $request->judul,
+                'content' => $request->content,
+                'attachment' => $request->hasFile('attachment') ? $gambar->getClientOriginalName(): $old_banner->attachment
+            ]);
+            
+            $request->hasFile('attachment') ? $gambar->move('uploads/component/', $gambar->getClientOriginalName()): '';            
+
+            return redirect()->back()->with('success','Banner berhasil diubah!!');
+        }
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_banner($id)
+    {
+        Component::findorfail($id)->delete();
+
+        return redirect()->back()->with('success','Banner Berhasil Dihapus');
+    }
 
 }

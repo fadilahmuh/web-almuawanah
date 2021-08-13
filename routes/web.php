@@ -50,10 +50,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     
     Route::prefix('banner')->group(function(){
         Route::post('/add_banner',[ComponentController::class, 'add_banner'])->name('newbanner');
-        // Route::get('/test_banner',[ComponentController::class, 'test_banner'])->name('testbanner');
+        Route::put('/update_banner/{id}',[ComponentController::class, 'update_banner'])->name('editbanner');
+        Route::delete('/del_banner/{id}',[ComponentController::class, 'delete_banner'])->name('delbanner');
     });
 });
-
-// Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin/blog')->group(function(){
-//     Route::resource('/create', BlogController::class);
-// });

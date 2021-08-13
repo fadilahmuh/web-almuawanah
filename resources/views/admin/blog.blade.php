@@ -187,6 +187,7 @@
   <script>
     $('.del').click(function(event) {
       var form =  $(this).closest("form");
+      console.log(form);
       var judul = $(this).data("judul");
       event.preventDefault();
       swal({
