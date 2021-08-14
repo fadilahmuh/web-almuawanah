@@ -1,8 +1,5 @@
 @extends('admin.appadmin')
 
-@section('modalscontent')
-@endsection
-
 @section('maincontent')
 <!-- Main Content -->
 <div class="main-content">
@@ -16,24 +13,20 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <!-- Header Table -->
-              <!-- <div class="card-header">
-                <h4>Banner 1</h4>              
-              </div> -->
+              <form action="">
               <div class="card-body">
-                <!-- Banner Form -->
                 <!-- Title -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Ucapan Pembuka</label>
                   <div class="col-sm-12 col-md-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" disabled value="{{ $sambutan->judul}}">
                   </div>
                 </div>
                 <!-- Text Area -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Isi Sambutan</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="form-control" name="content" id="" rows="5"></textarea>
+                    <textarea class="form-control" name="content" id="" rows="5" disabled>{{ $sambutan->content}}</textarea>
                   </div>
                 </div>
                 <!-- Nama di Bawah Foto -->
@@ -45,7 +38,7 @@
                     </div>
                   </label>
                   <div class="col-sm-12 col-md-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="{{ $sambutan->desc1}}" disabled>
                   </div>
                 </div>
                 <!-- Deskripsi Nama di bawah foto -->
@@ -54,16 +47,16 @@
                     <label>(Optional)</label>
                   </div></label>
                   <div class="col-sm-12 col-md-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" value="{{ $sambutan->desc2}}" disabled>
                   </div>
                 </div>
                 <!-- Thumbnail -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
                   <div class="col-sm-12 col-md-auto">
-                    <div id="image-preview" class="image-preview">
+                    <div id="image-preview" class="image-preview" style="background-image: url({{asset('uploads/component/')}}/{{$sambutan->attachment}});background-size: cover; background-position: center center;" >
                       <label for="image-upload" id="image-label">Choose File</label>
-                      <input type="file" name="image" id="image-upload" />
+                      <input type="file" name="image" id="image-upload" disabled/>
                     </div>                        
                   </div>
                   <ul>
@@ -76,9 +69,12 @@
               <!-- Buttons -->
               <div class="card-footer text-right">
                   <div class="buttons">
-                      <button class="btn btn-warning">Update Sambutan</button>
+                      <button class="cancel btn btn-danger collapse multi-collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                      <button class="save btn btn-success collapse multi-collapse"><i class="far fa-save"></i> Simpan</button>
+                      <button class="edit btn btn-warning collapse multi-collapse show" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
                   </div>
               </div>
+              </form>
             </div>
           </div>
         </div>          
@@ -103,6 +99,21 @@
   label_selected: "Ganti File",  // Default: Change File
   no_label: false,                // Default: false
   success_callback: null          // Default: null
-});
+  });
+
+  $(document).on("click", ".edit", function(e) {
+    e.preventDefault();
+    var inputs = $(this).parent().parent().parent().find(":input:not(:button)");
+    console.log(inputs);
+    inputs.removeAttr('disabled');
+  });
+
+  $(document).on("click", ".cancel", function(e) {
+    e.preventDefault();
+    var inputs = $(this).parent().parent().parent().find(":input:not(:button)");
+    console.log(inputs);
+    inputs.prop('disabled', true);
+  });
+
 </script>
 @endsection

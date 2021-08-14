@@ -164,43 +164,27 @@
   $(document).on("click", ".edit", function(e) {
     e.preventDefault();
     var form = $(this).parent().parent().parent().find('form');
-    var judul = form.find('input[name=judul]');
-    var content = form.find('textarea[name=content]');
-    var cover = form.find('input[name=attachment]');
-    var wrapper = form.find('.dropify-wrapper');
-    var save_btn = $(this).parent().find('.save');
-    var cancel_btn = $(this).parent().find('.cancel');
-    var edit_btn = $(this).parent().find('.edit');
-    var del_btn = $(this).parent().find('.del');
-    judul.removeAttr('disabled');
-    content.removeAttr('disabled');
-    cover.removeAttr('disabled');
-    wrapper.removeClass('disabled');
-    save_btn.addClass('show');
-    cancel_btn.addClass('show');
-    edit_btn.removeClass('show');
-    del_btn.removeClass('show');
+    form.find('input[name=judul]').removeAttr('disabled');
+    form.find('textarea[name=content]').removeAttr('disabled');
+    form.find('input[name=attachment]').removeAttr('disabled');
+    form.find('.dropify-wrapper').removeClass('disabled');
+    $(this).parent().find('.save').collapse('show');
+    $(this).parent().find('.cancel').collapse('show');
+    $(this).parent().find('.edit').collapse('hide');
+    $(this).parent().find('.del').collapse('hide');
   });
 
   $(document).on("click", ".cancel", function(e) {
     e.preventDefault();
     var form = $(this).parent().parent().parent().find('form');
-    var judul = form.find('input[name=judul]');
-    var content = form.find('textarea[name=content]');
-    var cover = form.find('input[name=attachment]');
-    var wrapper = form.find('.dropify-wrapper');
-    var save_btn = $(this).parent().find('.save');
-    var cancel_btn = $(this).parent().find('.cancel');
-    var edit_btn = $(this).parent().find('.edit');
-    var del_btn = $(this).parent().find('.del');
-    judul.prop('disabled', true);
-    content.prop('disabled', true);
-    cover.prop('disabled', true);
-    wrapper.addClass('disabled');
-    save_btn.removeClass('show');
-    cancel_btn.removeClass('show');
-    edit_btn.addClass('show');
-    del_btn.addClass('show');
+    form.find('input[name=judul]').prop('disabled', true);
+    form.find('textarea[name=content]').prop('disabled', true);
+    form.find('input[name=attachment]').prop('disabled', true);
+    form.find('.dropify-wrapper').addClass('disabled');
+    $(this).parent().find('.save').collapse('hide');
+    $(this).parent().find('.cancel').collapse('hide');
+    $(this).parent().find('.edit').collapse('show');
+    $(this).parent().find('.del').collapse('show');
   });
 
   $('.del').click(function(event) {

@@ -42,9 +42,6 @@ class AdminController extends Controller
             return $user->hasRole('superadmin');
         });
 
-        // dd($users);
-        // dd($nonmembers);
-        // return view('admin.report_roles', ['roles'=>$roles, 'nonmembers' => $nonmembers]);
         return view('admin.userdata', ['nonmembers' => $nonmembers]);
     }
 
@@ -60,22 +57,56 @@ class AdminController extends Controller
     
     public function sambutan()
     {
-        return view('admin.sambutan');
+        $this->sambutan = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'sambutan')->first();
+
+        // dd($this->sambutan);
+        return view('admin.sambutan')
+            ->with('sambutan',$this->sambutan);
     }
 
     public function deskripsiSingkat()
     {
-        return view('admin.deskripsi');
+        $this->deskripsi = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'deskripsi-singkat')->first();
+
+        return view('admin.deskripsi')
+            ->with('deskripsi',$this->deskripsi);
     }
 
     public function brosur()
     {
-        return view('admin.brosur');
+        $this->brosur = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'brosur')->get();
+
+        // dd($this->brosur);
+        return view('admin.brosur')
+            ->with('brosur',$this->brosur);
     }
 
     public function profile()
     {
-        return view('admin.profile');
+        $tentang = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'tentang')->first();
+        
+        // dd($tentang);
+        
+        $visi = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'visi')->first();
+
+        $misi = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'misi')->first();
+
+
+        // dd($this->profil);
+
+        return view('admin.profile', compact('tentang','visi','misi'));
     }
 
     public function galeri()
@@ -83,13 +114,12 @@ class AdminController extends Controller
         return view('admin.galeri');
     }
 
-    public function blog()
-    {
-        return view('admin.blog');
-    }
-
     public function kontak()
     {
+        $this->brosur = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'kontak')->get();
+        // dd($this->brosur());
         return view('admin.kontak');
     }
 

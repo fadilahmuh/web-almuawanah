@@ -1,6 +1,8 @@
 @extends('admin.appadmin')
 
-@section('modalscontent')
+@section('csslib')
+  <!-- CSS Libraries -->  
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
 @endsection
 
 @section('maincontent')
@@ -17,41 +19,29 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+              <form action="">
               <!-- Header Table -->
               <div class="card-header">
                 <h4>Tentang Kami</h4>              
               </div>
-              <div class="card-body">
-                <!-- Banner Form -->     
-
+              <div class="card-body">  
                 <!-- Text Area -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Isi Tentang Yayasan Al-Mu'awanah</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="summernote-simple"></textarea>
+                    <textarea id="tentang" class="summernote-simple"></textarea>
                   </div>
-                </div>                   
-                <!-- Thumbnail -->
-                <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
-                  <div class="col-sm-12 col-md-auto">
-                    <div id="image-preview" class="image-preview">
-                      <label for="image-upload" id="image-label">Choose File</label>
-                      <input type="file" name="image" id="image-upload" />
-                    </div>                        
-                  </div>
-                  <ul>
-                    <li>Gambar .png atau .jpg</li>
-                    <li>Ukuran 32px x 32px</li>
-                  </ul>
-                </div>                    
+                </div>                                  
               </div>
               <!-- Buttons -->
               <div class="card-footer text-right">
-                  <div class="buttons">
-                      <button class="btn btn-warning">Update Tentang Kami</button>
-                  </div>
+                <div class="buttons">
+                    <button class="cancel btn btn-danger collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                    <button class="save btn btn-success collapse"><i class="far fa-save"></i> Simpan</button>
+                    <button class="edit btn btn-warning collapse show" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
+                </div>
               </div>
+            </form>
             </div>
           </div>
         </div> 
@@ -60,27 +50,29 @@
         <div class="row">
           <div class="col-12">
             <div class="card">
+              <form action="">
               <!-- Header Table -->
               <div class="card-header">
                 <h4>Visi</h4>              
               </div>
               <div class="card-body">
-                <!-- Banner Form -->
-                
                 <!-- Text Area -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Isi Visi Yayasan Al-Mu'awanah</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="summernote-simple"></textarea>
+                    <textarea id="visi" class="summernote-simple" disabled></textarea>
                   </div>
                 </div>                                       
               </div>
               <!-- Buttons -->
               <div class="card-footer text-right">
-                  <div class="buttons">
-                      <button class="btn btn-warning">Update Visi</button>
-                  </div>
+                <div class="buttons">
+                    <button class="cancel btn btn-danger collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                    <button class="save btn btn-success collapse"><i class="far fa-save"></i> Simpan</button>
+                    <button class="edit btn btn-warning collapse show" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
+                </div>
               </div>
+            </form>
             </div>
           </div>
         </div>   
@@ -93,31 +85,64 @@
               <div class="card-header">
                 <h4>Misi</h4>              
               </div>
+              <form action="">
               <div class="card-body">
-                <!-- Banner Form -->
-                
                 <!-- Text Area -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Isi Misi Yayasan Al-Mu'awanah</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="summernote-simple"></textarea>
+                    <textarea id="misi" class="summernote-simple"></textarea>
                   </div>
                 </div>                                       
               </div>
               <!-- Buttons -->
               <div class="card-footer text-right">
-                  <div class="buttons">
-                      <button class="btn btn-warning">Update Misi</button>
-                  </div>
+                <div class="buttons">
+                    <button class="cancel btn btn-danger collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                    <button class="save btn btn-success collapse"><i class="far fa-save"></i> Simpan</button>
+                    <button class="edit btn btn-warning collapse show" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
+                </div>
               </div>
+            </form>                
             </div>
           </div>
-        </div>  
+        </div>
       </div>
     </section>
   </div>
 </div>
 @endsection
 
+@section('scriptlib')
+  <!-- JS Libraies -->  
+  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
+@endsection
+
 @section('scriptline')
+<script>
+  $('#tentang').summernote('code','{!! $tentang->content !!}');
+  $('#visi').summernote('code','{!! $visi->content !!}'  );
+  $('#misi').summernote('code','{!! $misi->content !!}'  );
+  $('#tentang').summernote('disable');
+  $('#visi').summernote('disable');
+  $('#misi').summernote('disable');
+
+  $(document).on("click", ".edit", function(e) {
+    e.preventDefault();
+    var form = $(this).parent().parent().parent();
+    form.find('.summernote-simple').summernote('enable');
+    form.find('.save').collapse('show');
+    form.find('.cancel').collapse('show');
+    form.find('.edit').collapse('hide');
+  });
+
+  $(document).on("click", ".cancel", function(e) {
+    e.preventDefault();
+    var form = $(this).parent().parent().parent();
+    form.find('.summernote-simple').summernote('disable');
+    form.find('.save').collapse('hide');
+    form.find('.cancel').collapse('hide');
+    form.find('.edit').collapse('show');
+  });
+</script>
 @endsection
