@@ -35,16 +35,16 @@ class AdminController extends Controller
 
     public function userdata()
     {
-        $roles = Role::all();
-        $users = ModelsUser::with('roles')->get();
-        $nonmembers = $users->reject(function ($user, $key) {
-            return $user->hasRole('superadmin');
-        });
-
+        // $roles = Role::all();
+        // $users = ModelsUser::with('roles')->get();
+        // $nonmembers = $users->reject(function ($user, $key) {
+        //     return $user->hasRole('superadmin');
+        // });
         // dd($users);
         // dd($nonmembers);
         // return view('admin.report_roles', ['roles'=>$roles, 'nonmembers' => $nonmembers]);
-        return view('admin.userdata', ['nonmembers' => $nonmembers]);
+        // return view('admin.userdata', ['nonmembers' => $nonmembers]);
+        return view('admin.userdata');
     }
 
     public function banner()

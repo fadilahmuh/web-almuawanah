@@ -1,5 +1,10 @@
 @extends('admin.appadmin')
 
+@section('csslib')
+  <!-- CSS Libraries -->  
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
+@endsection
+
 @section('modalscontent')
 <!-- Modal Add Galery -->
 <div class="modal fade" id="galeryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -20,7 +25,7 @@
           <!-- Deskripsi -->
           <div class="form-group">
             <label>Deskripsi</label>
-            <textarea class="summernote-simple"></textarea>
+            <textarea class="summernote"></textarea>
           </div>
           <!-- Gambar -->
           <div class="form-group">
@@ -261,4 +266,5 @@
 @endsection
 
 @section('scriptline')
+<script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
 @endsection

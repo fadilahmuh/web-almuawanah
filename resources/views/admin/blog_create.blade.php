@@ -27,59 +27,59 @@
           <div class="card">
             <div class="card-body">
               <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-              <div class="form-group">
-                <label>Judul</label>
-                <input type="text" name="judul" class="form-control" value="{{old('judul')}}">
-              </div>
-              <!-- Isi Blog -->
-              <div class="form-group">
-                <label>Isi</label>
-                <textarea name="content" class="summernote"></textarea>
-              </div>                        
-              <!-- Gambar -->
-              <div class="form-group">
-                <label>Gambar Cover</label>
-                <div class="col-sm-12 col-md-auto">
-                  <div id="image-preview" class="image-preview">
-                    <label for="image-upload" id="image-label">Choose File</label>
-                    <input type="file" name="thumbnail" id="image-upload" />
+                  @csrf
+                <div class="form-group">
+                  <label>Judul</label>
+                  <input type="text" name="judul" class="form-control" value="{{old('judul')}}">
+                </div>
+                <!-- Isi Blog -->
+                <div class="form-group">
+                  <label>Isi</label>
+                  <textarea name="content" class="summernote"></textarea>
+                </div>                        
+                <!-- Gambar -->
+                <div class="form-group">
+                  <label>Gambar Cover</label>
+                  <div class="col-sm-12 col-md-auto">
+                    <div id="image-preview" class="image-preview">
+                      <label for="image-upload" id="image-label">Choose File</label>
+                      <input type="file" name="thumbnail" id="image-upload" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <!-- Tags -->
-              <div class="form-group">
-                <label>Tags</label>
-                <select class="form-control select2" multiple="" name="tag[]">
-                  @if(old('tag'))
-                    @foreach($tags as $tag)
-                      <option value="{{ $tag->nama }}" @foreach (old('tag') as $ot) @if($ot == $tag->nama) selected @endif @endforeach >{{ $tag->nama }}</option> 
-                    @endforeach               
-                  @else
-                    @foreach($tags as $tag)
-                      <option value="{{ $tag->nama }}">{{ $tag->nama }}</option> 
-                    @endforeach
-                  @endif
-                </select>
-              </div>             
-              {{-- {{ old('tag')[1] ?? "" }} --}}
-              {{-- @foreach(old('tag') as $ot) --}}
-              {{-- {{ $ot->nama }} --}}
-              {{-- @endforeach --}}
-              <!-- Status Blog -->
-              <div class="form-group">
-                <label>Status</label>
-                <select name="is_published" class="form-control selectric" id="select_tag">
-                  <option value="0">Draft</option>
-                  <option value="1">Published</option>
-                </select>
-              </div>
-              <div class="text-right">
-                <div>
-                  <button type="" class="btn btn-success">Simpan</button>                        
+                <!-- Tags -->
+                <div class="form-group">
+                  <label>Tags</label>
+                  <select class="form-control select2" multiple="" name="tag[]">
+                    @if(old('tag'))
+                      @foreach($tags as $tag)
+                        <option value="{{ $tag->nama }}" @foreach (old('tag') as $ot) @if($ot == $tag->nama) selected @endif @endforeach >{{ $tag->nama }}</option> 
+                      @endforeach               
+                    @else
+                      @foreach($tags as $tag)
+                        <option value="{{ $tag->nama }}">{{ $tag->nama }}</option> 
+                      @endforeach
+                    @endif
+                  </select>
+                </div>             
+                {{-- {{ old('tag')[1] ?? "" }} --}}
+                {{-- @foreach(old('tag') as $ot) --}}
+                {{-- {{ $ot->nama }} --}}
+                {{-- @endforeach --}}
+                <!-- Status Blog -->
+                <div class="form-group">
+                  <label>Status</label>
+                  <select name="is_published" class="form-control selectric" id="select_tag">
+                    <option value="0">Draft</option>
+                    <option value="1">Published</option>
+                  </select>
                 </div>
-              </div>
-            </form>
+                <div class="text-right">
+                  <div>
+                    <button type="" class="btn btn-success">Simpan</button>                        
+                  </div>
+                </div>
+              </form>
 
             </div>
           </div>

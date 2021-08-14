@@ -1,6 +1,8 @@
 @extends('admin.appadmin')
 
-@section('modalscontent')
+@section('csslib')
+  <!-- CSS Libraries -->  
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
 @endsection
 
 @section('maincontent')
@@ -88,4 +90,5 @@
 @endsection
 
 @section('scriptline')
+<script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
 @endsection
