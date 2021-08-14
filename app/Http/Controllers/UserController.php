@@ -144,9 +144,9 @@ class UserController extends Controller
                 'password' => bcrypt($request->password),
                 'no_hp' => $request->no_hp,
             ]);
-            DB::table('model_has_roles')->where('model_id',$id)->delete();
-            $old_user -> assignRole($request->role);
-            // $old_user->roles()->sync($request->role);
+            // DB::table('model_has_roles')->where('model_id',$id)->delete();
+            // $old_user -> assignRole($request->role);
+            $old_user -> syncRoles($request->role);
 
             return redirect()->route('userdata')->with('success','Data User berhasil di ubah!');
         }
