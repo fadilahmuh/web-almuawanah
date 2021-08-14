@@ -33,7 +33,7 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Isi Sambutan</label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="summernote-simple"></textarea>
+                    <textarea class="form-control" name="content" id="" rows="5"></textarea>
                   </div>
                 </div>
                 <!-- Nama di Bawah Foto -->
@@ -67,8 +67,9 @@
                     </div>                        
                   </div>
                   <ul>
+                    <p class="mb-0">Rekomendasi:</p>
                     <li>Gambar .png atau .jpg</li>
-                    <li>Ukuran 32px x 32px</li>
+                    <li>Bentuk gambar persegi (1080x1080)</li>
                   </ul>
                 </div>                    
               </div>
@@ -87,5 +88,21 @@
 </div>
 @endsection
 
+@section('scriptlib')
+  <!-- JS Libraies -->  
+  <script src="{{ asset('adminAssets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
+@endsection
+
 @section('scriptline')
+<script>
+  $.uploadPreview({
+  input_field: "#image-upload",   // Default: .image-upload
+  preview_box: "#image-preview",  // Default: .image-preview
+  label_field: "#image-label",    // Default: .image-label
+  label_default: "Pilih File",   // Default: Choose File
+  label_selected: "Ganti File",  // Default: Change File
+  no_label: false,                // Default: false
+  success_callback: null          // Default: null
+});
+</script>
 @endsection

@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use App\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Traits\HasRoles;
 
 class AdminController extends Controller
@@ -48,8 +49,11 @@ class AdminController extends Controller
     }
 
     public function banner()
-    {
-        $this->banners = Component::all();
+    {        
+        $this->banners = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'banner')->get();
+
         return view('admin.banner')
             ->with('banners',$this->banners);
     }

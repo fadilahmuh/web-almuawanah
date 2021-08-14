@@ -115,8 +115,12 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cover</label>
                   <div class="col-sm-12 col-md-7">
-                      {{-- <input type="file" name="attachment" class="dropify" /> --}}
                       <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300"  />
+                      <ul>
+                        <p class="mb-0">Rekomendasi:</p>
+                        <li>Resolusi gambar tinggi (1920x1080)</li>
+                        <li>Orientasi gambar Landscape</li>
+                      </ul>
                   </div>
                 </div>
               </div>
@@ -148,7 +152,14 @@
 
 @section('scriptline')
 <script>
-  $('.dropify').dropify(); 
+  $('.dropify').dropify({
+    messages: {
+        'default': 'Tarik dan lepaskan file atau klik disini',
+        'replace': 'Tarik dan lepaskan file atau klik disini untuk mengganti',
+        'remove':  'Remove',
+        'error':   'Ooops, kesalahan terjadi.'
+    }
+  }); 
 
   $(document).on("click", ".edit", function(e) {
     e.preventDefault();
@@ -173,7 +184,6 @@
 
   $(document).on("click", ".cancel", function(e) {
     e.preventDefault();
-    // alert('asdasd');
     var form = $(this).parent().parent().parent().find('form');
     var judul = form.find('input[name=judul]');
     var content = form.find('textarea[name=content]');

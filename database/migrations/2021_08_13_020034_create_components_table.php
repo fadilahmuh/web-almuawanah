@@ -17,11 +17,11 @@ class CreateComponentsTable extends Migration
             $table->increments('id');
             $table->string('divisi')->nullable(false);
             $table->string('bagian')->nullable(false);
-            $table->longText('judul')->nullable();
-            $table->string('content')->nullable();
+            $table->string('judul')->nullable();
+            $table->longText('content')->nullable();
             $table->string('attachment')->nullable();
-            $table->boolean("desc1")->nullable();
-            $table->unsignedInteger("desc2")->nullable();
+            $table->string("desc1")->nullable();
+            $table->string("desc2")->nullable();
             $table->timestamps();
         });
 
