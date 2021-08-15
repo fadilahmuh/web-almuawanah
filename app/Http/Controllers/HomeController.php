@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        //$this->middleware('auth');
     }
 
     /**
@@ -23,6 +23,41 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome');
+        return view('home.home');
+    }
+
+    public function profile()
+    {
+        return view('home.profile');
+    }
+
+    public function program()
+    {
+        return view('home.pendidikan-program');
+    }
+    
+    public function galeri()
+    {
+        return view('home.galeri');
+    }
+
+    public function blog()
+    {
+        return view('home.blog');
+    }
+
+    public function kontak()
+    {
+        return view('home.kontak');
+    }
+
+    public function donasi()
+    {
+        return view('home.donasi');
+    }
+
+    public function pendaftaran()
+    {
+        return view('home.pendaftaran');
     }
 }

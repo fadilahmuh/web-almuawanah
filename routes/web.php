@@ -18,15 +18,23 @@ use App\Http\Controllers\ComponentController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/profile', [HomeController::class, 'profile'])->name('userprofile');
+Route::get('/progam-pendidikan', [HomeController::class, 'program'])->name('pogram-pendidikan');
+Route::get('/galeri', [HomeController::class, 'galeri'])->name('usergaleri');
+Route::get('/blog', [HomeController::class, 'blog'])->name('userblog');
+Route::get('/kontak', [HomeController::class, 'kontak'])->name('userkontak');
+Route::get('/wakaf', [HomeController::class, 'donasi'])->name('wakaf');
+Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('pendaftaran');
+
 // Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
+Auth::routes();
 
 Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
