@@ -74,7 +74,7 @@
                   @hasrole('superadmin')
                   <!-- Admin Side Bar -->                  
                   <li class="menu-header">Data</li>
-                  <li class="{{ (request()->segment(1) == 'userdata') ? 'active' : '' }}"><a class="nav-link" href="{{ route('userdata') }}"><i class="fas fa-user"></i> <span>Akun</span></a></li>
+                  <li @if(url()->current()==route('userdata')) class="active" @endif><a class="nav-link" href="{{ route('userdata') }}"><i class="fas fa-user"></i> <span>Akun</span></a></li>
                   @elserole('admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')
                   <!-- Home Side Bar -->
                   <li class="menu-header">Halaman Awal</li>

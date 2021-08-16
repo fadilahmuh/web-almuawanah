@@ -4,7 +4,7 @@
   <!-- CSS Libraries -->  
   <link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
 
-  <style>
+<style>
     .dropify-wrapper {
       width: 50%;
     }
