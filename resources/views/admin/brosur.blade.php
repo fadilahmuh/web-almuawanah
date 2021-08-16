@@ -14,6 +14,10 @@
 @section('maincontent')    
 <div class="main-content">
   <section class="section">
+    <div class="section-header">
+      <h1>Brosur Website Al-Mu'awanah</h1>
+    </div>
+
     @if($errors->any())
     @foreach($errors->getMessages() as $this_error)
     <div class="alert alert-danger" role="alert">
@@ -21,12 +25,14 @@
     </div> 
     @endforeach
     @endif 
-    <div class="section-header">
-        <h1>Brosur Website Al-Mu'awanah</h1>
-    </div>
+    @if(Session::has('success'))
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check mr-3"></i> {{ Session('success') }} 
+      </div>        
+    @endif
+
     <div class="section-body">
       <div class="row mt-4">
-
         @foreach ($brosur as $key=>$br)
         <div class="col-12">
           <div class="card">
@@ -34,9 +40,9 @@
               <h4>Brosur {{++$key}}</h4>              
             </div>
             <div class="card-body">
-              <form action="">
+              <form action="{{ route('editbrosur', [$br->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                @method('POST')
+                @method('PUT')
                 <input type="hidden" name="divisi" value="{{session('divisi')}}">
                 <input type="hidden" name="bagian" value="{{$br->bagian}}">
                 
@@ -67,7 +73,7 @@
                     <button class="save btn btn-success collapse"><i class="far fa-save"></i> Simpan</button>
                     <button class="edit btn btn-warning collapse show"><i class="fas fa-edit"></i> Edit</button>
               </form>   
-                  <form action="" method="POST" style="display: inline-block;">
+                  <form action="{{ route('delbrosur', [$br->id]) }}" method="POST" style="display: inline-block;">
                     @csrf
                     @method('delete')
                     <button class="del btn btn-danger collapse show"><i class="fas fa-trash"></i> Hapus</button>
@@ -88,11 +94,11 @@
               </div>
             </div>
             <div class="card-body">
-              <form action="">
+              <form action="{{ route('newbrosur') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('POST')
                 <input type="hidden" name="divisi" value="{{session('divisi')}}">
-                <input type="hidden" name="bagian" value="banner">
+                <input type="hidden" name="bagian" value="brosur">
                 
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>

@@ -123,7 +123,8 @@
                       @endforeach
                       @endif
                                      
-                  </tbody></table>
+                    </tbody>
+                  </table>
                 </div>
               </div>
               <div class="card-footer text-right">
@@ -174,7 +175,6 @@
 <!-- JS Libraies -->
 <script src="{{ asset('adminAssets/modules/datatables/datatables.min.js') }}"></script>
 <script src="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminAssets/modules/datatables/Select-1.2.4/js/dataTables.select.min.js') }}"></script>
 <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
 

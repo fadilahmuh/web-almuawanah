@@ -111,16 +111,24 @@ class AdminController extends Controller
 
     public function galeri()
     {
-        return view('admin.galeri');
+        $this->galeri = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'galeri')->get();
+        
+        $yt = DB::table('components')
+            ->where('divisi', session('divisi'))
+            ->where('bagian', 'youtube')->first();
+
+        return view('admin.galeri', compact('yt'))->with('galeri',$this->galeri);
     }
 
     public function kontak()
     {
-        $this->brosur = DB::table('components')
+        $this->kontak = DB::table('components')
             ->where('divisi', session('divisi'))
             ->where('bagian', 'kontak')->get();
-        // dd($this->brosur());
-        return view('admin.kontak');
+
+        return view('admin.kontak')->with('kontak',$this->kontak);
     }
 
     public function credits()

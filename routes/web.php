@@ -53,4 +53,17 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
         Route::put('/update_banner/{id}',[ComponentController::class, 'update_banner'])->name('editbanner');
         Route::delete('/del_banner/{id}',[ComponentController::class, 'delete_banner'])->name('delbanner');
     });
+
+    Route::put('/update_sambutan/{id}',[ComponentController::class, 'update_sambutan'])->name('editsambutan');
+    Route::put('/update_deskripsi/{id}',[ComponentController::class, 'update_deskripsi'])->name('editdesc');
+
+    Route::prefix('brosur')->group(function(){
+        Route::post('/add_brosur',[ComponentController::class, 'add_brosur'])->name('newbrosur');
+        Route::put('/update_brosur/{id}',[ComponentController::class, 'update_brosur'])->name('editbrosur');
+        Route::delete('/del_brosur/{id}',[ComponentController::class, 'delete_brosur'])->name('delbrosur');
+    });
+
+    Route::put('/update_tentang/{id}',[ComponentController::class, 'update_tentang'])->name('edittentang');
+    Route::put('/update_visi/{id}',[ComponentController::class, 'update_visi'])->name('editvisi');
+    Route::put('/update_misi/{id}',[ComponentController::class, 'update_misi'])->name('editmisi');
 });

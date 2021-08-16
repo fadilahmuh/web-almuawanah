@@ -1,12 +1,20 @@
 @extends('admin.appadmin')
 
+
+@section('csslib')
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/datatables/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/chocolat/dist/css/chocolat.css') }}">
+@endsection
+
 @section('modalscontent')
 <!-- Modal Add Galery -->
 <div class="modal fade" id="galeryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Blog</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Foto Galeri</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -15,21 +23,18 @@
         <div class="modal-body">
           <div class="form-group">
             <label>Judul</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" placeholder="(Opsional)">
           </div>
           <!-- Deskripsi -->
           <div class="form-group">
             <label>Deskripsi</label>
-            <textarea class="summernote-simple"></textarea>
+            <textarea class="form-control" name="content" rows="3" placeholder="(Opsional)"></textarea>
           </div>
           <!-- Gambar -->
           <div class="form-group">
             <label>Gambar Cover</label>
             <div class="col-sm-12 col-md-auto">
-              <div id="image-preview" class="image-preview">
-                <label for="image-upload" id="image-label">Choose File</label>
-                <input type="file" name="image" id="image-upload" />
-              </div>
+                <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" />
             </div>
           </div>              
         </div>
@@ -95,131 +100,43 @@
                   
                 </div>
                 <br>
-                <!-- Admin Table -->
                 <div class="table-responsive">
-                  <table class="table table-striped" id="table-1">
+                  <table class="table table-striped" id="table-blog">
                     <thead  class="text-center">
                       <tr>
-                        <th>
-                          No
-                        </th>
-                        <th class="text-left col-2">Nama</th>
-                        <th class="col-5">Deskripsi</th>
-                        <th class="col-2">Gambar</th>
-                        <th class="col-2">Action</th>
+                        <th>No</th>
+                        <th>Judul</th>
+                        <th>Deskripsi</th>
+                        <th>Gambar</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
+                      @foreach($galeri as $key=>$g)
                       <tr>
-                        <td>
-                          1
-                        </td>
-                        <td class="text-left">Gambar 1</td>
+                        <td class="align-middle">{{++$key}}</td>
+                        <td class="align-middle">{{ $g->judul }}</td>
+                        <td class="align-middle">{{ $g->content }}</td>
                         <td class="align-middle">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas dicta, magnam amet iure exercitationem natus ea laboriosam, fuga praesentium vel doloremque molestias et eaque eveniet, facere deleniti ad harum.
+                          <div class="gallery">
+                            <div class="gallery-item" data-image="{{ asset('uploads/component/'.$g->attachment) }}" data-title="{{ $g->judul }}" href="{{ asset('uploads/component/'.$g->attachment) }}" title="{{ $g->judul }}" style="background-image: url({{ asset('uploads/component/'.$g->attachment) }});"></div>                  
+                          </div>                          
                         </td>
-                        <td>
-                          <img class="img-galery" src="{{ asset('adminAssets/img/no-image.jpg') }}" alt="" srcset="">
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
+                        <td class="align-middle">
+                          <div class="btn-toolbar justify-content-center" role="group">
+                            <a href="" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
+                            <form action="" method="POST">                              
+                              @csrf
+                              @method('delete')
+                              <button class="del btn btn-icon btn-danger" data-judul="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"><i class="fas fa-trash"></i></button>
+                            </form>
                           </div>
                         </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          2
-                        </td>
-                        <td class="text-left">Gambar 2</td>
-                        <td class="align-middle">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas dicta, magnam amet iure exercitationem natus ea laboriosam, fuga praesentium vel doloremque molestias et eaque eveniet, facere deleniti ad harum.
-                        </td>
-                        <td>
-                          <img class="img-galery" src="{{ asset('adminAssets/img/no-image.jpg') }}" alt="" srcset="">
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          3
-                        </td>
-                        <td class="text-left">Gambar 3</td>
-                        <td class="align-middle">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas dicta, magnam amet iure exercitationem natus ea laboriosam, fuga praesentium vel doloremque molestias et eaque eveniet, facere deleniti ad harum.
-                        </td>
-                        <td>
-                          <img class="img-galery" src="{{ asset('adminAssets/img/no-image.jpg') }}" alt="" srcset="">
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td class="text-left">Gambar 4</td>
-                        <td class="align-middle">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas dicta, magnam amet iure exercitationem natus ea laboriosam, fuga praesentium vel doloremque molestias et eaque eveniet, facere deleniti ad harum.
-                        </td>
-                        <td>
-                          <img class="img-galery" src="{{ asset('adminAssets/img/no-image.jpg') }}" alt="" srcset="">
-                        </td>
-                        <td>                              
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          5
-                        </td>
-                        <td class="text-left">Gambar 5</td>
-                        <td class="align-middle">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas dicta, magnam amet iure exercitationem natus ea laboriosam, fuga praesentium vel doloremque molestias et eaque eveniet, facere deleniti ad harum.
-                        </td>
-                        <td>
-                          <img class="img-galery" src="{{ asset('adminAssets/img/no-image.jpg') }}" alt="" srcset="">
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
+                      </tr>  
+                      @endforeach                  
                     </tbody>
                   </table>
                 </div>
-              </div>
-              <div class="card-footer text-right">
-                <nav class="d-inline-block">
-                  <ul class="pagination mb-0">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                    </li>
-                  </ul>
-                </nav>
               </div>
             </div>
           </div>
@@ -240,9 +157,9 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Youtube ID</label>
                   <div class="col-sm-12 col-md-7">
-                    <input type="text" class="form-control">
+                    <input type="text" class="form-control" disabled value="{{$yt->content}}">
                   </div>
-                </div>           
+                </div>
               </div>
               <!-- Buttons -->
               <div class="card-footer text-right">
@@ -260,5 +177,29 @@
 </div>
 @endsection
 
+@section('scriptlib')
+<!-- JS Libraies -->
+<script src="{{ asset('adminAssets/modules/dropify/dist/js/dropify.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+@endsection
+
+@section('scriptpage')
+<!-- Page Specific JS File -->
+<script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
+@endsection
+
 @section('scriptline')
+<script>
+  $('.dropify').dropify({
+    messages: {
+        'default': 'Tarik dan lepaskan file atau klik disini',
+        'replace': 'Tarik dan lepaskan file atau klik disini untuk mengganti',
+        'remove':  'Remove',
+        'error':   'Ooops, kesalahan terjadi.'
+    }
+  }); 
+</script>
 @endsection

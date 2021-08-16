@@ -63,3 +63,11 @@ $(document).on("click", ".badge", function(e) {
     var search = $(this).text();
     table.search(search).draw();  
 });
+
+$("#table-galeri").dataTable({
+    language: {
+        searchPanes: {
+            emptyPanes: "There are no panes to display. :/",
+        },
+    },
+});

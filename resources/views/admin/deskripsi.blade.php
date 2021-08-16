@@ -3,6 +3,7 @@
 @section('csslib')
   <!-- CSS Libraries -->  
   <link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
+  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
 @endsection
 
 @section('maincontent')
@@ -12,22 +13,37 @@
       <div class="section-header">
           <h1>Deskripsi Singkat Al-Mu'awanah</h1>
       </div>
+      @if($errors->any())
+      @foreach($errors->getMessages() as $this_error)
+      <div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-triangle  mr-3"></i> {{$this_error[0]}}
+      </div> 
+      @endforeach
+      @endif 
+      @if(Session::has('success'))
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check mr-3"></i> {{ Session('success') }} 
+      </div>        
+      @endif
       <div class="section-body">
         <h2 class="section-title">Deskripsi</h2>
         <!-- Content -->
         <div class="row">
           <div class="col-12">
             <div class="card">
-              <form action="">
-              <div class="card-body">
-                <!-- Banner Form -->                    
+              <form action="{{ route('editdesc', [$deskripsi->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="divisi" value="{{session('divisi')}}">
+                <input type="hidden" name="bagian" value="deskripsi-singkat">
+              <div class="card-body">                
                 <!-- Isi Sambutan -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">
                     Isi Deskripsi Singkat
                   </label>
                   <div class="col-sm-12 col-md-7">
-                    <textarea class="form-control" name="content" id="" rows="5" disabled>{{$deskripsi->content}}</textarea>
+                    <textarea class="summernote-simple" name="content" id="desc" rows="5" disabled>{{$deskripsi->content}}</textarea>
                   </div>
                 </div>
                 
@@ -66,11 +82,15 @@
   <!-- JS Libraies -->  
   <script src="{{ asset('adminAssets/modules/dropify/dist/js/dropify.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
 @endsection
 
 @section('scriptline')
 <script>
-    $('.dropify').dropify({
+  $('#desc').summernote('code','{!! $deskripsi->content !!}');
+  $('#desc').summernote('disable');
+
+  $('.dropify').dropify({
     messages: {
         'default': 'Tarik dan lepaskan file atau klik disini',
         'replace': 'Tarik dan lepaskan file atau klik disini untuk mengganti',
@@ -86,6 +106,7 @@
     console.log(inputs);
     inputs.removeAttr('disabled');
     drop.removeClass('disabled');
+    $('#desc').summernote('enable');
   });
 
   $(document).on("click", ".cancel", function(e) {
@@ -95,6 +116,23 @@
     console.log(inputs);
     inputs.prop('disabled', true);
     drop.addClass('disabled');
+    $('#desc').summernote('disable');
+  });
+
+  $('.save').click(function(event) {
+      var form =  $(this).closest("form");
+      event.preventDefault();
+      swal({
+          title: `Simpan hasil edit deskripsi ?`,          
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+        }
+      });
   });
 </script>
 @endsection

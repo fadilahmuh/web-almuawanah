@@ -1,6 +1,9 @@
 @extends('admin.appadmin')
 
-@section('modalscontent')
+@section('csslib')
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/datatables/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
 @endsection
 
 @section('maincontent')
@@ -32,100 +35,41 @@
                 </div>
                 <br>
                 <!-- Kontak Table -->
+
                 <div class="table-responsive">
                   <table class="table table-striped" id="table-1">
                     <thead  class="text-center">
                       <tr>
-                        <th>
-                          No
-                        </th>
-                        <th class="text-left col-3">Jenis Kontak</th>
-                        <th>Isi kontak</th>
-                        <th class="col-2">Action</th>
+                        <th>No</th>
+                        <th>Jenis Kontak</th>
+                        <th>Keterangan</th>
+                        <th>Isi Kontak</th>
+                        <th>Action</th>
                       </tr>
                     </thead>
                     <tbody class="text-center">
+                      @foreach($kontak as $key=>$k)
                       <tr>
-                        <td>
-                          1
-                        </td>
-                        <td class="text-left">Whatsapp 1</td>
+                        <td class="align-middle">{{++$key}}</td>
+                        <td class="align-middle">{{ $k->judul }}</td>
+                        <td class="align-middle">@isset($k->desc1) ({{$k->desc1}}) @endisset</td>
+                        <td class="align-middle">{{ $k->content }}</td>
                         <td class="align-middle">
-                          081222xxxxxx
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
+                          <div class="btn-toolbar justify-content-center" role="group">
+                            <a href="" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
+                            <form action="" method="POST">                              
+                              @csrf
+                              @method('delete')
+                              <button class="del btn btn-icon btn-danger" data-judul="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"><i class="fas fa-trash"></i></button>
+                            </form>
                           </div>
                         </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          2
-                        </td>
-                        <td class="text-left">E-mail 2</td>
-                        <td class="align-middle">
-                          example@gmail.com
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          3
-                        </td>
-                        <td class="text-left">No Telephone 3</td>
-                        <td class="align-middle">
-                          +62 81222444xxx
-                        </td>
-                        <td>
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          4
-                        </td>
-                        <td class="text-left">Alamat 4</td>
-                        <td class="align-middle">
-                          Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum voluptas dicta, magnam amet iure exercitationem natus ea laboriosam, fuga praesentium vel doloremque molestias et eaque eveniet, facere deleniti ad harum.
-                        </td>
-                        <td>                              
-                          <div class="buttons">
-                            <a href="#" class="btn btn-icon btn-warning" data-toggle="modal" data-target="#galeryModal"><i class="fas fa-edit"></i></a>
-                            <a href="#" class="btn btn-icon btn-danger"data-toggle="modal" data-target="#deleteModal"><i class="fas fa-trash"></i></a>
-                          </div>
-                        </td>
-                      </tr>
+                      </tr>  
+                      @endforeach                  
                     </tbody>
                   </table>
                 </div>
-              </div>
-              <div class="card-footer text-right">
-                <nav class="d-inline-block">
-                  <ul class="pagination mb-0">
-                    <li class="page-item disabled">
-                      <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
-                    </li>
-                    <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#">2</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item">
-                      <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
+              </div>              
             </div>
           </div>
         </div>
@@ -135,5 +79,14 @@
 </div>
 @endsection
 
-@section('scriptline')
+@section('scriptlib')
+<!-- JS Libraies -->
+<script src="{{ asset('adminAssets/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+@endsection
+
+@section('scriptpage')
+<!-- Page Specific JS File -->
+<script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
 @endsection
