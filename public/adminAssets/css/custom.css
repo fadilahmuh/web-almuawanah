@@ -22,4 +22,9 @@
 
 .gallery {
     width: auto !important;
+    padding: 0;
+}
+
+.gallery-item {
+    margin-bottom: 0 !important;
 }

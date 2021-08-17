@@ -8,68 +8,6 @@
 <link rel="stylesheet" href="{{ asset('adminAssets/modules/chocolat/dist/css/chocolat.css') }}">
 @endsection
 
-@section('modalscontent')
-<!-- Modal Add Galery -->
-<div class="modal fade" id="galeryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Tambah Foto Galeri</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <!-- Judul -->
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Judul</label>
-            <input type="text" class="form-control" placeholder="(Opsional)">
-          </div>
-          <!-- Deskripsi -->
-          <div class="form-group">
-            <label>Deskripsi</label>
-            <textarea class="form-control" name="content" rows="3" placeholder="(Opsional)"></textarea>
-          </div>
-          <!-- Gambar -->
-          <div class="form-group">
-            <label>Gambar Cover</label>
-            <div class="col-sm-12 col-md-auto">
-                <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" />
-            </div>
-          </div>              
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-          <button type="button" class="btn btn-success">Simpan</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-  <!-- Modal Delete -->
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">Hapus Foto</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>Apakah anda yakin untuk menghapus data ini?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
-          <button type="button" class="btn btn-danger">Hapus</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-@endsection
-
 @section('maincontent')
 <!-- Main Content -->
 <div class="main-content">
@@ -77,6 +15,18 @@
       <div class="section-header">
           <h1>Galeri Website Al-Mu'awanah</h1>
       </div>
+      @if($errors->any())
+      @foreach($errors->getMessages() as $this_error)
+      <div class="alert alert-danger" role="alert">
+        <i class="fas fa-exclamation-triangle  mr-3"></i> {{$this_error[0]}}
+      </div> 
+      @endforeach
+      @endif 
+      @if(Session::has('success'))
+      <div class="alert alert-success" role="alert">
+        <i class="fas fa-check mr-3"></i> {{ Session('success') }} 
+      </div>        
+      @endif
       <div class="section-body">
         <!-- Content -->
         <h2 class="section-title">Daftar Foto - Foto</h2>
@@ -124,11 +74,11 @@
                         </td>
                         <td class="align-middle">
                           <div class="btn-toolbar justify-content-center" role="group">
-                            <a href="" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
-                            <form action="" method="POST">                              
+                            <a href="" class="edit btn btn-icon btn-warning" data-id="{{ $g->id }}"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
+                            <form action="{{ route('delgaleri', [$g->id]) }}" method="POST">
                               @csrf
                               @method('delete')
-                              <button class="del btn btn-icon btn-danger" data-judul="" data-toggle="tooltip" data-placement="top" title="" data-original-title="Hapus"><i class="fas fa-trash"></i></button>
+                              <button class="del btn btn-icon btn-danger" data-toggle="tooltip" data-placement="top" data-original-title="Hapus"><i class="fas fa-trash"></i></button>
                             </form>
                           </div>
                         </td>
@@ -151,22 +101,30 @@
               <div class="card-header">
                 <h4></h4>              
               </div>
+              <form action="{{ route('edityt', [$yt->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="divisi" value="{{session('divisi')}}">
+                <input type="hidden" name="bagian" value="youtube">
               <div class="card-body">
                 <!-- Banner Form -->                    
                 <!-- Isi Sambutan -->
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Youtube ID</label>
                   <div class="col-sm-12 col-md-7">
-                    <input type="text" class="form-control" disabled value="{{$yt->content}}">
+                    <input name="content" type="text" class="form-control" disabled value="{{$yt->content}}">
                   </div>
                 </div>
               </div>
               <!-- Buttons -->
               <div class="card-footer text-right">
                   <div class="buttons">
-                      <button class="btn btn-warning">Update Youtube</button>
+                    <button class="cancel btn btn-danger collapse multi-collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                    <button class="save btn btn-success collapse multi-collapse"><i class="far fa-save"></i> Simpan</button>
+                    <button class="edit2 btn btn-warning collapse multi-collapse show"  data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
                   </div>
               </div>
+              </form>
             </div>
           </div>
         </div>  
@@ -174,6 +132,55 @@
       </div>
     </section>
   </div>
+</div>
+@endsection
+
+@section('modalscontent')
+<!-- Modal Add Galery -->
+<div class="modal fade" id="galeryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Tambah Foto Galeri</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{ route('newgaleri') }}" method="POST" enctype="multipart/form-data">
+          @csrf
+          @method('POST')
+          <input type="hidden" name="divisi" value="{{session('divisi')}}">
+          <input type="hidden" name="bagian" value="galeri">
+        <!-- Judul -->
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Judul</label>
+            <input name="judul" type="text" class="form-control" placeholder="(Opsional)">
+          </div>
+          <!-- Deskripsi -->
+          <div class="form-group">
+            <label>Deskripsi</label>
+            <textarea name="content" class="form-control" name="content" rows="3" placeholder="(Opsional)"></textarea>
+          </div>
+          <!-- Gambar -->
+          <div class="form-group">
+            <label>Foto/Gambar</label>
+            <div class="col-sm-12 col-md-auto">
+                <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" />
+            </div>
+          </div>              
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+          <button type="submit" class="btn btn-success">Simpan</button>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="EditGaleri" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 </div>
 @endsection
 
@@ -201,5 +208,71 @@
         'error':   'Ooops, kesalahan terjadi.'
     }
   }); 
+
+  $(document).on("click", ".edit", function(e) {
+  e.preventDefault();
+  var id = $(this).data("id");
+  var tkn = $('input[name=_token').val();
+  $.ajax({
+    type: 'GET',
+    url: "{{route('getgaleri')}}",
+    data: {
+        id: id,
+    },
+    dataType: "json",
+    success: function(response) {
+      $('#EditGaleri').html(response.modal);
+      $('#EditGaleri').modal('show');
+    },
+    error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+    }
+  });
+});
+
+$('.del').click(function(event) {
+    var form =  $(this).closest("form");
+    event.preventDefault();
+    swal({
+        title: `Hapus Foto yang dipilih?`,
+        text: "Jika Foto ini dihapus maka tidak dapat dikembalikan lagi.",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        form.submit();
+      }
+    });
+  });
+
+  $(document).on("click", ".edit2", function(e) {
+    e.preventDefault();
+    var inputs = $(this).parent().parent().parent().find(":input:not(:button)");
+    inputs.removeAttr('disabled');
+  });
+
+  $(document).on("click", ".cancel", function(e) {
+    e.preventDefault();
+    var inputs = $(this).parent().parent().parent().find(":input:not(:button)");
+    inputs.prop('disabled', true);
+  });
+
+  $('.save').click(function(event) {
+      var form =  $(this).closest("form");
+      event.preventDefault();
+      swal({
+          title: `Simpan hasil edit youtube ?`,          
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+        }
+      });
+  });
 </script>
 @endsection

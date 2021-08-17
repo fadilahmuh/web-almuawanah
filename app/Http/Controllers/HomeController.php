@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,7 +24,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.home');
+        $this->banners = DB::table('components')
+            ->where('divisi', 'Yayasan')
+            ->where('bagian', 'banner')->get();
+
+        return view('home.home')->with('banners',$this->banners);;
     }
 
     public function profile()
@@ -38,7 +43,11 @@ class HomeController extends Controller
     
     public function galeri()
     {
-        return view('home.galeri');
+    $yt = DB::table('components')
+        ->where('divisi', 'yayasan')
+        ->where('bagian', 'youtube')->first();
+        
+        return view('home.galeri', compact('yt'));
     }
 
     public function blog()

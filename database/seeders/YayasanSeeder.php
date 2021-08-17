@@ -140,7 +140,7 @@ class YayasanSeeder extends Seeder
         Component::create([
             'divisi' => 'Yayasan',
             'bagian' => 'kontak',
-            'judul' => 'Whatsappp',
+            'judul' => 'Whatsapp',
             'content' => '08123456789',
             'desc1' => 'Alifian'
         ]);

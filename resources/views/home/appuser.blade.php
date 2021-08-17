@@ -12,12 +12,7 @@
     <link rel="stylesheet" href="{{ asset('userAssets/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('userAssets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('userAssets/css/lightbox.css') }}">
-    <link
-    rel="stylesheet"
-    href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-    integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-    crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
     @yield('csslib')
     
     <!-- Template CSS -->
@@ -44,7 +39,7 @@
                   <li><a href="#">MA</a></li>
                 </ul>
               </li>
-              <li><a class="nav-link" href="{{ route('pogram-pendidikan') }}">Program Pendidikan</a></li>
+              {{-- <li><a class="nav-link" href="{{ route('pogram-pendidikan') }}">Program Pendidikan</a></li> --}}
               <!-- <li><a class="nav-link scrollto" href="">Pimpinan</a></li> -->
               <li><a class="nav-link " href="{{ route('usergaleri') }}">Galeri</a></li>
               <li><a class="nav-link " href="{{ route('userblog') }}">Blog</a></li>

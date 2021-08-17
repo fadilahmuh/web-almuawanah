@@ -111,7 +111,7 @@
         </div>
       </div>
       
-      @yield('modalscontent')
+  @yield('modalscontent')
 
    <!-- General JS Scripts -->
   <script src="{{ asset('adminAssets/modules/jquery.min.js') }}"></script>

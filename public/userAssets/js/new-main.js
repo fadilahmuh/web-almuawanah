@@ -46,7 +46,7 @@
   };
   loader();
 
-    var marq = function () {
+  var marq = function () {
     $(".marquee").marquee({
       // duration: 10000,
       speed : 50,

@@ -155,7 +155,7 @@
       <h3>Video</h3>
     </div>
     <div class="container">
-      <div id="yt_res" yt-id="UCGQEQkPD1bXyaws9l9ooaww"></div>
+      <div id="yt_res" yt-id="{{$yt->content}}"></div>
     </div>
   </section>
 @endsection

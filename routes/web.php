@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ComponentController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,4 +80,20 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::put('/update_tentang/{id}',[ComponentController::class, 'update_tentang'])->name('edittentang');
     Route::put('/update_visi/{id}',[ComponentController::class, 'update_visi'])->name('editvisi');
     Route::put('/update_misi/{id}',[ComponentController::class, 'update_misi'])->name('editmisi');
+
+    Route::prefix('profil')->group(function(){
+        Route::post('/add_kontak',[ComponentController::class, 'add_kontak'])->name('addkontak');
+        Route::put('/edit_kontak/{id}',[ComponentController::class, 'update_kontak'])->name('editkontak');
+        Route::get('/get_kontak',[ComponentController::class, 'edit_kontak'])->name('getkontak');
+        Route::delete('/del_kontak/{id}',[ComponentController::class, 'delete_kontak'])->name('delkontak');
+    });
+
+    Route::prefix('galeri')->group(function(){
+        Route::post('/add_galeri',[ComponentController::class, 'add_galeri'])->name('newgaleri');
+        Route::put('/update_galeri/{id}',[ComponentController::class, 'update_galeri'])->name('editgaleri');
+        Route::get('/get_galeri',[ComponentController::class, 'edit_galeri'])->name('getgaleri');
+        Route::delete('/del_galeri/{id}',[ComponentController::class, 'delete_galeri'])->name('delgaleri');
+    });
+
+    Route::put('/update_yt/{id}',[ComponentController::class, 'update_yt'])->name('edityt');
 });
