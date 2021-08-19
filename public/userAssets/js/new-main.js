@@ -7,15 +7,6 @@
 (function () {
   "use strict";
 
-  // $(window).stellar({
-  // 	responsive: true,
-  // 	parallaxBackgrounds: true,
-  // 	parallaxElements: true,
-  // 	horizontalScrolling: false,
-  // 	hideDistantElements: false,
-  // 	scrollProperty: 'scroll'
-  //   });
-
   const onscroll = (el, listener) => {
     el.addEventListener("scroll", listener);
   };
@@ -46,20 +37,19 @@
   };
   loader();
 
-  var marq = function () {
+  if($(".marquee").length){
     $(".marquee").marquee({
-      // duration: 10000,
       speed : 50,
       gap: 50,
       delayBeforeStart: 0,
       direction: "left",      
       duplicated: true,
       pauseOnHover : true,
-    });
+    });    
   }
-  marq();
 
-  var carousel = function () {
+  // if(jQuery().carousel) 
+  if($(".home-slider").length){
     $(".home-slider").owlCarousel({
       loop: true,
       autoplay: true,
@@ -86,7 +76,8 @@
         },
       },
     });
-
+  } 
+  if($(".owl-banner").length){
     $(".owl-banner").owlCarousel({
       items: 1,
       loop: true,
@@ -109,7 +100,8 @@
         },
       },
     });
-
+  }
+  if($(".owl-services").length){
     $(".owl-services").owlCarousel({
       items: 4,
       loop: true,
@@ -131,8 +123,10 @@
           items: 4,
         },
       },
-    });
+    });    
+  }
 
+  if($(".owl-portfolio").length){
     $(".owl-portfolio").owlCarousel({
       items: 4,
       loop: false,
@@ -158,8 +152,10 @@
           items: 4,
         },
       },
-    });
+    });    
+  }
 
+  if($(".owl-gallery").length){
     $(".owl-gallery").owlCarousel({
       items: 4,
       rows: 2,
@@ -186,8 +182,10 @@
           items: 4,
         },
       },
-    });
+    });    
+  }
 
+  if($(".carousel-testimony").length){
     $(".carousel-testimony").owlCarousel({
       center: true,
       loop: true,
@@ -211,7 +209,10 @@
         },
       },
     });
+    
+  }
 
+  if($("#owl-donasi").length){
     $("#owl-donasi").owlCarousel({
       center: true,
       loop: true,
@@ -224,12 +225,10 @@
       autoplay: true,
       mouseDrag: false,
       touchDrag: false
-    });
-    // console.log('donasi init');
-  };
-  carousel();
+    });  
+  }
 
-  var slick = function () {
+  if($("#slick-gallery").length){
     $("#slick-gallery").slick({
       rows: 2,
       dots: true,
@@ -263,9 +262,8 @@
         },
       ],
     });
+  }
 
-  };
-  slick();
 
   lightbox.option({
     fitImagesInViewport: true,
@@ -286,45 +284,14 @@
     }
   });
 
-  // on("click",".navbar .dropdown > a",
-  //   function (e) {
-  //     if (select("#navbar").classList.contains("navbar-mobile")) {
-  //       e.preventDefault();
-  //       this.nextElementSibling.classList.toggle("dropdown-active");
-  //     }
-  //   },
-  //   true
-  // );
+  window.addEventListener('load', () => {
+    AOS.init({
+      container: ".aos-container",
+      duration: 1000,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false
+    });
+  });
 
-  // 	let selectHeader = select('#header')
-  //   	if (selectHeader) {
-  //     const headerScrolled = () => {
-  //       if (window.scrollY > 100) {
-  //         selectHeader.classList.add('header-scrolled')
-  //       } else {
-  //         selectHeader.classList.remove('header-scrolled')
-  //       }
-  //     }
-  //     window.addEventListener('load', headerScrolled)
-  //     onscroll(document, headerScrolled)
-  //   }
-
-  // $('nav .dropdown').hover(function(){
-  // 	var $this = $(this);
-  // 	// 	 timer;
-  // 	// clearTimeout(timer);
-  // 	$this.addClass('show');
-  // 	$this.find('> a').attr('aria-expanded', true);
-  // 	// $this.find('.dropdown-menu').addClass('animated-fast fadeInUp show');
-  // 	$this.find('.dropdown-menu').addClass('show');
-  // }, function(){
-  // 	var $this = $(this);
-  // 		// timer;
-  // 	// timer = setTimeout(function(){
-  // 		$this.removeClass('show');
-  // 		$this.find('> a').attr('aria-expanded', false);
-  // 		// $this.find('.dropdown-menu').removeClass('animated-fast fadeInUp show');
-  // 		$this.find('.dropdown-menu').removeClass('show');
-  // 	// }, 100);
-  // });
 })();

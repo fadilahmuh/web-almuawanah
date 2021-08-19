@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,11 +8,10 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
     
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{ asset('userAssets/css/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('userAssets/css/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('userAssets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('userAssets/css/lightbox.css') }}">
     <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('userAssets/css/aos.css') }}">
     @yield('csslib')
     
     <!-- Template CSS -->
@@ -57,7 +56,7 @@
     @yield('maincontent')
 
 
-    <footer id="footer">
+    <footer id="footer" class="up-margin">
     <div class="container pt-4 d-md-flex">
         <div class="row align-items-center">
         <div class="col-md-4">
@@ -106,16 +105,13 @@
     <script src="{{ asset('userAssets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('userAssets/js/jquery.easing.1.3.js') }}"></script>
     <script src="{{ asset('userAssets/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/slick.js') }}"></script>
-    <script src="{{ asset('userAssets/js/jquery.marquee.min.js') }}"></script>
+    <script src="{{ asset('userAssets/js/aos.js') }}"></script>
+    {{-- <script src="{{ asset('userAssets/js/jquery.marquee.min.js') }}"></script> --}}
     <script src="{{ asset('userAssets/js/scrollax.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/owl.carousel.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/jquery.magnific-popup.min.js') }}"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    
+    @yield('scriptlib')
+    
+    
     <script src="{{ asset('userAssets/js/new-main.js') }}"></script>
-
-  @yield('scriptlib')
-
-
 </body>
 </html>

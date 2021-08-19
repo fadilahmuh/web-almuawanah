@@ -161,6 +161,7 @@
 @endsection
 
 @section('scriptlib')
+<script src="{{ asset('userAssets/js/slick.js') }}"></script>
 <script src="{{ asset('userAssets/js/youtubeapi.js') }}"></script>
 <script src="{{ asset('userAssets/js/lity.js') }}"></script>
 @endsection

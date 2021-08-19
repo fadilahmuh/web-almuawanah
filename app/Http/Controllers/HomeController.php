@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -24,11 +25,35 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $this->banners = DB::table('components')
+        $banners = DB::table('components')
             ->where('divisi', 'Yayasan')
             ->where('bagian', 'banner')->get();
 
-        return view('home.home')->with('banners',$this->banners);;
+        $sambutan = DB::table('components')
+            ->where('divisi', 'Yayasan')
+            ->where('bagian', 'sambutan')->first();
+
+        $deskripsi = DB::table('components')
+            ->where('divisi', 'Yayasan')
+            ->where('bagian', 'deskripsi-singkat')->first();
+
+        $brosur = DB::table('components')
+            ->where('divisi', 'Yayasan')
+            ->where('bagian', 'brosur')->get();
+        
+        // $posts = DB::table('posts')
+        //     ->where('is_published', 1)
+        //     ->orderBy('created_at', 'desc')
+        //     ->paginate(3);
+
+        $posts = Posts::all()
+            ->where('is_published', 1)
+            ->sortByDesc('created_at')
+            ->take(3);
+
+        // dd($posts);
+
+        return view('home.home', compact('banners','sambutan','deskripsi','brosur','posts'));
     }
 
     public function profile()
