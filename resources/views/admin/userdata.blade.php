@@ -108,11 +108,6 @@
 @section('scriptpage')
 <!-- Page Specific JS File -->
 <script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
-{{-- <script type="text/javascript">
-  @if (count($errors) > 0)
-      $('#userModal').modal('show');
-  @endif
-</script> --}}
 <script>
   $(document).ready(function () {
     var table = $('#datatable').DataTable();
