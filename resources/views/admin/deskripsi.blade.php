@@ -51,7 +51,7 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
                   <div class="col-sm-12 col-md-7">
-                    <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" disabled="disabled" data-default-file="{{asset('uploads/component/')}}/{{$deskripsi->attachment}}"/>
+                    <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" disabled="disabled" data-default-file="{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachment))}}"/>
                     <ul>
                       <p class="mb-0">Rekomendasi:</p>
                       <li>Resolusi gambar tinggi (1920x1080)</li>

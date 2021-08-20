@@ -42,7 +42,7 @@
               <div class="form-group">
                 <label>Gambar Cover</label>
                 <div class="col-sm-12 col-md-auto">
-                  <div id="image-preview" class="image-preview" style="background-image: url({{asset('uploads/posts/')}}/{{$post->thumbnail}});background-size: cover; background-position: center center; ">
+                  <div id="image-preview" class="image-preview" style="background-image: url({{asset('uploads/posts/'.Str::replace(' ', '%20', $post->thumbnail))}});background-size: cover; background-position: center center; ">
                     <label for="image-upload" id="image-label">Choose File</label>
                     <input type="file" name="thumbnail" id="image-upload" />
                   </div>

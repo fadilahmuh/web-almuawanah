@@ -28,7 +28,7 @@
       <div class="form-group">
         <label>Foto/Gambar</label>
         <div class="col-sm-12 col-md-auto">
-            <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" data-default-file="{{asset('uploads/component/')}}/{{$foto->attachment}}"/>
+            <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" data-default-file="{{asset('uploads/component/'.Str::replace(' ', '%20', $foto->attachment))}}"/>
         </div>
       </div>              
     </div>

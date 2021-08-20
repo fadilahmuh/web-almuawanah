@@ -75,7 +75,7 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Foto</label>
                   <div class="col-sm-12 col-md-auto">
-                    <div id="image-preview" class="image-preview" style="background-image: url({{asset('uploads/component/')}}/{{$sambutan->attachment}});background-size: cover; background-position: center center;" >
+                    <div id="image-preview" class="image-preview" style="background-image: url({{asset('uploads/component/'.Str::replace(' ', '%20', $sambutan->attachment))}});background-size: cover; background-position: center center;" >
                       <label for="image-upload" id="image-label">Choose File</label>
                       <input type="file" name="attachment" id="image-upload" disabled/>
                     </div>                        

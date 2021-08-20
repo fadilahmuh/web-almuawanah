@@ -58,7 +58,21 @@ class HomeController extends Controller
 
     public function profile()
     {
-        return view('home.profile');
+    $tentang = DB::table('components')
+        ->where('divisi', 'Yayasan')
+        ->where('bagian', 'tentang')->first();
+    
+    // dd($tentang);
+    
+    $visi = DB::table('components')
+        ->where('divisi', 'Yayasan')
+        ->where('bagian', 'visi')->first();
+
+    $misi = DB::table('components')
+        ->where('divisi', 'Yayasan')
+        ->where('bagian', 'misi')->first();
+
+        return view('home.profile', compact('tentang', 'visi', 'misi'));
     }
 
     public function program()
@@ -68,12 +82,20 @@ class HomeController extends Controller
     
     public function galeri()
     {
+
+    $foto = DB::table('components')
+        ->where('divisi', 'yayasan')
+        ->where('bagian', 'galeri')->get();
+
     $yt = DB::table('components')
         ->where('divisi', 'yayasan')
         ->where('bagian', 'youtube')->first();
-        
-        return view('home.galeri', compact('yt'));
+    
+        // dd($foto);
+        return view('home.galeri', compact('yt', 'foto'));
     }
+
+    
 
     public function blog()
     {

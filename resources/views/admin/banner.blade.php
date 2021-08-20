@@ -59,7 +59,7 @@
                 <div class="form-group row mb-4">
                   <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cover</label>
                   <div class="col-sm-12 col-md-7">
-                      <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" disabled="disabled" data-default-file="{{asset('uploads/component/')}}/{{$banner->attachment}}"/>
+                      <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" disabled="disabled" data-default-file="{{asset('uploads/component/'.Str::replace(' ', '%20', $banner->attachment))}}"/>
                   </div>
                 </div>
               </div>

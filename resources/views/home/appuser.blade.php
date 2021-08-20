@@ -100,7 +100,6 @@
 
     <script src="{{ asset('userAssets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('userAssets/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/lightbox.js') }}"></script>
     <script src="{{ asset('userAssets/js/popper.min.js') }}"></script>
     <script src="{{ asset('userAssets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('userAssets/js/jquery.easing.1.3.js') }}"></script>
