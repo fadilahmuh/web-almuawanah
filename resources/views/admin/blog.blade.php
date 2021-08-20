@@ -185,7 +185,4 @@
 @endsection
 
 @section('scriptline')
-  <script>
-    
-  </script>
 @endsection
