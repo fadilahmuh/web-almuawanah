@@ -110,6 +110,9 @@
   <script src="{{ asset('adminAssets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+@endsection
+  
+@section('scriptpage')
   <script src="{{ asset('adminAssets/js/views/sambutan.js') }}"></script>
 @endsection
 
@@ -117,6 +120,5 @@
 <script>
   $('#sambutan').summernote('code','{!! $sambutan->content !!}');
   $('#sambutan').summernote('disable');
-
 </script>
 @endsection

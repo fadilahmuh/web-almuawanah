@@ -141,6 +141,9 @@
   <!-- JS Libraies -->  
   <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+@endsection
+  
+@section('scriptline')
   <script src="{{ asset('adminAssets/js/views/profile.js') }}"></script>
 @endsection
 

@@ -153,6 +153,3 @@
 <script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
 <script src="{{ asset('adminAssets/js/views/kontak.js') }}"></script>
 @endsection
-
-@section('scriptline')
-@endsection

@@ -183,6 +183,3 @@
 <script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
 <script src="{{ asset('adminAssets/js/views/blog.js') }}"></script>
 @endsection
-
-@section('scriptline')
-@endsection

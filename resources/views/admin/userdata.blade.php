@@ -102,7 +102,6 @@
 <script src="{{ asset('adminAssets/modules/jquery-ui/jquery-ui.min.js') }}"></script>
 <script src="{{ asset('adminAssets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
 <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
-
 @endsection
 
 @section('scriptpage')

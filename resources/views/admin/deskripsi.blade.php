@@ -83,8 +83,8 @@
   <script src="{{ asset('adminAssets/modules/dropify/dist/js/dropify.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/js/views/deskripsi.js') }}"></script>
 @endsection
-
-@section('scriptline')
+  
+@section('scriptpage')
+  <script src="{{ asset('adminAssets/js/views/deskripsi.js') }}"></script>
 @endsection
