@@ -141,6 +141,7 @@
   <!-- JS Libraies -->  
   <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
   <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('adminAssets/js/views/profile.js') }}"></script>
 @endsection
 
 @section('scriptline')
@@ -150,41 +151,6 @@
   $('#misi').summernote('code','{!! $misi->content !!}'  );
   $('#tentang').summernote('disable');
   $('#visi').summernote('disable');
-  $('#misi').summernote('disable');
-
-  $(document).on("click", ".edit", function(e) {
-    e.preventDefault();
-    var form = $(this).parent().parent().parent();
-    form.find('.summernote-simple').summernote('enable');
-    form.find('.save').collapse('show');
-    form.find('.cancel').collapse('show');
-    form.find('.edit').collapse('hide');
-  });
-
-  $(document).on("click", ".cancel", function(e) {
-    e.preventDefault();
-    var form = $(this).parent().parent().parent();
-    form.find('.summernote-simple').summernote('disable');
-    form.find('.save').collapse('hide');
-    form.find('.cancel').collapse('hide');
-    form.find('.edit').collapse('show');
-  });
-
-  $('.save').click(function(event) {
-      var form =  $(this).closest("form");
-      var bagian = $(this).data("bagian");
-      event.preventDefault();
-      swal({
-          title: `Simpan hasil edit ${bagian} ?`,          
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-      })
-      .then((willDelete) => {
-        if (willDelete) {
-          form.submit();
-        }
-      });
-  });
+  $('#misi').summernote('disable');  
 </script>
 @endsection
