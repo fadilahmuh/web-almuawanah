@@ -2,9 +2,9 @@
 
 @section('csslib')
   <!-- CSS Libraries -->  
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/jquery-selectric/selectric.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/select2/dist/css/select2.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/jquery-selectric/selectric.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/select2/dist/css/select2.min.css') }}">
 @endsection
 
 @section('maincontent')    
@@ -91,15 +91,15 @@
 
 @section('scriptlib')
   <!-- JS Libraies -->  
-  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/select2/dist/js/select2.full.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
 @endsection
 
 @section('scriptpage')
   <!-- Page Specific JS File -->
-<script src="{{ asset('adminAssets/js/page/features-post-create.js') }}"></script>
+<script src="{{ asset('assets/js/page/features-post-create.js') }}"></script>
 @endsection
 
 @section('scriptline')

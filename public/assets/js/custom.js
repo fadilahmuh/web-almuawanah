@@ -21,6 +21,3 @@ function display_ct() {
     $('#datetime').html(x1);
     var tt=display_c();
 }
-
-$(".inputtags").tagsinput('items');
-

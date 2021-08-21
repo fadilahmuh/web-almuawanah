@@ -9,8 +9,8 @@
     
     <!-- General CSS Files -->
     <link rel="stylesheet" href="{{ asset('userAssets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('userAssets/css/aos.css') }}">
     @yield('csslib')
     

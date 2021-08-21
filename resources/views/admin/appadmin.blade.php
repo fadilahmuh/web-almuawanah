@@ -7,15 +7,15 @@
     <title>Admin {{session('divisi')}} Al-Mu'awanah</title>    
 
     <!-- General CSS Files -->
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/bootstrap/css/bootstrap.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/fontawesome/css/all.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
     @yield('csslib')
     
   <!-- Template CSS -->
-  <link rel="stylesheet" href="{{ asset('adminAssets/css/style.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/css/components.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/css/custom.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 </head>
 
 <body @if(url()->current()==route('dashboard')) onload=display_ct(); @endif>
@@ -35,7 +35,7 @@
             <!-- Profile Nav Bar Kanan -->
             <ul class="navbar-nav navbar-right">          
               <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                <img alt="image" src="{{ asset('adminAssets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+                <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                 <div class="d-sm-none d-lg-inline-block">Hi, {{ Auth::user()->name }}</div></a>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a href="features-profile.html" class="dropdown-item has-icon">
@@ -114,19 +114,19 @@
   @yield('modalscontent')
 
    <!-- General JS Scripts -->
-  <script src="{{ asset('adminAssets/modules/jquery.min.js') }}"></script>
-  {{-- <script src="{{ asset('adminAssets/modules/popper.js') }}"></script> --}}
-  <script src="{{ asset('adminAssets/modules/popper.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/tooltip.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/moment.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/js/stisla.js') }}"></script> 
+  <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+  {{-- <script src="{{ asset('assets/modules/popper.js') }}"></script> --}}
+  <script src="{{ asset('assets/modules/popper.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
+  <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
+  <script src="{{ asset('assets/js/stisla.js') }}"></script> 
 
   @yield('scriptlib')
 
   
-  <script src="{{ asset('adminAssets/js/scripts.js') }}"></script>
+  <script src="{{ asset('assets/js/scripts.js') }}"></script>
 
   @yield('scriptpage')
   

@@ -2,7 +2,7 @@
 
 @section('csslib')
   <!-- CSS Libraries -->  
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote.min.css') }}">
 @endsection
 
 @section('maincontent')
@@ -107,13 +107,13 @@
 
 @section('scriptlib')
   <!-- JS Libraies -->  
-  <script src="{{ asset('adminAssets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
   
 @section('scriptpage')
-  <script src="{{ asset('adminAssets/js/views/sambutan.js') }}"></script>
+  <script src="{{ asset('assets/js/views/sambutan.js') }}"></script>
 @endsection
 
 @section('scriptline')

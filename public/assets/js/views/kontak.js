@@ -1,10 +1,11 @@
 $(document).on("click", ".edit", function(e) {
     e.preventDefault();
     var id = $(this).data("id");
+    var route = $(this).data("url");
     var tkn = $('input[name=_token').val();
     $.ajax({
       type: 'GET',
-      url: "{{route('getkontak')}}",
+      url: route,
       data: {
           id: id,
       },

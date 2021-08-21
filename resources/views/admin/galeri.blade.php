@@ -2,10 +2,10 @@
 
 
 @section('csslib')
-<link rel="stylesheet" href="{{ asset('adminAssets/modules/datatables/datatables.min.css') }}">
-<link rel="stylesheet" href="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
-<link rel="stylesheet" href="{{ asset('adminAssets/modules/chocolat/dist/css/chocolat.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/datatables/datatables.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/dropify/dist/css/dropify.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/chocolat/dist/css/chocolat.css') }}">
 @endsection
 
 @section('maincontent')
@@ -74,7 +74,7 @@
                         </td>
                         <td class="align-middle">
                           <div class="btn-toolbar justify-content-center" role="group">
-                            <a href="" class="edit btn btn-icon btn-warning" data-id="{{ $g->id }}"  data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
+                            <a href="" class="edit btn btn-icon btn-warning" data-id="{{ $g->id }}"  data-toggle="tooltip" data-placement="top" data-url="{{route('getgaleri')}}" data-original-title="Edit"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('delgaleri', [$g->id]) }}" method="POST">
                               @csrf
                               @method('delete')
@@ -186,15 +186,15 @@
 
 @section('scriptlib')
 <!-- JS Libraies -->
-<script src="{{ asset('adminAssets/modules/dropify/dist/js/dropify.js') }}"></script>
-<script src="{{ asset('adminAssets/modules/datatables/datatables.min.js') }}"></script>
-<script src="{{ asset('adminAssets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
-<script src="{{ asset('adminAssets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+<script src="{{ asset('assets/modules/dropify/dist/js/dropify.js') }}"></script>
+<script src="{{ asset('assets/modules/datatables/datatables.min.js') }}"></script>
+<script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
+<script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
 @endsection
 
 @section('scriptpage')
 <!-- Page Specific JS File -->
-<script src="{{ asset('adminAssets/js/page/modules-datatables.js') }}"></script>
-<script src="{{ asset('adminAssets/js/views/galeri.js') }}"></script>
+<script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
+<script src="{{ asset('assets/js/views/galeri.js') }}"></script>
 @endsection

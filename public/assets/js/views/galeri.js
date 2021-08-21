@@ -10,10 +10,10 @@ $('.dropify').dropify({
   $(document).on("click", ".edit", function(e) {
   e.preventDefault();
   var id = $(this).data("id");
-  var tkn = $('input[name=_token').val();
+  var route = $(this).data("url");
   $.ajax({
     type: 'GET',
-    url: "{{route('getgaleri')}}",
+    url: route,
     data: {
         id: id,
     },
@@ -23,7 +23,7 @@ $('.dropify').dropify({
       $('#EditGaleri').modal('show');
     },
     error: function(xhr, ajaxOptions, thrownError) {
-        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+        console.log(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
     }
   });
 });

@@ -12,7 +12,7 @@
       
       <div class="row">
         <div class="col-12 mb-4">
-          <div class="hero text-white green-gradient hero-bg-parallax mb-4" style="background : linear-gradient(rgba(21, 209, 112, 0.8), rgba(21, 209, 112, 0.9)), url({{ asset('adminAssets/img/bg-bangunan.jpg') }}) fixed center center;">
+          <div class="hero text-white green-gradient hero-bg-parallax mb-4" style="background : linear-gradient(rgba(21, 209, 112, 0.8), rgba(21, 209, 112, 0.9)), url({{ asset('assets/img/bg-bangunan.jpg') }}) fixed center center;">
             <div class="hero-inner text-center">
               <h1>بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</h1>
               <br>
@@ -40,5 +40,5 @@
 @endsection
 
 @section('scriptpage')
-<script src="{{ asset('adminAssets/js/custom.js') }}"></script>
+<script src="{{ asset('assets/js/custom.js') }}"></script>
 @endsection

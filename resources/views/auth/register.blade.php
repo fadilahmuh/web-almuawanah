@@ -6,15 +6,15 @@
   <title>Login &mdash; Stisla</title>
 
   <!-- General CSS Files -->
-  <link rel="stylesheet" href="adminAssets/modules/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="adminAssets/modules/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/modules/fontawesome/css/all.min.css">
 
   <!-- CSS Libraries -->
-  <link rel="stylesheet" href="adminAssets/modules/bootstrap-social/bootstrap-social.css">
+  <link rel="stylesheet" href="assets/modules/bootstrap-social/bootstrap-social.css">
 
   <!-- Template CSS -->
-  <link rel="stylesheet" href="adminAssets/css/style.css">
-  <link rel="stylesheet" href="adminAssets/css/components.css">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/components.css">
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
@@ -33,7 +33,7 @@
         <div class="row">
           <div class="col-12 col-sm-8 offset-sm-2 col-md-6 offset-md-3 col-lg-6 offset-lg-3 col-xl-4 offset-xl-4">
             <!-- <div class="login-brand">
-              <img src="adminAssets/img/logo.png" alt="logo" width="100" class="">
+              <img src="assets/img/logo.png" alt="logo" width="100" class="">
             </div> -->
 
             <div class="card card-primary">
@@ -95,20 +95,20 @@
   </div>
 
   <!-- General JS Scripts -->
-  <script src="adminAssets/modules/jquery.min.js"></script>
-  <script src="adminAssets/modules/popper.js"></script>
-  <script src="adminAssets/modules/tooltip.js"></script>
-  <script src="adminAssets/modules/bootstrap/js/bootstrap.min.js"></script>
-  <script src="adminAssets/modules/nicescroll/jquery.nicescroll.min.js"></script>
-  <script src="adminAssets/modules/moment.min.js"></script>
-  <script src="adminAssets/js/stisla.js"></script>
+  <script src="assets/modules/jquery.min.js"></script>
+  <script src="assets/modules/popper.js"></script>
+  <script src="assets/modules/tooltip.js"></script>
+  <script src="assets/modules/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/modules/nicescroll/jquery.nicescroll.min.js"></script>
+  <script src="assets/modules/moment.min.js"></script>
+  <script src="assets/js/stisla.js"></script>
   
   <!-- JS Libraies -->
 
   <!-- Page Specific JS File -->
   
   <!-- Template JS File -->
-  <script src="adminAssets/js/scripts.js"></script>
-  <script src="adminAssets/js/custom.js"></script>
+  <script src="assets/js/scripts.js"></script>
+  <script src="assets/js/custom.js"></script>
 </body>
 </html>

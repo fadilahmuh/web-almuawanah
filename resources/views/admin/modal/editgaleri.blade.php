@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/dropify/dist/css/dropify.css') }}">
 
 <div class="modal-dialog modal-lg" role="document">
   <div class="modal-content">
@@ -41,7 +41,7 @@
 </div>
 </div>
 
-<script src="{{ asset('adminAssets/modules/dropify/dist/js/dropify.js') }}"></script>
+<script src="{{ asset('assets/modules/dropify/dist/js/dropify.js') }}"></script>
 <script>
    $('.dropify').dropify({
     messages: {

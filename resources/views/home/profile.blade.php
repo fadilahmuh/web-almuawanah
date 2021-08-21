@@ -1,7 +1,7 @@
 @extends('home.appuser')
 
 @section('csslib')
-<link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote.min.css') }}">
 @endsection
 @section('maincontent')
 

@@ -2,8 +2,8 @@
 
 @section('csslib')
   <!-- CSS Libraries -->  
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/dropify/dist/css/dropify.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminAssets/modules/summernote/summernote.min.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/dropify/dist/css/dropify.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote.min.css') }}">
 @endsection
 
 @section('maincontent')
@@ -80,11 +80,18 @@
 
 @section('scriptlib')
   <!-- JS Libraies -->  
-  <script src="{{ asset('adminAssets/modules/dropify/dist/js/dropify.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/sweetalert/sweetalert.min.js') }}"></script>
-  <script src="{{ asset('adminAssets/modules/summernote/summernote.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/dropify/dist/js/dropify.js') }}"></script>
+  <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
+  <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script>
 @endsection
   
 @section('scriptpage')
-  <script src="{{ asset('adminAssets/js/views/deskripsi.js') }}"></script>
+  <script src="{{ asset('assets/js/views/deskripsi.js') }}"></script>
+@endsection
+
+@section('scriptline')
+<script>
+  $('#desc').summernote('code','{!! $deskripsi->content !!}');
+  $('#desc').summernote('disable');
+</script>
 @endsection
