@@ -1,4 +1,4 @@
-@extends('home.appuser')
+@extends('pages.appuser')
 
 @section('csslib')
 <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote.min.css') }}">
@@ -81,6 +81,6 @@
 
 
 @section("scriptlib")
-<script src="{{ asset('userAssets/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('userAssets/js/lightbox.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/lightbox.js') }}"></script>
 @endsection

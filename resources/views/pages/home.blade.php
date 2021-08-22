@@ -1,9 +1,9 @@
-@extends('home.appuser')
+@extends('pages.appuser')
 
 @section('csslib')
-<link rel="stylesheet" href="{{ asset('userAssets/css/owl.theme.default.min.css') }}">
-<link rel="stylesheet" href="{{ asset('userAssets/css/owl.carousel.min.css') }}">
-<link rel="stylesheet" href="{{ asset('userAssets/css/lightbox.css') }}">
+<link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
 @endsection
 
 @section('maincontent')
@@ -127,7 +127,7 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
     <div class="row">
 
       @foreach ($posts as $post)
-      {{$post->content}} 
+      {{-- {{$post->content}} 
       <br>
       {!!$post->content!!} 
       <br>
@@ -135,7 +135,7 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
       <br>
       {{strip_tags(html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8')) }} 
       <br>
-      {{ Str::limit(strip_tags(html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8')), 50, ' (...)') }} 
+      {{ Str::limit(strip_tags(html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8')), 50, ' (...)') }}  --}}
       <div class="col-lg-4 col-md-6 mb-4"  data-aos="zoom-in">
         <div class="post-entry-1 h-100">
           <a href="single.html">
@@ -161,6 +161,6 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
 @endsection
 
 @section("scriptlib")
-<script src="{{ asset('userAssets/js/owl.carousel.min.js') }}"></script>
-<script src="{{ asset('userAssets/js/lightbox.js') }}"></script>
+<script src="{{ asset('js/owl.carousel.min.js') }}"></script>
+<script src="{{ asset('js/lightbox.js') }}"></script>
 @endsection

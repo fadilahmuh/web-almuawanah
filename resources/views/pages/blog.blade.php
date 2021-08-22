@@ -1,4 +1,4 @@
-@extends('home.appuser')    
+@extends('pages.appuser')    
 
 @section('maincontent')
 <section class="menu-wrap single-page-header d-flex">
@@ -17,7 +17,7 @@
          <div class="col-lg-8">
            <h3>Judul Post</h3>
            <div class="blog-thumb">
-             <img src="{{ asset('userAssets/images/bg-bangunan.jpg') }}" alt="">
+             <img src="{{ asset('images/bg-bangunan.jpg') }}" alt="">
            </div>
            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores commodi rerum sed harum excepturi temporibus earum asperiores magnam dolore nihil ipsum, consectetur delectus eaque dolorum accusantium voluptates veniam at autem?</p>
            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius doloribus asperiores inventore voluptatem illo incidunt nam, ullam autem ipsum. Quisquam fuga itaque, dolore autem excepturi dolores iusto dolor ut necessitatibus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem nihil ab unde iste cumque debitis at soluta adipisci ea, nobis alias explicabo tempora reprehenderit eaque consequatur consectetur vero sint beatae.</p>             

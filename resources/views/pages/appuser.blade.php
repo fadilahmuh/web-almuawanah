@@ -8,24 +8,23 @@
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet" />
     
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{ asset('userAssets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('userAssets/css/aos.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/aos.css') }}">
     @yield('csslib')
     
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{ asset('userAssets/css/style.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('userAssets/css/components.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/components.css') }}"> --}}
 
-    <title>Yayasan Pondok Pesantren Al-Mua'wanah</title>
+    <title>Yayasan Pondok Pesantren Al-Mu'awanah</title>
 </head>
 <body>
     <header id="header" class="fixed-top">
         <div class="container d-flex align-items-center">
-          <a href="{{ route('home') }}" class="logo me-auto"><img src="{{ asset('userAssets/images/yayasan.png') }}" alt="" class="img-fluid" /></a>
+          <a href="{{ route('home') }}" class="logo me-auto"><img src="{{ asset('images/yayasan.png') }}" alt="" class="img-fluid" /></a>
           <!-- <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1> -->
-          <!-- Uncomment below if you prefer to use an image logo -->
   
           <nav id="navbar" class="navbar">
             <ul>
@@ -38,8 +37,6 @@
                   <li><a href="#">MA</a></li>
                 </ul>
               </li>
-              {{-- <li><a class="nav-link" href="{{ route('pogram-pendidikan') }}">Program Pendidikan</a></li> --}}
-              <!-- <li><a class="nav-link scrollto" href="">Pimpinan</a></li> -->
               <li><a class="nav-link " href="{{ route('usergaleri') }}">Galeri</a></li>
               <li><a class="nav-link " href="{{ route('userblog') }}">Blog</a></li>
               <li><a class="nav-link " href="{{ route('userkontak') }}">Kontak</a></li>
@@ -98,19 +95,21 @@
     </svg>
     </div>
 
-    <script src="{{ asset('userAssets/js/jquery.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/jquery-migrate-3.0.1.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/bootstrap.js') }}"></script>
-    <script src="{{ asset('userAssets/js/jquery.easing.1.3.js') }}"></script>
-    <script src="{{ asset('userAssets/js/jquery.stellar.min.js') }}"></script>
-    <script src="{{ asset('userAssets/js/aos.js') }}"></script>
-    {{-- <script src="{{ asset('userAssets/js/jquery.marquee.min.js') }}"></script> --}}
-    <script src="{{ asset('userAssets/js/scrollax.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/popper.min.js') }}"></script> --}}
+    <script src="{{ asset('assets/modules/popper.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/bootstrap.js') }}"></script> --}}
+    <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
+    <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
+    <script src="{{ asset('js/aos.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.marquee.min.js') }}"></script> --}}
+    <script src="{{ asset('js/scrollax.min.js') }}"></script>
     
     @yield('scriptlib')
     
     
-    <script src="{{ asset('userAssets/js/new-main.js') }}"></script>
+    <script src="{{ asset('js/new-main.js') }}"></script>
 </body>
 </html>

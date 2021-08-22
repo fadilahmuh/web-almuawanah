@@ -1,4 +1,4 @@
-@extends('home.appuser')
+@extends('pages.appuser')
 
 @section('maincontent')
 <section class="menu-wrap single-page-header d-flex">

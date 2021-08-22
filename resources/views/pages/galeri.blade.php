@@ -1,10 +1,10 @@
-@extends('home.appuser')   
+@extends('pages.appuser')   
 
 @section('csslib')
-<link rel="stylesheet" href="{{ asset('userAssets/css/slick.css') }}" />
-<link rel="stylesheet" href="{{ asset('userAssets/css/slick-theme.css') }}" />
-<link rel="stylesheet" href="{{ asset('userAssets/css/lity.css') }}" />
-<link rel="stylesheet" href="{{ asset('userAssets/css/lightbox.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/slick.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/lity.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/lightbox.css') }}" />
 @endsection
 
 @section('maincontent')
@@ -54,8 +54,8 @@
 @endsection
 
 @section('scriptlib')
-<script src="{{ asset('userAssets/js/lightbox.js') }}"></script>
-<script src="{{ asset('userAssets/js/slick.js') }}"></script>
-<script src="{{ asset('userAssets/js/youtubeapi.js') }}"></script>
-<script src="{{ asset('userAssets/js/lity.js') }}"></script>
+<script src="{{ asset('js/lightbox.js') }}"></script>
+<script src="{{ asset('js/slick.js') }}"></script>
+<script src="{{ asset('js/youtubeapi.js') }}"></script>
+<script src="{{ asset('js/lity.js') }}"></script>
 @endsection

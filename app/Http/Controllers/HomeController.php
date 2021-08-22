@@ -53,7 +53,7 @@ class HomeController extends Controller
 
         // dd($posts);
 
-        return view('home.home', compact('banners','sambutan','deskripsi','brosur','posts'));
+        return view('pages.home', compact('banners','sambutan','deskripsi','brosur','posts'));
     }
 
     public function profile()
@@ -72,12 +72,12 @@ class HomeController extends Controller
         ->where('divisi', 'Yayasan')
         ->where('bagian', 'misi')->first();
 
-        return view('home.profile', compact('tentang', 'visi', 'misi'));
+        return view('pages.profile', compact('tentang', 'visi', 'misi'));
     }
 
     public function program()
     {
-        return view('home.pendidikan-program');
+        return view('pages.pendidikan-program');
     }
     
     public function galeri()
@@ -92,28 +92,28 @@ class HomeController extends Controller
         ->where('bagian', 'youtube')->first();
     
         // dd($foto);
-        return view('home.galeri', compact('yt', 'foto'));
+        return view('pages.galeri', compact('yt', 'foto'));
     }
 
     
 
     public function blog()
     {
-        return view('home.blog');
+        return view('pages.blog');
     }
 
     public function kontak()
     {
-        return view('home.kontak');
+        return view('pages.kontak');
     }
 
     public function donasi()
     {
-        return view('home.donasi');
+        return view('pages.donasi');
     }
 
     public function pendaftaran()
     {
-        return view('home.pendaftaran');
+        return view('pages.pendaftaran');
     }
 }

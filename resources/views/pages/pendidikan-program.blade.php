@@ -1,4 +1,4 @@
-@extends('home.appuser')
+@extends('pages.appuser')
 
 @section('maincontent')
 <section class="menu-wrap single-page-header d-flex">
@@ -95,7 +95,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -110,7 +110,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -125,7 +125,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -140,7 +140,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -155,7 +155,7 @@
           </div>
         </div>
         <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -180,7 +180,7 @@
     <div class="container">
       <div class="row justify-content-md-center">
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -195,7 +195,7 @@
           </div>
         </div>
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog3.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog3.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -210,7 +210,7 @@
           </div>
         </div>
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog2.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog2.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -225,7 +225,7 @@
           </div>
         </div>
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog1.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog1.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -240,7 +240,7 @@
           </div>
         </div>
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -255,7 +255,7 @@
           </div>
         </div>
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog3.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog3.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
@@ -270,7 +270,7 @@
           </div>
         </div>
         <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-          <div class="program" style="background-image: {{ asset('userAssets/images/prog4.jpg') }};">
+          <div class="program" style="background-image: {{ asset('images/prog4.jpg') }};">
             <div class="overlay d-flex align-items-center justify-content-center">
               <h3>
                 Olimpiade Sains
