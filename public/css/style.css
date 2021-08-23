@@ -2232,3 +2232,7 @@ form.donasi .dns-submit:hover {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
 }
+
+.note-float-left {
+    margin-right: 10px;
+}

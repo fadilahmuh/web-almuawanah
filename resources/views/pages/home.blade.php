@@ -138,11 +138,11 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
       {{ Str::limit(strip_tags(html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8')), 50, ' (...)') }}  --}}
       <div class="col-lg-4 col-md-6 mb-4"  data-aos="zoom-in">
         <div class="post-entry-1 h-100">
-          <a href="single.html">
+          <a href="{{ route('blog_post', [$post->slug]) }}">
             <div class="card-blog-thumb" style="background-image: url({{asset('uploads/posts/'.Str::replace(' ', '%20', $post->thumbnail))}})"></div>            
           </a>
           <div class="post-entry-1-contents">            
-            <h2><a href="single.html">{{$post->judul}}</a></h2>
+            <h2><a href="{{ route('blog_post', [$post->slug]) }}">{{$post->judul}}</a></h2>
             <span class="meta d-inline-block">{{ __($post->created_at->isoFormat('D MMM, Y')) }}</span><br>
             <span class="meta d-inline-block mb-3">@foreach($post->tag as $t)<a href="" >{{ $t }}</a> @endforeach</span>
             <p> 

@@ -32,6 +32,7 @@ Route::get('/blog', [HomeController::class, 'blog'])->name('userblog');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('userkontak');
 Route::get('/wakaf', [HomeController::class, 'donasi'])->name('wakaf');
 Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('pendaftaran');
+Route::get('/blog/{slug}', [HomeController::class, 'blog_post'])->name('blog_post');
 
 // Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 

@@ -94,7 +94,8 @@
 
 @section('scriptlib')
   <!-- JS Libraies -->  
-  <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script>
+  {{-- <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script> --}}
+  <script src="{{ asset('assets/modules/summernote/summernote.js') }}"></script>
   <script src="{{ asset('assets/modules/jquery-selectric/jquery.selectric.min.js') }}"></script>
   <script src="{{ asset('assets/modules/select2/dist/js/select2.full.min.js') }}"></script>
   <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>

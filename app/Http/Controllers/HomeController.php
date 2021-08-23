@@ -95,7 +95,14 @@ class HomeController extends Controller
         return view('pages.galeri', compact('yt', 'foto'));
     }
 
-    
+    public function blog_post($slug){        
+    	$data = Posts::where('slug', $slug)
+            ->where('is_published',1)
+            ->first();  
+
+        // dd($data);
+    	return view('pages.blog_post', compact('data'));
+    }
 
     public function blog()
     {
@@ -104,7 +111,14 @@ class HomeController extends Controller
 
     public function kontak()
     {
-        return view('pages.kontak');
+
+        $kontak = DB::table('components')
+            ->where('divisi', 'Yayasan')
+            ->where('bagian', 'kontak')
+            ->orderBy('judul','desc')->get();
+
+        // dd( $this->kontak);
+        return view('pages.kontak', compact('kontak'));
     }
 
     public function donasi()

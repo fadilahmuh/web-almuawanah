@@ -55,6 +55,10 @@ $("#table-blog").dataTable({
             emptyPanes: "There are no panes to display. :/",
         },
     },
+    "columnDefs": [
+        { "width": "25%", "targets": 0 }
+    ],
+    "order": [[ 3, "desc" ]]
 });
 
 var table = $('#table-blog').DataTable();

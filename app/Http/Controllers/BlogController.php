@@ -227,4 +227,7 @@ class BlogController extends Controller
 
         return redirect()->back()->with('success','Tag Berhasil Dihapus');
     }
+
+   
+
 }

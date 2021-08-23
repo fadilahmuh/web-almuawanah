@@ -266,10 +266,12 @@
   }
 
 
-  lightbox.option({
-    fitImagesInViewport: true,
-    disableScrolling: true,
-  });
+  if (typeof yourFunctionName == 'function') { 
+    lightbox.option({
+      fitImagesInViewport: true,
+      disableScrolling: true,
+    });
+  }
 
   // NAVBAR TOGGLE MOBILE VIEW
   $(".mobile-nav-toggle").on("click", function () {

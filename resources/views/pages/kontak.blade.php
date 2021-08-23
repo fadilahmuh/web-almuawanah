@@ -19,55 +19,57 @@
         <div class="col-md-5 d-flex align-items-stretch p-0 card-kontak">
           <div class="info-wrap w-100 p-lg-5 p-4">
             <h3 class="mb-4 mt-md-4">Kontak Kami</h3>
-            <div class="dbox w-100 d-flex align-items-start">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="fas fa-map-marker-alt"></span>
+
+            @foreach ($kontak as $k)
+              
+            @if ($k->judul == 'Whatsapp')
+            <div class="dbox w-100 d-flex align-items-center align-middle">
+              <div class="icon d-flex align-items-center justify-content-center">
+              <span class="fab fa-whatsapp"></span>
               </div>
               <div class="text ps-3">
                 <p>
-                  <span>Address:</span> 198 West 21th Street, Suite 721 New
-                  York NY 10016
+                  <span>Whatsapp @if (!empty($k->desc1)) ({{$k->desc1}})@endif: </span> <a href="https://wa.me/{{ Str::replaceFirst('0', '62', $k->content)}}">{{$k->content}}</a>
                 </p>
               </div>
             </div>
-            <div class="dbox w-100 d-flex align-items-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="fa fa-phone"></span>
+            @elseif ($k->judul == 'Telepon')
+            <div class="dbox w-100 d-flex align-items-center align-middle">
+              <div class="icon d-flex align-items-center justify-content-center">
+              <span class="fas fa-phone"></span>
               </div>
               <div class="text ps-3">
                 <p>
-                  <span>Phone:</span>
-                  <a href="tel://1234567920">+ 1235 2355 98</a>
+                  <span>Telepon @if (!empty($k->desc1)) ({{$k->desc1}})@endif: </span> <a href="tel://{{$k->content}}">{{$k->content}}</a>
                 </p>
               </div>
             </div>
-            <div class="dbox w-100 d-flex align-items-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="fa fa-paper-plane"></span>
+            @elseif ($k->judul == 'Email')
+            <div class="dbox w-100 d-flex align-items-center align-middle">
+              <div class="icon d-flex align-items-center justify-content-center">
+              <span class="far fa-envelope"></span>
               </div>
               <div class="text ps-3">
                 <p>
-                  <span>Email:</span>
-                  <a href="mailto:info@yoursite.com">info@yoursite.com</a>
+                  <span>Email @if (!empty($k->desc1)) ({{$k->desc1}})@endif: </span> <a href="mailto:{{$k->content}}">{{$k->content}}</a>
                 </p>
               </div>
             </div>
-            <div class="dbox w-100 d-flex align-items-center">
-              <div
-                class="icon d-flex align-items-center justify-content-center"
-              >
-                <span class="fa fa-globe"></span>
+            @elseif ($k->judul == 'Alamat')
+            <div class="dbox w-100 d-flex align-items-center align-middle">
+              <div class="icon d-flex align-items-center justify-content-center">
+              <span class="fas fa-map-marker-alt"></span>
               </div>
               <div class="text ps-3">
-                <p><span>Website</span> <a href="#">yoursite.com</a></p>
+                <p>
+                  <span>Alamat @if (!empty($k->desc1)) ({{$k->desc1}})@endif: </span>{{$k->content}}
+                </p>
               </div>
             </div>
+            @endif
+
+          @endforeach
+          
           </div>
         </div>
         <div class="col-md-7 bg-white p-0 card-kontak">
