@@ -100,6 +100,8 @@ class HomeController extends Controller
             ->where('is_published',1)
             ->first();  
 
+        $data->increment('visits', 1);
+
         // dd($data);
     	return view('pages.blog_post', compact('data'));
     }
