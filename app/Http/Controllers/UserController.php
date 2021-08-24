@@ -121,14 +121,15 @@ class UserController extends Controller
         $rules = array(
             'name' => 'required',
             'email' => 'sometimes|required|email',
-            'password' => 'required|confirmed|min:6',
+            //'password' => 'required|confirmed|min:6',
+            'password' => 'confirmed',
             'no_hp' => 'numeric'
         );    
         $messages = array(
             'name.required' => 'Form Nama tidak boleh kosong!',
             'email.required' => 'Form Email tidak boleh kosong!',
             'email.unique' => 'Email sudah di gunakan, coba Email yang berbeda!',
-            'password.required' => 'Form Password tidak boleh kosong!',
+            //'password.required' => 'Form Password tidak boleh kosong!',
             'password.confirmed' => 'Password tidak sama! ',
             'no_hp.numeric' => 'Nomor tidak valid!!'
         );
