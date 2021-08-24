@@ -82,7 +82,9 @@
   <!-- JS Libraies -->  
   <script src="{{ asset('assets/modules/dropify/dist/js/dropify.js') }}"></script>
   <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
-  <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script>
+  {{-- <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script> --}}
+  <script src="{{ asset('assets/modules/summernote/summernote.js') }}"></script>
+
 @endsection
   
 @section('scriptpage')

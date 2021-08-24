@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Posts;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -96,6 +97,13 @@ class HomeController extends Controller
     }
 
     public function blog_post($slug){        
+        $posts = Posts::all()
+            ->where('is_published', 1)
+            ->where('slug','!=' ,$slug)
+            ->sortByDesc('visits')
+            ->take(3);
+        // dd($posts);
+
     	$data = Posts::where('slug', $slug)
             ->where('is_published',1)
             ->first();  
@@ -103,7 +111,21 @@ class HomeController extends Controller
         $data->increment('visits', 1);
 
         // dd($data);
-    	return view('pages.blog_post', compact('data'));
+    	return view('pages.blog_post', compact('data', 'posts'));
+    }
+
+    public function posts_tag($tag){   
+        $tag = '%'.Str::lower($tag).'%';
+
+        $result = DB::table('posts')
+            ->where('tag', 'LIKE', $tag)
+            ->where('is_published',1)
+            ->get();
+
+        $posts= Posts::hydrate($result->toArray());
+
+        dd($posts);
+    	return view('pages.blog_post', compact('posts'));
     }
 
     public function blog()

@@ -73,7 +73,7 @@
                         </td>
                         <td class="align-middle">
                           <div class="btn-toolbar justify-content-center" role="group">
-                            <a href="#" class="btn btn-icon btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Preview"><i class="fas fa-eye"></i></a>
+                            <a href="{{ route('blog_preview', [$b->slug]) }}" target="_blank" class="btn btn-icon btn-info" data-toggle="tooltip" data-placement="top" title="" data-original-title="Preview"><i class="fas fa-eye"></i></a>
                             <a href="{{ route('blog.edit', [$b->slug]) }}" class="btn btn-icon btn-warning" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('blog.destroy', [$b->id]) }}" method="POST">                              
                               @csrf

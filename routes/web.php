@@ -33,6 +33,7 @@ Route::get('/kontak', [HomeController::class, 'kontak'])->name('userkontak');
 Route::get('/wakaf', [HomeController::class, 'donasi'])->name('wakaf');
 Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('pendaftaran');
 Route::get('/blog/{slug}', [HomeController::class, 'blog_post'])->name('blog_post');
+Route::get('/tags/{tag}', [HomeController::class, 'posts_tag'])->name('posts_tag');
 
 // Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
@@ -61,6 +62,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     ]);
     Route::post('/blog/add_tag',[BlogController::class, 'add_tag'])->name('newtag');
     Route::delete('/blog/del_tag/{id}',[BlogController::class, 'del_tag'])->name('deltag');
+    Route::get('/blog/preview/{slug}',[BlogController::class, 'blog_preview'])->name('blog_preview');
     
     
     Route::prefix('banner')->group(function(){

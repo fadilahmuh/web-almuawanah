@@ -1634,6 +1634,10 @@ a {
     padding-top: 4rem;
 }
 
+.post-entry-1 .badge {
+    margin: 0 8px 10px 0;
+}
+
 .formulir {
     padding: 50px;
 }
@@ -2235,4 +2239,8 @@ form.donasi .dns-submit:hover {
 
 .note-float-left {
     margin-right: 10px;
+}
+
+.sidebar-box.most-view {
+    padding: 10px;
 }

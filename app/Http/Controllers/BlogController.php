@@ -228,6 +228,18 @@ class BlogController extends Controller
         return redirect()->back()->with('success','Tag Berhasil Dihapus');
     }
 
-   
+    public function blog_preview($slug){        
+        $posts = Posts::all()
+            ->where('is_published', 1)
+            ->where('slug','!=' ,$slug)
+            ->sortByDesc('visits')
+            ->take(3);
+        // dd($posts);
+
+    	$data = Posts::where('slug', $slug)
+            ->first();  
+
+    	return view('pages.blog_post', compact('data', 'posts'));
+    }
 
 }

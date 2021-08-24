@@ -108,7 +108,8 @@
 @section('scriptlib')
   <!-- JS Libraies -->  
   <script src="{{ asset('assets/modules/upload-preview/assets/js/jquery.uploadPreview.min.js') }}"></script>
-  <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script>
+  {{-- <script src="{{ asset('assets/modules/summernote/summernote.min.js') }}"></script> --}}
+  <script src="{{ asset('assets/modules/summernote/summernote.js') }}"></script>
   <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 @endsection
   

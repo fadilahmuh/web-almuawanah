@@ -126,28 +126,19 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
     </div>
     <div class="row">
 
-      @foreach ($posts as $post)
-      {{-- {{$post->content}} 
-      <br>
-      {!!$post->content!!} 
-      <br>
-      {{html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8') }} 
-      <br>
-      {{strip_tags(html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8')) }} 
-      <br>
-      {{ Str::limit(strip_tags(html_entity_decode($post->content, ENT_NOQUOTES, 'UTF-8')), 50, ' (...)') }}  --}}
-      <div class="col-lg-4 col-md-6 mb-4"  data-aos="zoom-in">
+      @foreach ($posts as $key => $post)
+      <div class="col-lg-4 col-md-6 mb-4"  data-aos="zoom-in" data-aos-delay="{{++$key * 200}}">
         <div class="post-entry-1 h-100">
           <a href="{{ route('blog_post', [$post->slug]) }}">
             <div class="card-blog-thumb" style="background-image: url({{asset('uploads/posts/'.Str::replace(' ', '%20', $post->thumbnail))}})"></div>            
           </a>
           <div class="post-entry-1-contents">            
             <h2><a href="{{ route('blog_post', [$post->slug]) }}">{{$post->judul}}</a></h2>
-            <span class="meta d-inline-block">{{ __($post->created_at->isoFormat('D MMM, Y')) }}</span><br>
-            <span class="meta d-inline-block mb-3">@foreach($post->tag as $t)<a href="" >{{ $t }}</a> @endforeach</span>
-            <p> 
+            <span class="meta d-inline-block"><i class="far fa-calendar"></i> {{ __($post->created_at->isoFormat('D MMM, Y')) }}</span><br>
+            <span class="meta d-inline-block mb-3">@isset($post->tag)<i class="fas fa-tags"></i> @endisset  @foreach($post->tag as $t)<a href="{{ route('posts_tag', [$t]) }}" class="badge rounded-pill bg-light text-dark">{{ $t }}</a>@endforeach</span><br>
+            {{-- <p> 
               {{  Str::limit(strip_tags(html_entity_decode($post->content, ENT_QUOTES, 'UTF-8')), 50, ' (...)') }} 
-            </p>
+            </p> --}}
           </div>
         </div>
       </div>       
