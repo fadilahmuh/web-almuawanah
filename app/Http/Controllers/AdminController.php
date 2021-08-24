@@ -135,4 +135,9 @@ class AdminController extends Controller
     {
         return view('admin.credits');
     }
+
+    public function edit_user()
+    {
+        return view('admin.edit_user');
+    }
 }

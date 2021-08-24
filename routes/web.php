@@ -98,3 +98,5 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
 
     Route::put('/update_yt/{id}',[ComponentController::class, 'update_yt'])->name('edityt');
 });
+
+Route::get('/admin/edit',[AdminController::class, 'edit_user'])->name('editUser');
