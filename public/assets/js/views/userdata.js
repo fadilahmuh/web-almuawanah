@@ -1,51 +1,28 @@
-$(document).ready(function () {
-    var table = $('#datatable').DataTable();
-    $index = 1;
-    table.on('click', '.editModal', function(){
 
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-            $tr = $tr.prev('.parent');
-        }
-
-        var data = table.row($tr).data();
-        console.log(data);
-
-        $('#fname').val(data[1]);
-        $('#emailAdmin').val(data[2]);
-        $('#no_hpAdmin').val(data[3]);
-        $('#editFormModal').attr('action', "/admin/userdata/"+data[0]);
-        
-        var elements = $(data[4]).text();
-        console.log(elements);
-        switch (elements) {
-            case ' admin_yys':
-            $index = 1;
-            break;
-            case ' admin_tka':
-            $index = 2;
-            break;
-            case ' admin_ra':
-            $index = 3;
-            break;
-            case ' admin_mts':
-            $index = 4; 
-            break;
-            case ' admin_ma':
-            $index = 5; 
-            break;
-            case ' admin_pst':
-            $index = 6; 
-            break;
-            
-            default:
-            $index = 0;
-            break;
-        };
-        $('select').prop('selectedIndex', $index).selectric('refresh');
-
+$(document).on("click", ".edit", function(e) {
+    e.preventDefault();
+    var id = $(this).data("id");
+    var route = $(this).data("url");
+    var tkn = $('input[name=_token').val();
+    // alert(route + '\n' + id);
+    $.ajax({
+      type: 'GET',
+      url: route,
+      data: {
+          id: id,
+      },
+      dataType: "json",
+      success: function(response) {
+        $('#editUser').html(response.modal);
+        $('#editUser').modal('show');
+        // console.log(response);
+      },
+      error: function(xhr, ajaxOptions, thrownError) {
+        alert(xhr.status + "\n" + xhr.responseText + "\n" + thrownError);
+      }
     });
-});
+  });
+
 $('.del').click(function(event) {
     var form =  $(this).closest("form");
     var name = $(this).data("name");

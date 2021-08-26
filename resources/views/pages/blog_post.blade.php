@@ -12,44 +12,22 @@
   </section>
   
   <section class="both-margin">
-    <div class="container">
-      <div class="row">
-         <div class="col-lg-8">
-           <div class="blog-thumb">
-             <img src="{{asset('uploads/posts/'.Str::replace(' ', '%20', $data->thumbnail))}}" alt="">
-           </div>
-           <h3 class="mb-4">{{$data->judul}}</h3>
-           <div style="word-wrap: break-word;">
-             {!! $data->content !!}         
-           </div>
-         </div>
-         <div class="col-lg-4">
-          <div class="sidebar-box mt-4">
-            <form action="#" class="search-form">
-              <div class="form-group">
-                <span class="fa fa-search"></span>
-                <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
-              </div>
-            </form>
-          </div>
-          <div class="sidebar-box most-view">
-            <h3>Paling Banyak Dilihat</h3>
-
-            @foreach ($posts as $p)
-            <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({{asset('uploads/posts/'.Str::replace(' ', '%20', $p->thumbnail))}});"></a>
-              <div class="text">
-                <h3 class="heading"><a href="{{ route('blog_post', [$p->slug]) }}">{{$p->judul}}</a></h3>
-                <div class="meta">
-                  <div><span class="icon-calendar"></span>{{ __($p->created_at->isoFormat('D MMM, Y')) }}</div>
-                  {{-- <div><a href="#"><span class="icon-chat"></span> 19</a></div> --}}
+    <div class="container-lg">
+      <div class="row justify-content-center">
+         <div class="col-lg-9 col-12">
+           <div class="card blog">
+             <div class="card-body">
+               <div class="blog-thumb">
+                 <img src="{{asset('uploads/posts/'.Str::replace(' ', '%20', $data->thumbnail))}}" alt="">
+                </div>
+                <h1 class="mb-4 text-center">{{$data->judul}}</h1>
+                <p class="text-center text-muted">{{Carbon::setLocale('fr')->now()->format('l j F Y H:i:s');}}</p>
+                <div style="word-wrap: break-word;">
+                  {!! $data->content !!}         
                 </div>
               </div>
-            </div>              
-            @endforeach
-
-          </div>
-         </div>
+            </div>
+          </div>        
       </div>
     </div>
   </section> 

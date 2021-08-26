@@ -41,10 +41,16 @@ Auth::routes();
 
 Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
-Route::middleware('role:superadmin')->resource('admin/userdata',UserController::class)->names([
-    'index' => 'userdata',
-]);
+// Route::middleware('role:superadmin')->resource('admin/userdata',UserController::class)->names([
+//     'index' => 'userdata',
+// ]);
 
+Route::middleware('role:superadmin')->prefix('admin')->group(function(){
+    Route::get('userdata/getuser',[UserController::class, 'get_user'])->name('get_user');
+    Route::resource('userdata', UserController::class)->names([
+        'index' => 'userdata',
+    ]);
+});
 
 Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
     Route::get('/banner', [AdminController::class, 'banner'])->name('banner');
@@ -99,6 +105,10 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     });
 
     Route::put('/update_yt/{id}',[ComponentController::class, 'update_yt'])->name('edityt');
+
+    Route::get('/akun',[AdminController::class, 'edit_user'])->name('editUser');
+    Route::get('/akun/validate',[AdminController::class, 'pass_validate'])->name('validatepass');
+    Route::put('/akun/{id}',[AdminController::class, 'update_akun'])->name('akunupdate');
 });
 
-Route::get('/admin/edit',[AdminController::class, 'edit_user'])->name('editUser');
+

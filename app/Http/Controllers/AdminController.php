@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Models\Component;
+use App\Models\User;
 use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use App\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -32,17 +34,6 @@ class AdminController extends Controller
     public function index()
     {        
         return view('admin.dashboard');
-    }
-
-    public function userdata()
-    {
-        $roles = Role::all();
-        $users = ModelsUser::with('roles')->get();
-        $nonmembers = $users->reject(function ($user, $key) {
-            return $user->hasRole('superadmin');
-        });
-
-        return view('admin.userdata', ['nonmembers' => $nonmembers]);
     }
 
     public function banner()
@@ -138,6 +129,55 @@ class AdminController extends Controller
 
     public function edit_user()
     {
-        return view('admin.edit_user');
+        $user = Auth::user();
+        return view('admin.edit_user',compact('user'));
+    }
+
+    public function pass_validate(Request $request)
+    {
+        if(Hash::check( $request->password, Auth::user()->password)){
+            $status = 'Accepted';
+        } else {
+            $status = 'Refused';
+        }
+
+        return response()->json([
+            'result' => $status,
+        ]);
+    }
+
+    public function update_akun(Request $request, $id)
+    {
+        $old_user = User::findorfail($id);
+        // dd($request);       
+
+        $rules = array(
+            'password' => 'confirmed',
+        );  
+        if (isset($request->name)) {
+            $rules['name'] = 'required';
+            $rules['no_hp'] = 'numeric';
+        }
+       
+        // dd($rules) ;
+        $messages = array(
+            'name.required' => 'Form Nama tidak boleh kosong!',
+            'password.confirmed' => 'Password tidak sama! ',
+            'no_hp.numeric' => 'Nomor tidak valid!!'
+        );
+
+        $request->all();
+        $validator = Validator::make($request->all(), $rules, $messages);
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        } else {
+            $old_user->update([
+                'name' => isset($request->name)? $request->name : $old_user->name,
+                'password' => isset($request->password)? bcrypt($request->password): $old_user->password ,
+                'no_hp' => isset($request->no_hp)? $request->no_hp : $old_user->no_hp,
+            ]);
+
+            return redirect()->route('editUser')->with('success','Akun berhasil di update!');
+        }
     }
 }

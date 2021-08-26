@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
 
+use function PHPUnit\Framework\isNull;
+
 class UserController extends Controller
 {
     private $users;
@@ -15,6 +17,7 @@ class UserController extends Controller
     public function __construct()
     {
         $this->users = User::all();
+        $this->middleware('auth');        
     }
 
     /**
@@ -90,9 +93,18 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        //
+        if ($request->ajax()) {
+            $user = User::findorfail($request->id);
+
+            $modal = view('admin.modal.edituser', compact('user'))->render();
+
+            return response()->json([
+                'modal' =>  $modal
+            ]);           
+        }
+
     }
 
     /**
@@ -103,7 +115,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $userdata = User::findorfail($id);
+        $userdata = User::findorfail($id)->with('roles');
         return view('admin.modal.testing')->with('user', $userdata);
     }
 
@@ -118,10 +130,11 @@ class UserController extends Controller
     {
         $old_user = User::findorfail($id);
 
+        // dd($request->password);
+
         $rules = array(
             'name' => 'required',
             'email' => 'sometimes|required|email',
-            //'password' => 'required|confirmed|min:6',
             'password' => 'confirmed',
             'no_hp' => 'numeric'
         );    
@@ -129,7 +142,6 @@ class UserController extends Controller
             'name.required' => 'Form Nama tidak boleh kosong!',
             'email.required' => 'Form Email tidak boleh kosong!',
             'email.unique' => 'Email sudah di gunakan, coba Email yang berbeda!',
-            //'password.required' => 'Form Password tidak boleh kosong!',
             'password.confirmed' => 'Password tidak sama! ',
             'no_hp.numeric' => 'Nomor tidak valid!!'
         );
@@ -142,11 +154,9 @@ class UserController extends Controller
             $old_user->update([
                 'name' => $request->name,
                 'email' => $request->email,
-                'password' => bcrypt($request->password),
+                'password' => isset($request->password)? bcrypt($request->password): $old_user->password ,
                 'no_hp' => $request->no_hp,
             ]);
-            // DB::table('model_has_roles')->where('model_id',$id)->delete();
-            // $old_user -> assignRole($request->role);
             $old_user -> syncRoles($request->role);
 
             return redirect()->route('userdata')->with('success','Data User berhasil di ubah!');
@@ -164,5 +174,24 @@ class UserController extends Controller
         User::findorfail($id)->delete();
 
         return redirect()->back()->with('success','User berhasil dihapus.');
+    }
+
+    public function get_user(Request $request)
+    {
+        // return response('Hello World');
+        // return ('Hello World');  
+        return view('admin.dashboard');
+        // if ($request->ajax()) {
+        //     $user = User::findorfail($request->id);
+
+        //     $modal = view('admin.modal.edituser', compact('user'))->render();
+
+        //     // return response()->json([
+        //     //     'modal' =>  $modal
+        //     // ]);           
+        //     return response('Hello World');            
+        // } else {
+        //     return ('Hello World');  
+        // }
     }
 }
