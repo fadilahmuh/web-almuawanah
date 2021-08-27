@@ -1519,7 +1519,7 @@ a {
     font-size: 15px;
     width: 100%;
     /* float: left; */
-    background: #fff;
+    /* background: #fff; */
 }
 .sidebar-box *:last-child {
     margin-bottom: 0;
@@ -2249,3 +2249,71 @@ form.donasi .dns-submit:hover {
     border: none !important;
     box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1);
 }
+
+.divider
+{
+	position: relative;
+	margin:50px 0;
+	height: 1px;
+}
+
+.div-transparent:before
+{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 5%;
+	right: 5%;
+	width: 90%;
+	height: 1px;
+	background-image: linear-gradient(to right, transparent, rgb(48,49,51), transparent);
+}
+
+.div-dot:after
+{
+	content: "";
+	position: absolute;
+	z-index: 1;
+	top: -9px;
+	left: calc(50% - 9px);
+	width: 18px;
+	height: 18px;
+	background-color: rgba(23, 176, 100, 0.9);;
+	border: 1px solid rgb(48,49,51);
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 2px #f7f7f7,
+					0 0 0 4px #f7f7f7;
+}
+
+.section-title {
+    color: #191d21;
+    font-weight: 600;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.section-title::before{
+    content: ' ';
+    border-radius: 5px;
+    height: 6px;
+    width: 23px;
+    background-color: black;
+    display: inline-block;
+    float: left;
+    margin-top: 16px;
+    margin-right: 13px;
+}
+
+.tagcloud a {
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 7px 10px;
+    margin-bottom: 7px;
+    margin-right: 4px;
+    border-radius: 4px;
+    color: #000000;
+    border: 1px solid #ccc;
+    font-size: 13px; }
+    .tagcloud a:hover {
+      border: 1px solid #000; }

@@ -235,11 +235,12 @@ class BlogController extends Controller
             ->sortByDesc('visits')
             ->take(3);
         // dd($posts);
+        $tags = Tags::all();
 
     	$data = Posts::where('slug', $slug)
             ->first();  
 
-    	return view('pages.blog_post', compact('data', 'posts'));
+    	return view('pages.blog_post', compact('data', 'posts','tags'));
     }
 
 }

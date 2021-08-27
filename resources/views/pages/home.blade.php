@@ -134,7 +134,7 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
           </a>
           <div class="post-entry-1-contents">            
             <h2><a href="{{ route('blog_post', [$post->slug]) }}">{{$post->judul}}</a></h2>
-            <span class="meta d-inline-block"><i class="far fa-calendar"></i> {{ __($post->created_at->isoFormat('D MMM, Y')) }}</span><br>
+            <span class="meta d-inline-block"><i class="far fa-calendar"></i> {{ Carbon::parse($post->created_at)->isoFormat('LL') }}</span><br>
             <span class="meta d-inline-block mb-3">@isset($post->tag)<i class="fas fa-tags"></i> @endisset  @foreach($post->tag as $t)<a href="{{ route('posts_tag', [$t]) }}" class="badge rounded-pill bg-light text-dark">{{ $t }}</a>@endforeach</span><br>
             {{-- <p> 
               {{  Str::limit(strip_tags(html_entity_decode($post->content, ENT_QUOTES, 'UTF-8')), 50, ' (...)') }} 

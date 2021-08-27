@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Posts;
+use App\Models\Tags;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -102,7 +104,8 @@ class HomeController extends Controller
             ->where('slug','!=' ,$slug)
             ->sortByDesc('visits')
             ->take(3);
-        // dd($posts);
+
+        $tags = Tags::all();
 
     	$data = Posts::where('slug', $slug)
             ->where('is_published',1)
@@ -110,8 +113,8 @@ class HomeController extends Controller
 
         $data->increment('visits', 1);
 
-        // dd($data);
-    	return view('pages.blog_post', compact('data', 'posts'));
+        dd($tags);
+    	return view('pages.blog_post', compact('data', 'posts','tags'));
     }
 
     public function posts_tag($tag){   
