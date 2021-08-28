@@ -72,7 +72,6 @@
             ></iframe>
         </div>
         <div class="col-md-4 cari kanan">
-            <form action="" method="post"><input type="text" name="search" /><input type="submit" value="Search" /></form>
             <h3>Kontak Kami</h3>
             <div class="social-links">
             <a href=""><i class="fab fa-whatsapp"></i></a>

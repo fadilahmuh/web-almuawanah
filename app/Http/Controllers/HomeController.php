@@ -113,27 +113,66 @@ class HomeController extends Controller
 
         $data->increment('visits', 1);
 
-        dd($tags);
+        // dd($tags);
     	return view('pages.blog_post', compact('data', 'posts','tags'));
     }
 
     public function posts_tag($tag){   
-        $tag = '%'.Str::lower($tag).'%';
+        $tag_edit = '%'.Str::lower($tag).'%';
 
-        $result = DB::table('posts')
-            ->where('tag', 'LIKE', $tag)
+        $posts = Posts::where('tag', 'LIKE', $tag_edit)
             ->where('is_published',1)
-            ->get();
+            ->orderByDesc('created_at')
+            ->paginate(5);
 
-        $posts= Posts::hydrate($result->toArray());
+        $tags = Tags::all();
 
-        dd($posts);
-    	return view('pages.blog_post', compact('posts'));
+        $most = Posts::all()
+        ->where('is_published', 1)
+        ->sortByDesc('visits')
+        ->take(3);
+
+        // dd($posts);
+    	return view('pages.blog_tag', compact('tag','posts','tags','most'));
+    }
+
+    public function posts_search(Request $request){   
+        $query = '%'.Str::lower($request->s).'%';
+
+        $searchquery = explode(' ', $request->s);
+
+        $posts = Posts::query();
+        foreach($searchquery as $word){
+            $posts->Where('slug', 'LIKE', '%'.$word.'%');
+        }
+        $posts->where('is_published', 1)->orderByDesc('created_at');
+        $posts = $posts->distinct()->paginate(5);
+
+        $tags = Tags::all();
+
+        $most = Posts::all()
+        ->where('is_published', 1)
+        ->sortByDesc('visits')
+        ->take(3);
+
+        // dd($posts);
+    	return view('pages.blog_search', compact('posts','tags','most'));
     }
 
     public function blog()
     {
-        return view('pages.blog');
+        $posts = Posts::where('is_published', 1)
+            ->orderByDesc('created_at')
+            ->paginate(3);
+
+        $tags = Tags::all();
+
+        $most = Posts::all()
+            ->where('is_published', 1)
+            ->sortByDesc('visits')
+            ->take(3);
+
+        return view('pages.blog', compact('posts','tags', 'most'));
     }
 
     public function kontak()

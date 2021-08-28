@@ -36,10 +36,10 @@
             <h2 class="section-title offset-lg-3">Cari</h2>
             <div class="col-lg-9 col-12 p-0">
               <div class="sidebar-box mb-3 p-3">
-                <form action="#" class="search-form">
+                <form action="{{ route('posts_search') }}" class="search-form">
                   <div class="form-group">
-                    <span class="fa fa-search"></span>
-                    <input type="text" class="form-control" placeholder="Type a keyword and hit enter">
+                    <span class="fa fa-search"></span>                  
+                      <input type="text" name="s" class="form-control" placeholder="Cari Postingan">
                   </div>
                 </form>
               </div>
@@ -48,7 +48,7 @@
             <div class="col-lg-9 col-12 p-0">
               <div class="card-body tagcloud">
                 @foreach ($tags as $t)
-                <a href="{{ route('posts_tag', [$t]) }}" class="tag-cloud-link">{{$t->nama}}</a>                  
+                <a href="{{ route('posts_tag', [$t->nama]) }}" class="tag-cloud-link">{{$t->nama}}</a>                  
                 @endforeach
               </div>
             </div>

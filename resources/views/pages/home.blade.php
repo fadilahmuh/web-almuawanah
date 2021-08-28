@@ -120,31 +120,40 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
 
 @isset($posts)
 <section class="both-margin">
-  <div class="container">
-    <div class="heading_container"  data-aos="fade-right">
-      <h3>Postingan</h3>          
-    </div>
-    <div class="row">
+  <div class="section">
+    <div class="container">
+      <div class="heading_container"  data-aos="fade-right">
+        <h3>Postingan</h3>          
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12 mb-5 mb-lg-0">
+          <div class="blog_left_sidebar">
 
-      @foreach ($posts as $key => $post)
-      <div class="col-lg-4 col-md-6 mb-4"  data-aos="zoom-in" data-aos-delay="{{++$key * 200}}">
-        <div class="post-entry-1 h-100">
-          <a href="{{ route('blog_post', [$post->slug]) }}">
-            <div class="card-blog-thumb" style="background-image: url({{asset('uploads/posts/'.Str::replace(' ', '%20', $post->thumbnail))}})"></div>            
-          </a>
-          <div class="post-entry-1-contents">            
-            <h2><a href="{{ route('blog_post', [$post->slug]) }}">{{$post->judul}}</a></h2>
-            <span class="meta d-inline-block"><i class="far fa-calendar"></i> {{ Carbon::parse($post->created_at)->isoFormat('LL') }}</span><br>
-            <span class="meta d-inline-block mb-3">@isset($post->tag)<i class="fas fa-tags"></i> @endisset  @foreach($post->tag as $t)<a href="{{ route('posts_tag', [$t]) }}" class="badge rounded-pill bg-light text-dark">{{ $t }}</a>@endforeach</span><br>
-            {{-- <p> 
-              {{  Str::limit(strip_tags(html_entity_decode($post->content, ENT_QUOTES, 'UTF-8')), 50, ' (...)') }} 
-            </p> --}}
+            @foreach ($posts as $key => $post)
+            <article class="blog_item" data-aos="fade-up">
+              <div class="blog_item_img">
+                  <img class="card-img rounded-0" src="{{asset('uploads/posts/'.Str::replace(' ', '%20', $post->thumbnail))}}" alt="">
+                  <div class="blog_item_date">
+                      <h3>{{ Carbon::parse($post->created_at)->isoFormat('D') }}</h3>
+                      <p>{{Str::limit(Carbon::parse($post->created_at)->monthName, 3,'')}}</p>
+                  </div>
+              </div>
+
+              <div class="blog_details">
+                  <a class="d-inline-block" href="{{ route('blog_post', [$post->slug]) }}">
+                      <h2>{{$post->judul}}</h2>
+                  </a>              
+                  <ul class="blog-info-link">
+                      <li>@isset($post->tag)<i class="fas fa-tags"></i> @endisset  @foreach($post->tag as $t)<a href="{{ route('posts_tag', [$t]) }}" class="badge rounded-pill bg-light text-dark">{{ $t }}</a>@endforeach</li>
+                  </ul>
+              </div>
+            </article>
+            @endforeach
+
           </div>
         </div>
-      </div>       
-      @endforeach
-
-    </div>      
+      </div>
+    </div>
   </div>
 </section>
 @endisset

@@ -5,7 +5,7 @@
   <div class="container half-banner-content">
     <div class="row align-items-center justify-content-center">
       <div class="col text-center align-middle align-self-center ftco-animate">
-        <h1>Blog</h1>
+        <h1>Tag: {{$tag}}</h1>
       </div>
     </div>
   </div>
@@ -20,7 +20,7 @@
         <div class="col-lg-8 col-12 mb-5 mb-lg-0">
           <div class="blog_left_sidebar">
 
-            @foreach ($posts as $key => $post)
+            @foreach ($posts as $post)
             <article class="blog_item" data-aos="fade-up">
               <div class="blog_item_img">
                   <img class="card-img rounded-0" src="{{asset('uploads/posts/'.Str::replace(' ', '%20', $post->thumbnail))}}" alt="">
