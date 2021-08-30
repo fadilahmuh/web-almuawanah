@@ -10,6 +10,10 @@
   const onscroll = (el, listener) => {
     el.addEventListener("scroll", listener);
   };
+  
+  if($(window).scrollTop()){
+    $("#header").addClass("header-scrolled");
+  };
 
   $(window).scroll(function () {
     if ($(window).scrollTop() >= 50) {

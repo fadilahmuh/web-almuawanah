@@ -16,9 +16,8 @@
     
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/components.css') }}"> --}}
 
-    <title>Yayasan Pondok Pesantren Al-Mu'awanah</title>
+    <title>@isset($title){{$title}} - @endisset Pondok Pesantren Al-Mu'awanah</title>
 </head>
 <body>
     <header id="header" class="fixed-top">
@@ -107,7 +106,8 @@
     <script src="{{ asset('js/scrollax.min.js') }}"></script>
     
     @yield('scriptlib')
-    
+
+    @yield('scriptpage')    
     
     <script src="{{ asset('js/new-main.js') }}"></script>
 </body>

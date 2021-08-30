@@ -35,6 +35,7 @@ Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('pendaf
 Route::get('/blog/{slug}', [HomeController::class, 'blog_post'])->name('blog_post');
 Route::get('/blog/tags/{tag}', [HomeController::class, 'posts_tag'])->name('posts_tag');
 Route::get('/search', [HomeController::class, 'posts_search'])->name('posts_search');
+Route::get('/wakaf/test', [HomeController::class, 'checkout_donasi'])->name('wakaf_bayar');
 
 // Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
