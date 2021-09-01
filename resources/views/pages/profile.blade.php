@@ -2,6 +2,8 @@
 
 @section('csslib')
 <link rel="stylesheet" href="{{ asset('assets/modules/summernote/summernote.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/owl.carousel.min.css') }}">
+<link rel="stylesheet" href="{{ asset('css/lightbox.css') }}">
 @endsection
 @section('maincontent')
 
@@ -61,8 +63,8 @@
     </div>
   </section>
 
-  <section class="both-margin">
-    <div class="heading_container pt-4">
+  <section class="both-margin" >
+    <div class="heading_container pt-4"  data-aos="fade-up">
       <h3>Profil Pendidikan</h3>
     </div>
     <div id="portfolio" class="our-portfolio section">
@@ -70,13 +72,93 @@
         <div class="row">
           <div class="col-lg-12">
             <div class="owl-carousel owl-portfolio">
+                           
+              <div class="item" data-aos="zoom-in">
+                <div class="thumb">
+                  <a href="{{asset('uploads/component/1.jpg')}}" data-lightbox="Brosur">
+                    <div class="img-fill" style="background-image: url({{asset('uploads/component/1.jpg')}})">
+                      <div class="overlay"></div>
+                    </div>
+                  </a>
+                  <div class="hover-effect">
+                    <div class="inner-content">
+                      <h4>RA</h4>
+                      <span>Raudatul Athfal</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+              <div class="item" data-aos="zoom-in">
+                <div class="thumb">
+                  <a href="{{asset('uploads/component/2.jpg')}}" data-lightbox="Brosur">
+                    <div class="img-fill" style="background-image: url({{asset('uploads/component/2.jpg')}})">
+                      <div class="overlay"></div>
+                    </div>
+                  </a>
+                  <div class="hover-effect">
+                    <div class="inner-content">
+                      <h4>TPA / TKA</h4>
+                      <span>Taman Al-Quran</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item" data-aos="zoom-in">
+                <div class="thumb">
+                  <a href="{{asset('uploads/component/3.jpg')}}" data-lightbox="Brosur">
+                    <div class="img-fill" style="background-image: url({{asset('uploads/component/3.jpg')}})">
+                      <div class="overlay"></div>
+                    </div>
+                  </a>
+                  <div class="hover-effect">
+                    <div class="inner-content">
+                      <h4>MTs</h4>
+                      <span>Madrasah Tsanawiyah</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item" data-aos="zoom-in">
+                <div class="thumb">
+                  <a href="{{asset('uploads/component/4.jpg')}}" data-lightbox="Brosur">
+                    <div class="img-fill" style="background-image: url({{asset('uploads/component/4.jpg')}})">
+                      <div class="overlay"></div>
+                    </div>
+                  </a>
+                  <div class="hover-effect">
+                    <div class="inner-content">
+                      <h4>MA</h4>
+                      <span>Madrasah Aliyah</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="item" data-aos="zoom-in">
+                <div class="thumb">
+                  <a href="{{asset('uploads/component/5.jpg')}}" data-lightbox="Brosur">
+                    <div class="img-fill" style="background-image: url({{asset('uploads/component/5.jpg')}})">
+                      <div class="overlay"></div>
+                    </div>
+                  </a>
+                  <div class="hover-effect">
+                    <div class="inner-content">
+                      <h4>PonPen</h4>
+                      <span>Pondok Pesantren</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+  
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </section>  
 @endsection
 
 

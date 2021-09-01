@@ -3,7 +3,11 @@
 namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\View;
 use Throwable;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -38,4 +42,20 @@ class Handler extends ExceptionHandler
             //
         });
     }
+
+    protected function registerErrorViewPaths()
+{
+    $paths = collect(config('view.paths'));
+
+    if (Auth::check() && Request::segment(1) == 'admin' ) {
+        View::replaceNamespace('errors', $paths->map(function ($path) {
+            return "{$path}/errors/admin";
+        })->push(__DIR__ . '/views')->all());
+    } else {
+        View::replaceNamespace('errors', $paths->map(function ($path) {
+            return "{$path}/errors";
+        })->push(__DIR__ . '/views')->all());
+    }
+}
+   
 }

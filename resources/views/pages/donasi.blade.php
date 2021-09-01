@@ -78,7 +78,7 @@
 
 @section("scriptlib")
 <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-xufXYfFkIgtRYWjU"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{env('MIDTRANS_CLIENT_KEY')}}"></script>
 @endsection
 
 @section('scriptpage')

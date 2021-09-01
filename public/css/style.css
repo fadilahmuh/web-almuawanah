@@ -33,7 +33,8 @@ a {
 
 .btn-gold {
     padding: 8px 20px;
-    margin-left: 30px;
+    margin-left: 15px;
+    margin-left: 15px;
     border-radius: 50px;
     color: #000;
     font-size: 14px;
@@ -2443,5 +2444,21 @@ form.donasi .dns-submit:hover {
 @media (min-width: 768px) {
     .blog_item_img .blog_item_date p {
         font-size: 18px;
+    }
+}
+
+@media (min-width: 768px) {
+    .blog_item_img .blog_item_date p {
+        font-size: 18px;
+    }
+}
+
+.error-section{
+    height: calc(100vh - 60.8px);
+}
+
+@media (min-width: 768px) {
+    .error-section{
+        height: calc(100vh - 50.8px);
     }
 }

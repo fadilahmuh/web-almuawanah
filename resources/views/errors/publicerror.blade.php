@@ -17,7 +17,7 @@
     <!-- Template CSS -->
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
-    <title>@isset($title){{$title}} - @endisset Yayasan Pondok Pesantren Al-Mu'awanah</title>
+    <title>@yield('title') - Yayasan Pondok Pesantren Al-Mu'awanah</title>
 </head>
 <body>
     <header id="header" class="fixed-top">
@@ -51,38 +51,22 @@
     </header>
     <!-- End Header -->
   
-    @yield('maincontent')
+    <section class="menu-wrap single-page-header d-flex error-section">
+      <div class="container half-banner-content">
+        <div class="row align-items-center justify-content-center">
+          <div class="col text-center align-middle align-self-center ftco-animate">
+            <h1 style="font-size: calc(9rem + 1.5vw);">@yield('code')</h1>
+            <h3>@yield('message')</h3>
+            <p class="pt-4">              
+              <a href="{{ route('home') }}" class="btn-gold">Kembali ke Home</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
 
-    <footer id="footer" class="up-margin">
-    <div class="container pt-4 d-md-flex">
-        <div class="row align-items-center">
-        <div class="col-md-4">
-            <h3>
-            Pondok Pesantren <br />
-            Al-Mu'awanah
-            </h3>
-            <p>Jl. Sukamaju No.RT 001/01, Cilame, Kec. Ngamprah, Kabupaten Bandung Barat, Jawa Barat 40552</p>
-        </div>
-        <div class="col-md-4 text-center">
-            <iframe
-            class="map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.294215786248!2d107.51695321360415!3d-6.855295166858096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e30c82b8ecbb%3A0x2c62fe5f652e1dd!2sPondok%20Pesantren%20Al-Muawanah!5e0!3m2!1sen!2sid!4v1626763539026!5m2!1sen!2sid"
-            allowfullscreen=""
-            loading="lazy"
-            ></iframe>
-        </div>
-        <div class="col-md-4 cari kanan">
-            <h3>Kontak Kami</h3>
-            <div class="social-links">
-            <a href=""><i class="fab fa-whatsapp"></i></a>
-            <a href=""><i class="fas fa-phone"></i></a>
-            <a href=""><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-        </div>
-    </div>
-
+    <footer id="footer" class="">
     <div class="container footer-bottom clearfix">
         <div class="copyright">&copy; Copyright 2021, Informatika Itenas '18</div>
     </div>

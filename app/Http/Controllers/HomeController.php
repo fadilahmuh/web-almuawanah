@@ -103,23 +103,30 @@ class HomeController extends Controller
     }
 
     public function blog_post($slug){        
-        $posts = Posts::all()
+        
+        $data = Posts::where('slug', $slug)
+            ->where('is_published',1)
+            ->first();  
+
+        if (isset($data)) {
+            $data->increment('visits', 1);
+
+            $tags = Tags::all();
+
+            $posts = Posts::all()
             ->where('is_published', 1)
             ->where('slug','!=' ,$slug)
             ->sortByDesc('visits')
             ->take(3);
 
-        $tags = Tags::all();
+            $title = $data->judul;
 
-    	$data = Posts::where('slug', $slug)
-            ->where('is_published',1)
-            ->first();  
+            return view('pages.blog_post', compact('title','data', 'posts','tags'));
+        } else {
+            abort(404);
+        }
 
-        $data->increment('visits', 1);
 
-        $title = $data->judul;
-
-        return view('pages.blog_post', compact('title','data', 'posts','tags'));
     }
 
     public function posts_tag($tag){   
@@ -207,7 +214,7 @@ class HomeController extends Controller
 
     public function checkout_donasi(Request $request)
     {
-        \Midtrans\Config::$serverKey = 'SB-Mid-server-kJrhzIgk1wswwZo0HkMYVWe2';
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
         // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
         // Set sanitization on (default)
