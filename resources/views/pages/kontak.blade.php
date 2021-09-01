@@ -13,7 +13,7 @@
     </div>
   </section>
 
-  <section class="ftco-section bg-light">
+  <section class="both-margin">
     <div class="container">
       <div class="row no-gutters justify-content-center">
         <div class="col-md-5 d-flex align-items-stretch p-0 card-kontak">
