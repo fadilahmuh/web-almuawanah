@@ -1909,16 +1909,18 @@ form.donasi .dns-submit {
     background: none;
     font-size: 16px;
     padding: 0 20px;
-    background: rgba(255, 215, 0, 0.7);
-    color: #fff;
     transition: 0.3s;
     border-radius: 50px;
     box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+    background: #ffd700;
+    color: black;
+    border-radius: 25px;
+    cursor: pointer;
     transition: all 0.5s;
 }
 
 form.donasi .dns-submit:hover {
-    background: rgba(255, 215, 0, 1);
+    background: rgba(255, 215, 0, 0.7);
     color: #000;
 }
 
@@ -2516,7 +2518,8 @@ form.donasi .dns-submit:hover {
 }
 
 /*buttons*/
-#msform .action-button {
+#msform .action-button,
+.cst-slick-next {
     width: 100px;
     background: #ffd700;
     font-weight: bold;
@@ -2530,11 +2533,14 @@ form.donasi .dns-submit:hover {
 }
 
 #msform .action-button:hover,
-#msform .action-button:focus {
+#msform .action-button:focus,
+.cst-slick-next:hover,
+.cst-slick-next:focus {
     background: #dfbd00;
 }
 
-#msform .action-button-previous {
+#msform .action-button-previous,
+.cst-slick-prev {
     width: 100px;
     background: #c5c5f1;
     font-weight: bold;
@@ -2548,8 +2554,10 @@ form.donasi .dns-submit:hover {
 }
 
 #msform .action-button-previous:hover,
-#msform .action-button-previous:focus {
-    background: #9B9BBE;
+#msform .action-button-previous:focus,
+.cst-slick-prev:hover,
+.cst-slick-prev:focus {
+    background: #9b9bbe;
 }
 
 /*headings*/
@@ -2571,6 +2579,8 @@ form.donasi .dns-submit:hover {
 
 /*progressbar*/
 #progressbar {
+    text-align: center;
+    position: relative;
     margin-bottom: 30px;
     overflow: hidden;
     /*CSS counters to number the steps*/
@@ -2579,7 +2589,7 @@ form.donasi .dns-submit:hover {
 
 #progressbar li {
     list-style-type: none;
-    color: white;
+    color: black;
     text-transform: uppercase;
     font-size: 9px;
     width: 33.33%;
@@ -2623,7 +2633,7 @@ form.donasi .dns-submit:hover {
 /*The number of the step and the connector before it = green*/
 #progressbar li.active:before,
 #progressbar li.active:after {
-    background: #2DB772;
+    background: #2db772;
     color: white;
 }
 
@@ -2647,4 +2657,14 @@ form.donasi .dns-submit:hover {
 .dme_link a:focus {
     background: #c5c5f1;
     text-decoration: none;
+}
+
+.slick-fs {
+    background: white;
+    border: 0 none;
+    border-radius: 0px;
+    /* box-shadow: 5px 4px 10px rgba(0, 0, 0, 0.1); */
+    padding: 20px 30px;
+    box-sizing: border-box;
+    /* margin: 0 10%; */
 }

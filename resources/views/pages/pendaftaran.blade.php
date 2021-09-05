@@ -1,5 +1,10 @@
 @extends('pages.appuser')
 
+@section('csslib')
+<link rel="stylesheet" href="{{ asset('css/slick.css') }}" />
+<link rel="stylesheet" href="{{ asset('css/slick-theme.css') }}" />
+@endsection
+
 @section('maincontent')
 <section class="menu-wrap single-page-header d-flex">
     <div class="container half-banner-content">
@@ -12,142 +17,135 @@
   </section>
 
   <section class="both-margin">
-      <div class="heading_container" data-aos="fade-right">
-        <h3>Formulir Pendaftaran</h3>          
-      </div>
-      <div class="container">
-      <!-- MultiStep Form -->
-      <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-8 col--12">
-            <form id="msform">
-                <!-- progressbar -->
-                <ul id="progressbar" data-aos="fade-up">
-                    <li class="active">Personal Details</li>
-                    <li>Social Profiles</li>
-                    <li>Account Setup</li>
-                </ul>
-                <!-- fieldsets -->
-                <fieldset data-aos="fade-up" data-aos-delay="200">
-                    <h2 class="fs-title">Personal Details</h2>
-                    <h3 class="fs-subtitle">Tell us something more about you</h3>
-                    <input type="text" name="fname" placeholder="First Name"/>
-                    <input type="text" name="lname" placeholder="Last Name"/>
-                    <input type="text" name="phone" placeholder="Phone"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                <fieldset>
-                    <h2 class="fs-title">Social Profiles</h2>
-                    <h3 class="fs-subtitle">Your presence on the social network</h3>
-                    <input type="text" name="twitter" placeholder="Twitter"/>
-                    <input type="text" name="facebook" placeholder="Facebook"/>
-                    <input type="text" name="gplus" placeholder="Google Plus"/>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                <fieldset>
-                  <h2 class="fs-title">Create your account</h2>
-                  <h3 class="fs-subtitle">Fill in your credentials</h3>
-                  <input type="text" name="email" placeholder="Email"/>
-                  <input type="password" name="pass" placeholder="Password"/>
-                  <input type="password" name="cpass" placeholder="Confirm Password"/>
-                  <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                  <input type="submit" name="submit" class="submit action-button" value="Submit"/>
-              </fieldset>
-            </form>
-            <!-- link to designify.me code snippets -->
-            
-            <!-- /.link to designify.me code snippets -->
+    <div class="heading_container" data-aos="fade-right">
+      <h3>Formulir Pendaftaran</h3>          
+    </div>
+    <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-8 col-12">
+        <ul class="d-flex justify-content-center" id="progressbar" data-aos="fade-up">
+          <li class="active">Data Calon Siswa</li>
+          <li>Data Orang Tua</li>
+        </ul>
+        <form>
+        <div id="slick-form">
+          <div class="form-page">
+            <fieldset class="slick-fs">
+              <h2 class="fs-title">Data Calon Santri/Siswa</h2>
+              <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" class="form-control" required="">
+                <div class="invalid-feedback">
+                  What's your name?
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Jenis Kelamin</label>
+                <select class="form-select" id="validationCustom04" required>
+                  <option selected disabled>-Pilih Satu-</option>
+                  <option>Laki-laki</option>
+                  <option>Perempuan</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid state.
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Tempat Lahir</label>
+                <input type="text" class="form-control">
+                <div class="valid-feedback">
+                  Good job!
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label>Tanggal Lahir</label>
+                <input type="date" class="form-control">
+                <div class="invalid-feedback">
+                  What do you wanna say?
+                </div>
+              </div>
+              <div class="form-group mb-2 text-center">                
+                <button type="button" class="cst-slick-next">Next</button>
+              </div>
+            </fieldset>
+          </div>
+          <div class="form-page">
+            <fieldset class="slick-fs">
+              <h2 class="fs-title">Data Orang Tua</h2>
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" class="form-control" required="">
+                <div class="invalid-feedback">
+                  What's your name?
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" class="form-control" required="">
+                <div class="invalid-feedback">
+                  Oh no! Email is invalid.
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Subject</label>
+                <input type="email" class="form-control">
+                <div class="valid-feedback">
+                  Good job!
+                </div>
+              </div>
+              <div class="form-group mb-4">
+                <label>Message</label>
+                <textarea class="form-control" required=""></textarea>
+                <div class="invalid-feedback">
+                  What do you wanna say?
+                </div>
+              </div>
+              <div class="form-group mb-2 text-center">                
+                <button type="button" class="cst-slick-prev">Back</button>
+                <button type="button" class="cst-slick-next">Submit</button>
+              </div>
+            </fieldset>
+          </div>          
         </div>
+      </form>
       </div>
-<!-- /.MultiStep Form -->
-      </div>
-  </section>
+    </div>
+    </div>
+</section>
+
+@endsection
+
+@section('scriptlib')
+<script src="{{ asset('js/slick.js') }}"></script>
 @endsection
 
 @section('scriptpage')
+<script src="{{ asset('js/pendaftaran.js') }}"></script>
 <script>
-  
-//jQuery time
-var current_fs, next_fs, previous_fs; //fieldsets
-var left, opacity, scale; //fieldset properties which we will animate
-var animating; //flag to prevent quick multi-click glitches
+  $("#slick-form").slick({
+    arrows: false,
+    infinite: false,
+    speed: 500,
+    // fade: true,
+    cssEase: 'ease-in-out',
+    slidesToShow: 1,  
+    touchMove: false,
+    swipe: false,
+    adaptiveHeight: true,
+  });
 
-$(".next").click(function(){
-	if(animating) return false;
-	animating = true;
-	
-	current_fs = $(this).parent();
-	next_fs = $(this).parent().next();
-	
-	//activate next step on progressbar using the index of next_fs
-	$("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-	
-	//show the next fieldset
-	next_fs.show(); 
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale current_fs down to 80%
-			scale = 1 - (1 - now) * 0.2;
-			//2. bring next_fs from the right(50%)
-			left = (now * 50)+"%";
-			//3. increase opacity of next_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({
-        'transform': 'scale('+scale+')',
-        'position': 'absolute'
-      });
-			next_fs.css({'left': left, 'opacity': opacity});
-		}, 
-		duration: 800, 
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-		}, 
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
-});
+  $('.cst-slick-next').click(function(event) {
+    $('#slick-form').slick('slickNext');    
+    pf = $(this).parent().parent().parent();
+    np = pf.index('.form-page')+1;
+    $("#progressbar li").eq(np).addClass("active");
+  });
 
-$(".previous").click(function(){
-	if(animating) return false;
-	animating = true;
-	
-	current_fs = $(this).parent();  
-	previous_fs = $(this).parent().prev();
-	
-	//de-activate current step on progressbar
-	$("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-	
-	//show the previous fieldset
-	previous_fs.show(); 
-	//hide the current fieldset with style
-	current_fs.animate({opacity: 0}, {
-		step: function(now, mx) {
-			//as the opacity of current_fs reduces to 0 - stored in "now"
-			//1. scale previous_fs from 80% to 100%
-			scale = 0.8 + (1 - now) * 0.2;
-			//2. take current_fs to the right(50%) - from 0%
-			left = ((1-now) * 50)+"%";
-			//3. increase opacity of previous_fs to 1 as it moves in
-			opacity = 1 - now;
-			current_fs.css({'left': left});
-			previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-		}, 
-		duration: 800, 
-		complete: function(){
-			current_fs.hide();
-			animating = false;
-      previous_fs.css({'position': 'relative'});
-		},     
-		//this comes from the custom easing plugin
-		easing: 'easeInOutBack'
-	});
-});
-
-$(".submit").click(function(){
-	return false;
-})
+  $('.cst-slick-prev').click(function(event) {
+    $('#slick-form').slick('slickPrev');    
+    pf = $(this).parent().parent().parent();
+    np = pf.index('.form-page');
+    $("#progressbar li").eq(np).removeClass("active");
+  });
 </script>
 @endsection

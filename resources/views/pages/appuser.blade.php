@@ -55,36 +55,37 @@
 
 
     <footer id="footer" class="up-margin">
-    <div class="container pt-4 d-md-flex">
-        <div class="row align-items-center">
-        <div class="col-md-4">
+      <div class="container pt-4">
+        <div class="row d-flex align-items-center">
+          <div class="col-md-4 col-12 ">
             <h3>
-            Pondok Pesantren <br />
-            Al-Mu'awanah
+              Pondok Pesantren <br>
+              Al-Mu'awanah
             </h3>
+            <br>
             <p>Jl. Sukamaju No.RT 001/01, Cilame, Kec. Ngamprah, Kabupaten Bandung Barat, Jawa Barat 40552</p>
-        </div>
-        <div class="col-md-4 text-center">
+          </div>
+          <div class="col-md-4 col-12">
             <iframe
             class="map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.294215786248!2d107.51695321360415!3d-6.855295166858096!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e30c82b8ecbb%3A0x2c62fe5f652e1dd!2sPondok%20Pesantren%20Al-Muawanah!5e0!3m2!1sen!2sid!4v1626763539026!5m2!1sen!2sid"
             allowfullscreen=""
             loading="lazy"
             ></iframe>
-        </div>
-        <div class="col-md-4 cari kanan">
+          </div>
+          <div class="col-md-4 col-12 kanan">
             <h3>Kontak Kami</h3>
             <div class="social-links">
             <a href=""><i class="fab fa-whatsapp"></i></a>
             <a href=""><i class="fas fa-phone"></i></a>
             <a href=""><i class="fas fa-envelope"></i></a>
             </div>
+          </div>
         </div>
-        </div>
-    </div>
+      </div>
 
     <div class="container footer-bottom clearfix">
-        <div class="copyright">&copy; Copyright 2021, Informatika Itenas '18</div>
+        <div class="copyright">&copy; Copyright 2021</div>
     </div>
     </footer>
     <!-- loader -->
@@ -97,15 +98,15 @@
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/jquery-migrate-3.0.1.min.js') }}"></script>
-    {{-- <script src="{{ asset('js/popper.min.js') }}"></script> --}}
     <script src="{{ asset('assets/modules/popper.min.js') }}"></script>
-    {{-- <script src="{{ asset('js/bootstrap.js') }}"></script> --}}
     <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('js/jquery.easing.1.3.js') }}"></script>
     <script src="{{ asset('js/jquery.stellar.min.js') }}"></script>
     <script src="{{ asset('js/aos.js') }}"></script>
-    {{-- <script src="{{ asset('js/jquery.marquee.min.js') }}"></script> --}}
     <script src="{{ asset('js/scrollax.min.js') }}"></script>
+    {{-- <script src="{{ asset('js/jquery.marquee.min.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/bootstrap.js') }}"></script> --}}
+    {{-- <script src="{{ asset('js/popper.min.js') }}"></script> --}}
     
     @yield('scriptlib')
 
