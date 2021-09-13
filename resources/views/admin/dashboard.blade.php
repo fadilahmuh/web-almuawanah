@@ -30,8 +30,7 @@
               Akun anda belum aktif, hubungi Admin untuk aktivasi akses!
             </div>
           </div>
-          @endunlessrole
-
+          @endunlessrole          
         </div>
       </div>            
     </div>

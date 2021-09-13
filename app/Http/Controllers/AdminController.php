@@ -26,6 +26,10 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
+    public function select_admin(){
+        return view('auth.select');
+    }
+
     /**
      * Show the application dashboard.
      *

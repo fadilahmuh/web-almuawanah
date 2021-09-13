@@ -78,7 +78,13 @@
             <div class="social-links">
             <a href=""><i class="fab fa-whatsapp"></i></a>
             <a href=""><i class="fas fa-phone"></i></a>
-            <a href=""><i class="fas fa-envelope"></i></a>
+            <a href=""><i class="fas fa-envelope"></i></a>            
+            </div>
+            <br>
+            <h3>Link</h3>
+            <div>
+            <a href="">Download</a>
+            <a href="http://localhost:8080/moodle/">e-learning</a>
             </div>
           </div>
         </div>

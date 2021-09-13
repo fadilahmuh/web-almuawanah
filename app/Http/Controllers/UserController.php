@@ -194,4 +194,5 @@ class UserController extends Controller
         //     return ('Hello World');  
         // }
     }
+
 }

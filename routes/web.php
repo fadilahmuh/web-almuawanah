@@ -19,14 +19,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/welcome', function () {
-    return view('welcome');
-});
-
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/profile', [HomeController::class, 'profile'])->name('userprofile');
-Route::get('/progam-pendidikan', [HomeController::class, 'program'])->name('pogram-pendidikan');
+Route::get('/program-pendidikan', [HomeController::class, 'program'])->name('pogram-pendidikan');
 Route::get('/galeri', [HomeController::class, 'galeri'])->name('usergaleri');
 Route::get('/blog', [HomeController::class, 'blog'])->name('userblog');
 Route::get('/kontak', [HomeController::class, 'kontak'])->name('userkontak');
@@ -53,6 +48,8 @@ Route::middleware('role:superadmin')->prefix('admin')->group(function(){
         'index' => 'userdata',
     ]);
 });
+
+Route::middleware('auth')->get('admin-select', [AdminController::class, 'select_admin']);
 
 Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
     Route::get('/banner', [AdminController::class, 'banner'])->name('banner');

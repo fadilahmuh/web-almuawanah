@@ -80,7 +80,7 @@ class BlogController extends Controller
             Posts::create([
                 'judul' => $request->judul,
                 'slug' => $request->slug,
-                'content' => $request->content,
+                'content' => Str::replace("'", '&#39;', $request->content),
                 'tag' => $tags,
                 'is_published' => $request->is_published,
                 'users_id' => Auth::user()->id,
@@ -166,7 +166,7 @@ class BlogController extends Controller
             $old_post->update([
                 'judul' => $request->judul,
                 'slug' => $request->slug,
-                'content' => $request->content,
+                'content' => Str::replace("'", '&#39;', $request->content),
                 'tag' => $tags,
                 'is_published' => $request->is_published,
                 'users_id' => Auth::user()->id,
