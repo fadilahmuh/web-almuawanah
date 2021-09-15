@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Files;
 use App\Models\Posts;
 use App\Models\Tags;
 use Carbon\Carbon;
@@ -246,5 +247,11 @@ class HomeController extends Controller
     public function pendaftaran()
     {
         return view('pages.pendaftaran');
+    }
+
+    public function download()
+    {
+        $files = Files::all()->where('is_published', 1);
+        return view('pages.download',compact('files'));
     }
 }

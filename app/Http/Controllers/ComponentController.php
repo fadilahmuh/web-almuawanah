@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Component;
+use App\Models\Files;
+use Facade\FlareClient\Stacktrace\File;
+use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 
@@ -589,5 +592,106 @@ class ComponentController extends Controller
 
         return redirect()->back()->with('success','YouTube ID berhasil diubah!!');
         
+    }
+
+    public function add_file(Request $request)
+    {
+        $rules = array(
+            'divisi' => 'required',
+            'nama' => 'required',
+            'file' => 'required|mimes:doc,docx,ppt,pptx,pdf,png,rar,zip|max:20480',
+            'is_published' => 'required',
+        );    
+        $messages = array(
+            'file.required' => 'Tidak ada file untuk di upload, gagal menambahkan file !!',
+            'file.mimes' => 'Format file tidak didukung !! Format yang didukung doc,docx,ppt,pptx,pdf,png,rar,zip.',
+            'file.max' => 'File terlalu besar (max 20MB) !!',
+            'is_published' => 'Status publikasi kosong, Pilih status publikasi!!',
+            'nama.required' => 'Nama file tidak boleh kosong !!',
+        );
+
+        $request->all();
+        $validator = Validator::make($request->all(), $rules, $messages); 
+        $file = $request->file;
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        } else {
+            Files::create([
+                'divisi' => $request->divisi,
+                'is_published' => $request->is_published,
+                'nama' => $request->nama,
+                'file' =>$file->getClientOriginalName()
+            ]);
+            $file->move('uploads/file/',$file->getClientOriginalName());
+
+            return redirect()->back()->with('success','File berhasil ditambahkan.');
+        }
+    }
+
+    public function edit_file(Request $request)
+    {
+        if ($request->ajax()) {
+            $file = Files::findorfail($request->id);
+
+            $modal = view('admin.modal.editfile', compact('file'))->render();
+            
+            return response()->json([
+                'modal' =>  $modal
+            ]);           
+        }
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update_file(Request $request, $id)
+    {        
+        $old_file = Files::findorfail($id);
+
+        $rules = array(
+            'divisi' => 'required',
+            'nama' => 'required',
+            'file' => 'mimes:doc,docx,ppt,pptx,pdf,png,rar,zip|max:20480'
+        );    
+        $messages = array(
+            'file.mimes' => 'Format file tidak didukung !! Format yang didukung doc,docx,ppt,pptx,pdf,png,rar,zip.',
+            'file.max' => 'File terlalu besar (max 20MB) !!',
+        );  
+
+        $request->all();
+        $validator = Validator::make($request->all(), $rules, $messages); 
+        $file = $request->file;
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        } else {
+            $old_file->update([
+                'nama' => $request->nama,
+                'is_published' => $request->is_published,
+                'file' => $request->hasFile('file') ? $file->getClientOriginalName(): $old_file->file
+            ]);
+            
+            $request->hasFile('file') ? $file->move('uploads/file/', $file->getClientOriginalName()): '';            
+
+            return redirect()->back()->with('success','File berhasil diubah!!');
+        }
+    
+    }
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_file($id)
+    {
+        Files::findorfail($id)->delete();
+
+        return redirect()->back()->with('success','File Berhasil Dihapus');
     }
 }

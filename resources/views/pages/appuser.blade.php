@@ -82,9 +82,13 @@
             </div>
             <br>
             <h3>Link</h3>
+            <ul class="link-group">
+              <li><a href="{{ route('download') }}">Download</a></li>
+              <li><a href="http://localhost:8080/moodle/">e-learning</a></li>
+            </ul>
             <div>
-            <a href="">Download</a>
-            <a href="http://localhost:8080/moodle/">e-learning</a>
+            
+            
             </div>
           </div>
         </div>

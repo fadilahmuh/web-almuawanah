@@ -86,7 +86,10 @@
                   <li @if(url()->current()==route('galeri')) class="active" @endif><a class="nav-link" href="{{ route('galeri') }}"><i class="fas fa-images"></i> <span>Galeri</span></a></li>
                   <li @if(Str::contains(url()->current(), route('blog')) ) class="active" @endif><a class="nav-link" href="{{ route('blog') }}"><i class="fas fa-bookmark"></i> <span>Blog</span></a></li>
                   <li @if(url()->current()==route('kontak')) class="active" @endif><a class="nav-link" href="{{ route('kontak') }}"><i class="fas fa-phone"></i> <span>Kontak</span></a></li>
-                  <li @if(url()->current()==route('credits')) class="active" @endif><a class="nav-link" href="{{ route('credits') }}"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li>
+                  {{-- <li @if(url()->current()==route('credits')) class="active" @endif><a class="nav-link" href="{{ route('credits') }}"><i class="fas fa-pencil-ruler"></i> <span>Credits</span></a></li> --}}
+
+                  <li class="menu-header">Lain-lain</li>
+                  <li @if(url()->current()==route('filemanager')) class="active" @endif><a class="nav-link" href="{{ route('filemanager') }}"><i class="fas fa-folder-open"></i> <span>File</span></a></li>
                   @endhasrole
                 </ul>
                 <!-- IDK -->

@@ -61,7 +61,16 @@ $("#table-blog").dataTable({
     "order": [[ 3, "desc" ]]
 });
 
-var table = $('#table-blog').DataTable();
+$("#table-file").dataTable({
+    language: {
+        searchPanes: {
+            emptyPanes: "There are no panes to display. :/",
+        },
+    },
+    "order": [[ 1, "desc" ]]
+});
+
+var table = $('.table').DataTable();
 $(document).on("click", ".badge", function(e) {
     e.preventDefault();
     var search = $(this).text();

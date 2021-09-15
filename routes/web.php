@@ -31,6 +31,7 @@ Route::get('/blog/{slug}', [HomeController::class, 'blog_post'])->name('blog_pos
 Route::get('/blog/tags/{tag}', [HomeController::class, 'posts_tag'])->name('posts_tag');
 Route::get('/search', [HomeController::class, 'posts_search'])->name('posts_search');
 Route::get('/wakaf/test', [HomeController::class, 'checkout_donasi'])->name('wakaf_bayar');
+Route::get('/download', [HomeController::class, 'download'])->name('download');
 
 // Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
 
@@ -58,9 +59,9 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::get('/brosur', [AdminController::class, 'brosur'])->name('brosur');
     Route::get('/profile', [AdminController::class, 'profile'])->name('profile');
     Route::get('/galeri', [AdminController::class, 'galeri'])->name('galeri');
-    // Route::get('/blog', [AdminController::class, 'blog'])->name('blog');
     Route::get('/kontak', [AdminController::class, 'kontak'])->name('kontak');
     Route::get('/credits', [AdminController::class, 'credits'])->name('credits');
+    Route::get('/file', [AdminController::class, 'file'])->name('filemanager');
     // Blog Route
     Route::resource('blog', BlogController::class)->names([
         'index' => 'blog',
@@ -108,6 +109,13 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::get('/akun',[AdminController::class, 'edit_user'])->name('editUser');
     Route::get('/akun/validate',[AdminController::class, 'pass_validate'])->name('validatepass');
     Route::put('/akun/{id}',[AdminController::class, 'update_akun'])->name('akunupdate');
+
+    Route::prefix('file')->group(function(){
+        Route::post('/add_file',[ComponentController::class, 'add_file'])->name('newfile');
+        Route::put('/update_file/{id}',[ComponentController::class, 'update_file'])->name('editfile');
+        Route::get('/get_file',[ComponentController::class, 'edit_file'])->name('getfile');
+        Route::delete('/del_file/{id}',[ComponentController::class, 'delete_file'])->name('delfile');
+    });
 });
 
 

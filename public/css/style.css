@@ -2668,3 +2668,18 @@ form.donasi .dns-submit:hover {
     box-sizing: border-box;
     /* margin: 0 10%; */
 }
+
+.link-group {
+    list-style: none;
+    color: white;
+    text-decoration: none;
+}
+
+.link-group a{
+    color: white;
+    text-decoration: none;
+}
+
+.link-group a:hover{
+    color: #dfbd00;
+}

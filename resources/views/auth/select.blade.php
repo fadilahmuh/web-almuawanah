@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
@@ -20,7 +20,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'UA-94034622-3');
 </script>
 <!-- /END GA --></head>
@@ -34,12 +33,11 @@
             <div class="login-brand">
               {{-- <img src="assets/img/logo.png" alt="logo" width="100" class=""> --}}
             </div>
-
             <div class="card card-primary">
               <div class="card-header"><h4>Pilih Halaman Admin</h4></div>
               <div class="card-body">
                 @hasrole('admin_yys')
-                <a href="">
+                <a href="http://mts.almuawanah.test/admin">
                   <div class="card card-secondary">
                     <div class="card-header">
                       <img src="{{ asset('assets/img/logo.png') }}" alt="logo" width="50" class="mr-4">

@@ -26,8 +26,9 @@ class AdminController extends Controller
         $this->middleware('auth');
     }
 
-    public function select_admin(){
-        return view('auth.select');
+    public function select_admin(Request $request){
+        // return view('auth.select');
+        dd(Auth::user());
     }
 
     /**
@@ -183,5 +184,11 @@ class AdminController extends Controller
 
             return redirect()->route('editUser')->with('success','Akun berhasil di update!');
         }
+    }
+
+    public function file()
+    {                
+        $files = DB::table('files')->where('divisi', session('divisi'))->get();
+        return view('admin.filemanage',compact('files'));
     }
 }
