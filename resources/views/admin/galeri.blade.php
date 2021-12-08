@@ -66,10 +66,10 @@
                       <tr>
                         <td class="align-middle">{{++$key}}</td>
                         <td class="align-middle">{{ $g->judul }}</td>
-                        <td class="align-middle">{{ $g->content }}</td>
+                        <td class="align-middle">{{ $g->caption }}</td>
                         <td class="align-middle">
                           <div class="gallery">
-                            <div class="gallery-item" data-image="{{ asset('uploads/component/'.$g->attachment) }}" data-title="{{ $g->judul }}" href="{{asset('uploads/component/'.Str::replace(' ', '%20', $g->attachment))}}" title="{{ $g->judul }}" style="background-image: url({{asset('uploads/component/'.Str::replace(' ', '%20', $g->attachment))}});"></div>                  
+                            <div class="gallery-item" data-image="{{ asset('uploads/galeri/'.$g->attachment) }}" data-title="{{ $g->judul }}" href="{{asset('uploads/galeri/'.Str::replace(' ', '%20', $g->attachment))}}" title="{{ $g->judul }}" style="background-image: url({{asset('uploads/galeri/'.Str::replace(' ', '%20', $g->attachment))}});"></div>                  
                           </div>                          
                         </td>
                         <td class="align-middle">

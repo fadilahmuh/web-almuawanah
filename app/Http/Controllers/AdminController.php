@@ -107,9 +107,8 @@ class AdminController extends Controller
 
     public function galeri()
     {
-        $this->galeri = DB::table('components')
-            ->where('divisi', session('divisi'))
-            ->where('bagian', 'galeri')->get();
+        $this->galeri = DB::table('galeri')
+            ->where('divisi', session('divisi'))->get();
         
         $yt = DB::table('components')
             ->where('divisi', session('divisi'))

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Component;
 use App\Models\Files;
+use App\Models\Galeri;
 use Facade\FlareClient\Stacktrace\File;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Validator;
@@ -484,7 +485,6 @@ class ComponentController extends Controller
         // dd($request->thumbnail->getClientOriginalName());
         $rules = array(
             'divisi' => 'required',
-            'bagian' => 'required',
             'attachment' => 'required|mimes:jpg,png'
         );    
         $messages = array(
@@ -498,14 +498,13 @@ class ComponentController extends Controller
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
         } else {
-            Component::create([
+            Galeri::create([
                 'divisi' => $request->divisi,
-                'bagian' => $request->bagian,
                 'judul' => $request->judul,
-                'content' => $request->content,
+                'caption' => $request->content,
                 'attachment' => $gambar->getClientOriginalName()
             ]);
-            $gambar->move('uploads/component/', $gambar->getClientOriginalName());
+            $gambar->move('uploads/galeri/', $gambar->getClientOriginalName());
 
             return redirect()->back()->with('success','Foto berhasil ditambahkan ke galeri.');
         }
@@ -514,7 +513,7 @@ class ComponentController extends Controller
     public function edit_galeri(Request $request)
     {
         if ($request->ajax()) {
-            $foto = Component::findorfail($request->id);
+            $foto = Galeri::findorfail($request->id);
 
             $modal = view('admin.modal.editgaleri', compact('foto'))->render();
             
@@ -535,11 +534,10 @@ class ComponentController extends Controller
     {
         // dd($request->all());
         
-        $old_galeri = Component::findorfail($id);
+        $old_galeri = Galeri::findorfail($id);
 
         $rules = array(
             'divisi' => 'required',
-            'bagian' => 'required',
             'attachment' => 'mimes:jpg,png'
         );    
 
@@ -558,7 +556,7 @@ class ComponentController extends Controller
                 'attachment' => $request->hasFile('attachment') ? $gambar->getClientOriginalName(): $old_galeri->attachment
             ]);
             
-            $request->hasFile('attachment') ? $gambar->move('uploads/component/', $gambar->getClientOriginalName()): '';            
+            $request->hasFile('attachment') ? $gambar->move('uploads/galeri/', $gambar->getClientOriginalName()): '';            
 
             return redirect()->back()->with('success','Foto Galeri berhasil diubah!!');
         }
@@ -572,7 +570,7 @@ class ComponentController extends Controller
      */
     public function delete_galeri($id)
     {
-        Component::findorfail($id)->delete();
+        Galeri::findorfail($id)->delete();
 
         return redirect()->back()->with('success','Foto Galeri Berhasil Dihapus');
     }

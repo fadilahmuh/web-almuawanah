@@ -22,13 +22,13 @@
       <!-- Deskripsi -->
       <div class="form-group">
         <label>Deskripsi</label>
-        <textarea name="content" class="form-control" name="content" rows="3" placeholder="(Opsional)">{{$foto->content}}</textarea>
+        <textarea name="content" class="form-control" name="content" rows="3" placeholder="(Opsional)">{{$foto->caption}}</textarea>
       </div>
       <!-- Gambar -->
       <div class="form-group">
         <label>Foto/Gambar</label>
         <div class="col-sm-12 col-md-auto">
-            <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" data-default-file="{{asset('uploads/component/'.Str::replace(' ', '%20', $foto->attachment))}}"/>
+            <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" data-default-file="{{asset('uploads/galeri/'.Str::replace(' ', '%20', $foto->attachment))}}"/>
         </div>
       </div>              
     </div>

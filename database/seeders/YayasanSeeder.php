@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Component;
+use App\Models\Galeri;
 use Illuminate\Database\Seeder;
 
 class YayasanSeeder extends Seeder
@@ -88,48 +89,89 @@ class YayasanSeeder extends Seeder
         ]);
 
         // Default Galeri
-        Component::create([
+        // Component::create([
+        //     'divisi' => 'Yayasan',
+        //     'bagian' => 'galeri',
+        //     'judul' => 'Default 1',
+        //     'attachment' => 'default_pict2.jpg',
+        // ]);
+
+        // Component::create([
+        //     'divisi' => 'Yayasan',
+        //     'bagian' => 'galeri',
+        //     'judul' => 'Default 1',
+        //     'attachment' => 'default_pict2.jpg',
+        // ]);
+
+        // Component::create([
+        //     'divisi' => 'Yayasan',
+        //     'bagian' => 'galeri',
+        //     'judul' => 'Default 1',
+        //     'attachment' => 'default_pict2.jpg',
+        // ]);
+
+        // Component::create([
+        //     'divisi' => 'Yayasan',
+        //     'bagian' => 'galeri',
+        //     'judul' => 'Default 1',
+        //     'attachment' => 'default_pict2.jpg',
+        // ]);
+
+        // Component::create([
+        //     'divisi' => 'Yayasan',
+        //     'bagian' => 'galeri',
+        //     'judul' => 'Default 1',
+        //     'attachment' => 'default_pict2.jpg',
+        // ]);
+
+        // Component::create([
+        //     'divisi' => 'Yayasan',
+        //     'bagian' => 'galeri',
+        //     'judul' => 'Default 1',
+        //     'attachment' => 'default_pict2.jpg',
+        // ]);
+        Galeri::create([
             'divisi' => 'Yayasan',
-            'bagian' => 'galeri',
             'judul' => 'Default 1',
+            'cation' => 'Beri Deskripsi',
             'attachment' => 'default_pict2.jpg',
         ]);
 
-        Component::create([
+        Galeri::create([
             'divisi' => 'Yayasan',
-            'bagian' => 'galeri',
             'judul' => 'Default 1',
+            'cation' => 'Beri Deskripsi',
             'attachment' => 'default_pict2.jpg',
         ]);
 
-        Component::create([
+        Galeri::create([
             'divisi' => 'Yayasan',
-            'bagian' => 'galeri',
             'judul' => 'Default 1',
+            'cation' => 'Beri Deskripsi',
             'attachment' => 'default_pict2.jpg',
         ]);
 
-        Component::create([
+        Galeri::create([
             'divisi' => 'Yayasan',
-            'bagian' => 'galeri',
             'judul' => 'Default 1',
+            'cation' => 'Beri Deskripsi',
             'attachment' => 'default_pict2.jpg',
         ]);
 
-        Component::create([
+        Galeri::create([
             'divisi' => 'Yayasan',
-            'bagian' => 'galeri',
             'judul' => 'Default 1',
+            'cation' => 'Beri Deskripsi',
             'attachment' => 'default_pict2.jpg',
         ]);
 
-        Component::create([
+        Galeri::create([
             'divisi' => 'Yayasan',
-            'bagian' => 'galeri',
             'judul' => 'Default 1',
+            'cation' => 'Beri Deskripsi',
             'attachment' => 'default_pict2.jpg',
         ]);
-
+        
         Component::create([
             'divisi' => 'Yayasan',
             'bagian' => 'youtube',

@@ -25,8 +25,8 @@
           <div id="owl-donasi" class="owl-carousel">
             <div class="donasi-item" style="background-image: url(images/bg_1.jpg);">
               <div class="overlay d-flex align-items-center justify-content-center">
-                <h3>Dana Terkumpul</h3>
-                <p>Rp. 500.000</p>
+                <h3>Kekalkan Kebaikan Anda</h3>
+                <p>#semuabisawakaf</p>
               </div>
             </div>
             <div class="donasi-item" style="background-image: url(images/bg_2.jpg);">

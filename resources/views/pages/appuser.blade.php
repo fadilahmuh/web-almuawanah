@@ -42,7 +42,7 @@
               <li><a class="nav-link " href="{{ route('userblog') }}">Blog</a></li>
               <li><a class="nav-link " href="{{ route('userkontak') }}">Kontak</a></li>
               <li><a class="nav-link " href="{{ route('wakaf') }}">Wakaf</a></li>
-              <li><a class="getstarted" href="{{ route('pendaftaran') }}">Pendaftaran</a></li>
+              {{-- <li><a class="getstarted" href="{{ route('pendaftaran') }}">Pendaftaran</a></li> --}}
             </ul>
             <i class="fas fa-bars mobile-nav-toggle"></i>
           </nav>

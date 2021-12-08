@@ -90,9 +90,9 @@ class HomeController extends Controller
     public function galeri()
     {
 
-    $foto = DB::table('components')
+    $foto = DB::table('galeri')
         ->where('divisi', 'yayasan')
-        ->where('bagian', 'galeri')->get();
+        ->get();
 
     $yt = DB::table('components')
         ->where('divisi', 'yayasan')
@@ -226,7 +226,7 @@ class HomeController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => rand(),
-                'gross_amount' => $request->data['nominal'],
+                'gross_amount' => $request->data['nominal']+5000,
                 'name' => "Wakaf"
             ),
             'customer_details' => array(
@@ -237,7 +237,7 @@ class HomeController extends Controller
         );
         
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-
+        
         return response()->json([
             'token' => $snapToken,
         ]);
