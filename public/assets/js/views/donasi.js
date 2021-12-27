@@ -12,7 +12,19 @@ $(document).on("click", ".bayar", function (e) {
         },
         dataType: "json",
         success: function (response) {
-            snap.pay(response.token);
+            snap.pay(response.token),{
+                onSuccess: function(result){
+                    alert('simpan data')
+                },
+                // Optional
+                onPending: function(result){
+                    /* You may add your own js here, this is just example */ document.getElementById('result-json').innerHTML += JSON.stringify(result, null, 2);
+                },
+                // Optional
+                onError: function(result){
+                    alert('transaksi gagal')
+                }
+            }            
         },
         error: function (xhr, ajaxOptions, thrownError) {
             console.log(

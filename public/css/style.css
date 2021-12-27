@@ -1851,6 +1851,12 @@ a {
     width: calc(100% - 50px);
 }
 
+@media screen and (min-width: 992px) {
+    .card-kontak {
+        min-height: 350px;
+    }
+}
+
 .card-kontak {
     box-shadow: 0 4px 20px -8px rgb(0 0 0 / 30%);
 }

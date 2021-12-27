@@ -16,25 +16,27 @@
   <section class="both-margin">
     <div class="container">
       <div class="row no-gutters justify-content-center">
+        @if(!$kontak->isEmpty())
         <div class="col-md-5 d-flex align-items-stretch p-0 card-kontak">
           <div class="info-wrap w-100 p-lg-5 p-4">
             <h3 class="mb-4 mt-md-4">Kontak Kami</h3>
 
+
             @foreach ($kontak as $k)
               
             @if ($k->judul == 'Whatsapp')
-            <div class="dbox w-100 d-flex align-items-center align-middle">
+            <div class="dbox w-100 d-flex align-items-center align-middle @if($loop->last) mb-md-4 @endif">
               <div class="icon d-flex align-items-center justify-content-center">
               <span class="fab fa-whatsapp"></span>
               </div>
               <div class="text ps-3">
                 <p>
-                  <span>Whatsapp @if (!empty($k->desc1)) ({{$k->desc1}})@endif: </span> <a href="https://wa.me/{{ Str::replaceFirst('0', '62', $k->content)}}">{{$k->content}}</a>
+                  <span>Whatsapp @if (!empty($k->desc1)) ({{$k->desc1}})@endif: </span> <a target="_blank" href="https://wa.me/{{ Str::replaceFirst('0', '62', $k->content)}}">{{$k->content}}</a>
                 </p>
               </div>
             </div>
             @elseif ($k->judul == 'Telepon')
-            <div class="dbox w-100 d-flex align-items-center align-middle">
+            <div class="dbox w-100 d-flex align-items-center align-middle @if($loop->last) mb-md-4 @endif">
               <div class="icon d-flex align-items-center justify-content-center">
               <span class="fas fa-phone"></span>
               </div>
@@ -45,7 +47,7 @@
               </div>
             </div>
             @elseif ($k->judul == 'Email')
-            <div class="dbox w-100 d-flex align-items-center align-middle">
+            <div class="dbox w-100 d-flex align-items-center align-middle @if($loop->last) mb-md-4 @endif">
               <div class="icon d-flex align-items-center justify-content-center">
               <span class="far fa-envelope"></span>
               </div>
@@ -56,7 +58,7 @@
               </div>
             </div>
             @elseif ($k->judul == 'Alamat')
-            <div class="dbox w-100 d-flex align-items-center align-middle">
+            <div class="dbox w-100 d-flex align-items-center align-middle @if($loop->last) mb-md-4 @endif">
               <div class="icon d-flex align-items-center justify-content-center">
               <span class="fas fa-map-marker-alt"></span>
               </div>
@@ -72,6 +74,7 @@
           
           </div>
         </div>
+        @endif
         <div class="col-md-7 bg-white p-0 card-kontak">
           <iframe 
             class="map-kontak"

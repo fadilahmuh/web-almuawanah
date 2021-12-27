@@ -43,21 +43,21 @@
                 <!-- Banner Form -->
                 <!-- Title -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                   <div class="col-sm-12 col-md-7">
                     <input type="text" name="judul" class="form-control" disabled value="{{$banner->judul}}">
                   </div>
                 </div>
                 <!-- Text Area -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Konten</label>
                   <div class="col-sm-12 col-md-7">
                     <textarea class="form-control" name="content" rows="3" disabled>{{$banner->content}}</textarea>
                   </div>
                 </div>
                 <!-- Thumbnail -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cover</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
                   <div class="col-sm-12 col-md-7">
                       <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" disabled="disabled" data-default-file="{{asset('uploads/component/'.Str::replace(' ', '%20', $banner->attachment))}}"/>
                   </div>
@@ -99,21 +99,21 @@
                 <!-- Banner Form -->
                 <!-- Title -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Judul</label>
                   <div class="col-sm-12 col-md-7">
                     <input type="text" name="judul" class="form-control">
                   </div>
                 </div>
                 <!-- Text Area -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Content</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Konten</label>
                   <div class="col-sm-12 col-md-7">
                     <textarea class="form-control" name="content" id="exampleFormControlTextarea1" rows="3"></textarea>
                   </div>
                 </div>
                 <!-- Thumbnail -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Cover</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Gambar</label>
                   <div class="col-sm-12 col-md-7">
                       <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300"  />
                       <ul>

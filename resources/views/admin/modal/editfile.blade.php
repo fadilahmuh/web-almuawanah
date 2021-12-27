@@ -21,7 +21,7 @@
       <div class="form-group">
         <label>File</label>
         <div class="col-sm-12 col-md-auto">
-            <input type="file" name="attachment" class="dropify" data-show-remove="false" data-height="300" data-default-file="{{asset('uploads/file/'.Str::replace(' ', '%20', $file->file))}}"/>
+            <input type="file" name="file" class="dropify" data-show-remove="false" data-height="300" data-default-file="{{asset('uploads/file/'.Str::replace(' ', '%20', $file->file))}}"/>
         </div>
       </div>
       

@@ -37,7 +37,6 @@ class ComponentController extends Controller
      */
     public function add_banner(Request $request)
     {
-        // dd($request->thumbnail->getClientOriginalName());
         $rules = array(
             'divisi' => 'required',
             'bagian' => 'required',
@@ -76,8 +75,6 @@ class ComponentController extends Controller
      */
     public function update_banner(Request $request, $id)
     {
-        // dd($request->all());
-        
         $old_banner = Component::findorfail($id);
 
         $rules = array(
@@ -552,7 +549,7 @@ class ComponentController extends Controller
                 'divisi' => $request->divisi,
                 'bagian' => $request->bagian,
                 'judul' => $request->judul,
-                'content' => $request->content,
+                'caption' => $request->content,
                 'attachment' => $request->hasFile('attachment') ? $gambar->getClientOriginalName(): $old_galeri->attachment
             ]);
             
@@ -597,12 +594,12 @@ class ComponentController extends Controller
         $rules = array(
             'divisi' => 'required',
             'nama' => 'required',
-            'file' => 'required|mimes:doc,docx,ppt,pptx,pdf,png,rar,zip|max:20480',
+            'file' => 'required|mimes:doc,docx,ppt,pptx,pdf,png,rar,zip,xls,xlsx|max:20480',
             'is_published' => 'required',
         );    
         $messages = array(
             'file.required' => 'Tidak ada file untuk di upload, gagal menambahkan file !!',
-            'file.mimes' => 'Format file tidak didukung !! Format yang didukung doc,docx,ppt,pptx,pdf,png,rar,zip.',
+            'file.mimes' => 'Format file tidak didukung !! Format yang didukung doc,docx,ppt,pptx,pdf,png,rar,zip,xls,xlsx.',
             'file.max' => 'File terlalu besar (max 20MB) !!',
             'is_published' => 'Status publikasi kosong, Pilih status publikasi!!',
             'nama.required' => 'Nama file tidak boleh kosong !!',
@@ -654,10 +651,10 @@ class ComponentController extends Controller
         $rules = array(
             'divisi' => 'required',
             'nama' => 'required',
-            'file' => 'mimes:doc,docx,ppt,pptx,pdf,png,rar,zip|max:20480'
+            'file' => 'mimes:doc,docx,ppt,pptx,pdf,png,rar,zip,xls,xlsx|max:20480'
         );    
         $messages = array(
-            'file.mimes' => 'Format file tidak didukung !! Format yang didukung doc,docx,ppt,pptx,pdf,png,rar,zip.',
+            'file.mimes' => 'Format file tidak didukung !! Format yang didukung doc,docx,ppt,pptx,pdf,png,rar,zip,xls,xlsx.',
             'file.max' => 'File terlalu besar (max 20MB) !!',
         );  
 

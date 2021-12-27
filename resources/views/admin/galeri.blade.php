@@ -44,7 +44,7 @@
                   <div>
                     <a href="#" class="btn btn-icon icon-right btn-success" data-toggle="modal" data-target="#galeryModal">
                       <i class="fas fa-plus"></i> 
-                      Tambah Galeri
+                      Tambah Foto
                     </a>                        
                   </div>
                   

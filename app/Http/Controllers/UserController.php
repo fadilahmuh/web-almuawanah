@@ -136,7 +136,7 @@ class UserController extends Controller
             'name' => 'required',
             'email' => 'sometimes|required|email',
             'password' => 'confirmed',
-            'no_hp' => 'numeric'
+            'no_hp' => 'numeric|nullable'
         );    
         $messages = array(
             'name.required' => 'Form Nama tidak boleh kosong!',

@@ -105,7 +105,7 @@
 
 @section('scriptline')
 <script>
-  $('.summernote').summernote('code','{!! $post->content !!}');
+  $('.summernote').summernote('code',`{!! $post->content !!}`);
   $('#select_tag').prop('selectedIndex', {{ $post->is_published }}).selectric('refresh');   
 
   @if(old('content') != null)

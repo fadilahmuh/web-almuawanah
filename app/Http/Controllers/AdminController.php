@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Component;
+use App\Models\Records;
 use App\Models\User;
 use App\Models\User as ModelsUser;
 use Illuminate\Http\Request;
@@ -160,7 +161,7 @@ class AdminController extends Controller
         );  
         if (isset($request->name)) {
             $rules['name'] = 'required';
-            $rules['no_hp'] = 'numeric';
+            $rules['no_hp'] = 'nullable|numeric';
         }
        
         // dd($rules) ;
@@ -189,5 +190,32 @@ class AdminController extends Controller
     {                
         $files = DB::table('files')->where('divisi', session('divisi'))->get();
         return view('admin.filemanage',compact('files'));
+    }
+
+    public function wakaf()
+    {                
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $data = Records::where('status', '!=', 'settlement')->get();
+        // dd($data);
+        foreach ($data as $d){
+            $detail = \Midtrans\Transaction::status($d->id);
+
+            $row = Records::findorfail($d->id);
+
+            $row->update([
+                'status' => $detail -> transaction_status
+            ]);
+        }
+
+        $data = Records::all();
+        $total = Records::where('status', 'settlement')->sum('nominal');
+        return view('admin.wakaf',compact('data','total'));
     }
 }

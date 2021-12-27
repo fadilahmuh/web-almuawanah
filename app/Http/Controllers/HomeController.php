@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Files;
 use App\Models\Posts;
+use App\Models\Records;
 use App\Models\Tags;
 use Carbon\Carbon;
 use GrahamCampbell\ResultType\Result;
@@ -46,11 +47,6 @@ class HomeController extends Controller
             ->where('divisi', 'Yayasan')
             ->where('bagian', 'brosur')->get();
         
-        // $posts = DB::table('posts')
-        //     ->where('is_published', 1)
-        //     ->orderBy('created_at', 'desc')
-        //     ->paginate(3);
-
         $posts = Posts::all()
             ->where('is_published', 1)
             ->sortByDesc('created_at')
@@ -169,10 +165,12 @@ class HomeController extends Controller
         ->sortByDesc('visits')
         ->take(3);
 
-        $title = 'Penelusuran: '.$request->s;
+        $kata = $request->s;
+
+        $title = 'Penelusuran: '.$kata;
 
         // dd($posts);
-    	return view('pages.blog_search', compact('title','posts','tags','most'));
+    	return view('pages.blog_search', compact('title','posts','tags','most','kata'));
     }
 
     public function blog()
@@ -216,11 +214,8 @@ class HomeController extends Controller
     public function checkout_donasi(Request $request)
     {
         \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
-        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
         \Midtrans\Config::$isProduction = false;
-        // Set sanitization on (default)
         \Midtrans\Config::$isSanitized = true;
-        // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
         $params = array(
@@ -241,7 +236,32 @@ class HomeController extends Controller
         return response()->json([
             'token' => $snapToken,
         ]);
-        // dd($snapToken);
+    }
+
+    public function simpan_donasi(Request $request)
+    {
+        // dd($request);
+        
+        \Midtrans\Config::$serverKey = env('MIDTRANS_SERVER_KEY');
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $detail = \Midtrans\Transaction::status($request->order_id);
+        // dd($detail);
+        // dd($detail->order_id);
+        Records::create([
+            'id' => (int)$detail-> order_id,
+            'id_transaksi' => $detail -> transaction_id,
+            'nominal' => (int)$detail -> gross_amount,
+            'status' => $detail -> transaction_status
+
+        ]);
+
+        return redirect()->route('wakaf');
     }
 
     public function pendaftaran()
@@ -251,7 +271,7 @@ class HomeController extends Controller
 
     public function download()
     {
-        $files = Files::all()->where('is_published', 1);
+        $files = Files::all()->where('divisi', 'Yayasan')->where('is_published', 1);
         return view('pages.download',compact('files'));
     }
 }

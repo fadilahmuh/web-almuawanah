@@ -150,9 +150,9 @@
 
 @section('scriptline')
 <script>
-  $('#tentang').summernote('code','{!! $tentang->content !!}');
-  $('#visi').summernote('code','{!! $visi->content !!}'  );
-  $('#misi').summernote('code','{!! $misi->content !!}'  );
+  $('#tentang').summernote('code',`{!! $tentang->content !!}`);
+  $('#visi').summernote('code',`{!! $visi->content !!}`  );
+  $('#misi').summernote('code',`{!! $misi->content !!}`  );
   $('#tentang').summernote('disable');
   $('#visi').summernote('disable');
   $('#misi').summernote('disable');  

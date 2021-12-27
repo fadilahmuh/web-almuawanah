@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
             'email' => 'superadmin@test.com',
             'password' => bcrypt('123456789')
         ]);
-
         $admin1 -> assignRole('superadmin');
 
         $admin2 = User::create([
@@ -27,7 +26,6 @@ class UserSeeder extends Seeder
             'email' => 'adminyys@test.com',
             'password' => bcrypt('123456789')
         ]);
-
         $admin2 -> assignRole('admin_yys');
     }
 }

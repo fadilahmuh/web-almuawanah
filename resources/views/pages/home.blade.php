@@ -11,28 +11,45 @@
 <section class="menu-wrap flex-md-column-reverse d-md-flex bot-margin">
   <div class="hero-wrap js-fullheight">
     <div class="home-slider js-fullheight owl-carousel">
-        
-      @foreach ($banners as $banner )          
-      <div class="slider-item js-fullheight" style="background-image: url({{asset('uploads/component/'.Str::replace(' ', '%20', $banner->attachment))}})">
+           
+      @if(!$banners->isEmpty())
+        @foreach ($banners as $banner )          
+        <div class="slider-item js-fullheight" style="background-image: url({{asset('uploads/component/'.Str::replace(' ', '%20', $banner->attachment))}})">
+          <div class="overlay"></div>
+          <div class="container">
+            <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
+              <div class="col-md-10 text-center ftco-animate">
+                <div class="text w-100">
+                  <h2>{{$banner->judul}}</h2>
+                  <h1 class="mb-4">{{$banner->content}}</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        @endforeach
+      @else
+      <div class="slider-item js-fullheight" style="background-image: url('images/bg_1.jpg')">
         <div class="overlay"></div>
         <div class="container">
           <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center">
             <div class="col-md-10 text-center ftco-animate">
               <div class="text w-100">
-                <h2>{{$banner->judul}}</h2>
-                <h1 class="mb-4">{{$banner->content}}</h1>
+                <h2>Yayasan Pondok Pesantren</h2>
+                <h1 class="mb-4">Al-Mu'awanah</h1>
               </div>
             </div>
           </div>
         </div>
       </div>
-      @endforeach
+      @endif
 
     </div>
   </div>
 </section>
 
-@isset($sambutan->content)
+<?php $isi = strip_tags($sambutan->content); ?>
+@if(!is_null($isi))
 <section class="both-margin">
   <div class="container" data-aos="fade-up">
     <div class="heading_container">
@@ -58,9 +75,10 @@
     </div>
   </div>
 </section>
-@endisset
+@endif
 
-@isset($deskripsi)
+<?php $desk = strip_tags($deskripsi->content); ?>
+@if(!is_null($desk))
 <div class="heading_container end-margin" data-aos="fade-up">
   <h3>Pondok Pesantren Al-Mua'wanah</h3>
   <!-- <p>It is a long established fact that a reader</p>				 -->
@@ -79,9 +97,10 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
     </div>
   </div>
 </section>
-@endisset
+@endif
 
-@isset($brosur)
+
+@if(!$brosur->isEmpty())
 <section class="both-margin" >
   <div class="heading_container pt-4"  data-aos="fade-up">
     <h3>Brosur</h3>
@@ -96,7 +115,7 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
             <div class="item" data-aos="zoom-in">
               <div class="thumb">
                 <a href="{{asset('uploads/component/'.Str::replace(' ', '%20', $br->attachment))}}" data-lightbox="Brosur">
-                  <div class="img-fill" style="background-image: url({{asset('uploads/component/'.Str::replace(' ', '%20', $br->attachment))}})">
+                  <div class="img-fill" style="background-image: url('{{asset('uploads/component/'.Str::replace(' ', '%20', $br->attachment))}}')">
                     <div class="overlay"></div>
                   </div>
                 </a>
@@ -116,7 +135,7 @@ url('{{asset('uploads/component/'.Str::replace(' ', '%20', $deskripsi->attachmen
     </div>
   </div>
 </section>  
-@endisset
+@endif
 
 @isset($posts)
 <section class="both-margin">

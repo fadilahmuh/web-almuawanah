@@ -30,7 +30,7 @@
 
         @foreach ($foto as $f)          
         <div class="slide-item">
-          <a href="{{asset('uploads/galeri/'.Str::replace(' ', '%20', $f->attachment))}}"  data-lightbox="Brosur"  data-title="{{$f->judul}}">
+          <a href="{{asset('uploads/galeri/'.Str::replace(' ', '%20', $f->attachment))}}"  data-lightbox="Brosur"  data-title="{{$f->judul}}@if(!is_null($f->caption)) | {{$f->caption}} @endif">
           <div class="thumb" style="background-image: url({{asset('uploads/galeri/'.Str::replace(' ', '%20', $f->attachment))}})">
           </div>
           </a>

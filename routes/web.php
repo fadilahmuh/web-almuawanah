@@ -30,7 +30,8 @@ Route::get('/pendaftaran', [HomeController::class, 'pendaftaran'])->name('pendaf
 Route::get('/blog/{slug}', [HomeController::class, 'blog_post'])->name('blog_post');
 Route::get('/blog/tags/{tag}', [HomeController::class, 'posts_tag'])->name('posts_tag');
 Route::get('/search', [HomeController::class, 'posts_search'])->name('posts_search');
-Route::get('/wakaf/test', [HomeController::class, 'checkout_donasi'])->name('wakaf_bayar');
+Route::get('/wakaf/checkout', [HomeController::class, 'checkout_donasi'])->name('wakaf_bayar');
+Route::get('/wakaf/add', [HomeController::class, 'simpan_donasi'])->name('wakaf_save');
 Route::get('/download', [HomeController::class, 'download'])->name('download');
 
 // Route::get('/admin',[AdminController::class, 'index'])->name('dashboard');
@@ -52,6 +53,13 @@ Route::middleware('role:superadmin')->prefix('admin')->group(function(){
 
 Route::middleware('auth')->get('admin-select', [AdminController::class, 'select_admin']);
 
+Route::middleware('role:admin_yys')->get('admin/wakaf', [AdminController::class, 'wakaf'])->name('datawakaf');
+
+Route::middleware('role:superadmin|admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
+    Route::get('/akun',[AdminController::class, 'edit_user'])->name('editUser');
+    Route::get('/akun/validate',[AdminController::class, 'pass_validate'])->name('validatepass');
+    Route::put('/akun/{id}',[AdminController::class, 'update_akun'])->name('akunupdate');
+});
 Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_pst')->prefix('admin')->group(function(){
     Route::get('/banner', [AdminController::class, 'banner'])->name('banner');
     Route::get('/sambutan', [AdminController::class, 'sambutan'])->name('sambutan');
@@ -62,6 +70,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     Route::get('/kontak', [AdminController::class, 'kontak'])->name('kontak');
     Route::get('/credits', [AdminController::class, 'credits'])->name('credits');
     Route::get('/file', [AdminController::class, 'file'])->name('filemanager');
+    
     // Blog Route
     Route::resource('blog', BlogController::class)->names([
         'index' => 'blog',
@@ -104,11 +113,7 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
         Route::delete('/del_galeri/{id}',[ComponentController::class, 'delete_galeri'])->name('delgaleri');
     });
 
-    Route::put('/update_yt/{id}',[ComponentController::class, 'update_yt'])->name('edityt');
-
-    Route::get('/akun',[AdminController::class, 'edit_user'])->name('editUser');
-    Route::get('/akun/validate',[AdminController::class, 'pass_validate'])->name('validatepass');
-    Route::put('/akun/{id}',[AdminController::class, 'update_akun'])->name('akunupdate');
+    Route::put('/update_yt/{id}',[ComponentController::class, 'update_yt'])->name('edityt');    
 
     Route::prefix('file')->group(function(){
         Route::post('/add_file',[ComponentController::class, 'add_file'])->name('newfile');

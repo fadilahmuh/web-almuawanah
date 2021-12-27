@@ -91,6 +91,9 @@
                   <li class="menu-header">Lain-lain</li>
                   <li @if(url()->current()==route('filemanager')) class="active" @endif><a class="nav-link" href="{{ route('filemanager') }}"><i class="fas fa-folder-open"></i> <span>File</span></a></li>
                   @endhasrole
+                  @hasrole('admin_yys')
+                  <li @if(url()->current()==route('datawakaf')) class="active" @endif><a class="nav-link" href="{{ route('datawakaf') }}"><i class="fas fa-donate"></i> <span>Wakaf</span></a></li>
+                  @endhasrole
                 </ul>
                 <!-- IDK -->
                 
@@ -102,7 +105,7 @@
           <!-- Footer -->
           <footer class="main-footer">
             <div class="footer-left">
-              Copyright &copy; 2021 <div class="bullet"></div> Design By Varez Y. & <a href="https://fadilahmuh.github.io/">Fannie M. Fadilah S.</a>
+              Copyright &copy; 2021 
             </div>
             <div class="footer-right">
               2.3.0

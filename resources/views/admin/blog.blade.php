@@ -47,7 +47,6 @@
                   <table class="table table-striped" id="table-blog">
                     <thead  class="text-center">
                       <tr>
-                        {{-- <th>id</th> --}}
                         <th>Judul</th>
                         <th>Tag</th>
                         <th>Penulis</th>
@@ -59,7 +58,6 @@
                     <tbody class="text-center">
                       @foreach($blog as $b)
                       <tr>
-                        {{-- <td class="align-middle">{{ $b->id }}</td> --}}
                         <td class="align-middle">{{ $b->judul }}</td>
                         <td class="align-middle"><div class="badges">@foreach($b->tag as $t)<a href="" class="badge badge-primary">{{ $t }}</a>@endforeach</div></td>
                         <td class="align-middle">{{ $b->users->name }}</td>

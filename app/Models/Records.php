@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Records extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'id',
+        'id_transaksi',
+        'nominal',
+        'status',
+    ];
 }

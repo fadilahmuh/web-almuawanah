@@ -1,8 +1,5 @@
 $channelId = $('#yt_res').attr('yt-id');
-// console.log($test);
 $apikey = "AIzaSyBswKibMjCpmTpH9Z9g7v88KJl7xxhvGa8";
-// $channelId = "UC6Wp_bA0LWBpJg2-nCIG88Q";
-// $pl_id;
 
 $.get(
   "https://www.googleapis.com/youtube/v3/channels",
@@ -13,7 +10,6 @@ $.get(
   },
   function (data) {
     $pl_id = data.items[0].contentDetails.relatedPlaylists.uploads;
-    console.log("Get id PL");
     $.get(
       "https://www.googleapis.com/youtube/v3/playlistItems",
       {
@@ -33,7 +29,8 @@ $.get(
             vidThumb = item.snippet.thumbnails.high.url;
           }
 
-          output = '<div class="slide-item"><div class="yt-thumb"><a href="'+ vidURL +'"  data-lity><img src="' + vidThumb + '" alt="" /><div class="overlay d-flex align-items-center justify-content-center"><i class="fab fa-youtube"></i></div></a></div></div>';
+          output = '<div class="slide-item"><div class="yt-thumb"><a href="'+ vidURL +'"  data-lity><img src="' + vidThumb + 
+          '" alt="" /><div class="overlay d-flex align-items-center justify-content-center"><i class="fab fa-youtube"></i></div></a></div></div>';
 
           $("#yt_res").append(output);
         });

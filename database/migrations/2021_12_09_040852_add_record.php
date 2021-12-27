@@ -15,9 +15,7 @@ class AddRecord extends Migration
     {
         Schema::create('records', function (Blueprint $table) {
             $table->id()->autoIncrement(false);
-            $table->string('nama')->nullable(false);
-            $table->string('no_hp')->nullable(false);
-            $table->string('email')->nullable(true);
+            $table->string('id_transaksi')->nullable(false);;
             $table->integer('nominal')->nullable(false);
             $table->string('status')->nullable(false);
             $table->timestamps();
