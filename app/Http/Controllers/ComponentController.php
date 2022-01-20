@@ -585,12 +585,43 @@ class ComponentController extends Controller
         ]);            
         
 
-        return redirect()->back()->with('success','YouTube ID berhasil diubah!!');
+        return redirect()->back()->with('success','YouTube Channel ID berhasil diubah!!');
+        
+    }
+
+    public function single_yt(Request $request, $id)
+    {
+        $old_yt = Component::findorfail($id);
+
+        $old_yt->update([
+            'divisi' => $request->divisi,
+            'bagian' => $request->bagian,
+            'content' => $request->content,
+        ]);            
+        
+
+        return redirect()->back()->with('success','YouTube Video Link berhasil diubah!!');
+        
+    }
+
+    public function setting_galeri(Request $request, $id)
+    {
+        $set_gal = Component::findorfail($id);
+
+        $set_gal->update([
+            'divisi' => $request->divisi,
+            'bagian' => $request->bagian,
+            'content' => $request->content,
+        ]);            
+        
+
+        return redirect()->back()->with('success','Galeri Setting berhasil diubah!!');
         
     }
 
     public function add_file(Request $request)
     {
+        dd($request);
         $rules = array(
             'divisi' => 'required',
             'nama' => 'required',

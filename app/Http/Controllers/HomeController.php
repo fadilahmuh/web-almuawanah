@@ -85,18 +85,28 @@ class HomeController extends Controller
     
     public function galeri()
     {
+    $setting =  DB::table('components')
+        ->where('divisi', 'yayasan')
+        ->where('bagian', 'galeri_setting')->first();
 
     $foto = DB::table('galeri')
         ->where('divisi', 'yayasan')
+        ->orderBy('updated_at', 'DESC')
+        ->limit((int)$setting->content)
         ->get();
 
     $yt = DB::table('components')
         ->where('divisi', 'yayasan')
         ->where('bagian', 'youtube')->first();
+
+    $yt_single = DB::table('components')
+    ->where('divisi', 'yayasan')
+    ->where('bagian', 'youtube_single')->first();
+
     
     $title = 'Galeri';
 
-        return view('pages.galeri', compact('title','yt', 'foto'));
+        return view('pages.galeri', compact('title','yt', 'foto','yt_single','setting'));
     }
 
     public function blog_post($slug){        
@@ -187,6 +197,8 @@ class HomeController extends Controller
             ->take(3);
 
         $title = 'Blog';
+
+        // dd($posts);
 
         return view('pages.blog', compact('title','posts','tags', 'most'));
     }

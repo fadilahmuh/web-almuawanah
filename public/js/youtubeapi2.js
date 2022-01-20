@@ -1,7 +1,31 @@
+$vidlink = $('#yt_single').attr('yt-link');
+var regExp = /^https?\:\/\/(?:www\.youtube(?:\-nocookie)?\.com\/|m\.youtube\.com\/|youtube\.com\/)?(?:ytscreeningroom\?vi?=|youtu\.be\/|vi?\/|user\/.+\/u\/\w{1,2}\/|embed\/|watch\?(?:.*\&)?vi?=|\&vi?=|\?(?:.*\&)?vi?=)([^#\&\?\n\/<>"']*)/i;
+$singleID = $vidlink.match(regExp);
 $channelId = $('#yt_res').attr('yt-id');
 $apikey = "AIzaSyBswKibMjCpmTpH9Z9g7v88KJl7xxhvGa8";
 $total = $('#yt_res').data('item');
 
+$.get(
+  "https://www.googleapis.com/youtube/v3/videos",
+  {
+    part: "snippet",
+    key: $apikey,
+    id: $singleID[1]
+  },
+  function(data){
+    thumb = data.items[0].snippet.thumbnails;
+    if ('maxres' in thumb) {
+      vidThumb = thumb.maxres.url;
+    } else {
+      vidThumb = thumb.medium.url;
+    }
+
+    output = '<div class="yt-thumb"><a href="'+ $vidlink +'"  data-lity><img src="' + vidThumb + 
+    '" alt="" /><div class="overlay d-flex align-items-center justify-content-center"><i class="fab fa-youtube"></i></div></a></div>';
+
+    $("#yt_single").append(output);
+  }
+)
 $.get(
   "https://www.googleapis.com/youtube/v3/channels",
   {
@@ -44,27 +68,28 @@ $.get(
           nextArrow: '<i class="fas fa-chevron-right sa-right"></i>',
           infinite: false,
           speed: 300,
-          slidesToShow: 3,
-          slidesToScroll: 2,
+          slidesToShow: 1,
+          slidesToScroll: 1,
           responsive: [
             {
                 breakpoint: 1024,
                 settings: {
-                    slidesToShow: 3,
-                    slidesToScroll: 2,
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
                 }
             },
             {
                 breakpoint: 768,
                 settings: {
-                    slidesToShow: 2,
-                    slidesToScroll: 2
+                    slidesToShow: 1,
+                    slidesToScroll:1,
                 }
             },
             {
                 breakpoint: 576,
                 settings: {
-                    slidesToShow: 1,
+                    rows : 1,
+                    slidesToShow: 2,
                     slidesToScroll: 1
                 }
             }    

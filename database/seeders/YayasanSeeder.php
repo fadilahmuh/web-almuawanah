@@ -88,48 +88,6 @@ class YayasanSeeder extends Seeder
             'content' => '<p>Ini merupakan bagian Profil-<span style="font-weight: bolder;">Misi</span>, silahkan edit di halaman admin.&nbsp;<span style="background-color: transparent;">Ini merupakan bagian Profil-</span><span style="background-color: transparent; font-weight: bolder;">Misi</span><span style="background-color: transparent;">, silahkan edit di halaman admin.&nbsp;</span></p><ul><li><span style="background-color: transparent;">Ini merupakan bagian Profil-<span style="font-weight: bolder;">Misi</span>, silahkan edit di halaman admin.&nbsp;</span></li><li><span style="background-color: transparent;">Ini merupakan bagian Profil-<span style="font-weight: bolder;">Misi</span>, silahkan edit di halaman admin.&nbsp;</span></li><li><span style="background-color: transparent;">Ini merupakan bagian Profil-<span style="font-weight: bolder;">Misi</span>, silahkan edit di halaman admin.&nbsp;<br></span><br></li></ul>',
         ]);
 
-        // Default Galeri
-        // Component::create([
-        //     'divisi' => 'Yayasan',
-        //     'bagian' => 'galeri',
-        //     'judul' => 'Default 1',
-        //     'attachment' => 'default_pict2.jpg',
-        // ]);
-
-        // Component::create([
-        //     'divisi' => 'Yayasan',
-        //     'bagian' => 'galeri',
-        //     'judul' => 'Default 1',
-        //     'attachment' => 'default_pict2.jpg',
-        // ]);
-
-        // Component::create([
-        //     'divisi' => 'Yayasan',
-        //     'bagian' => 'galeri',
-        //     'judul' => 'Default 1',
-        //     'attachment' => 'default_pict2.jpg',
-        // ]);
-
-        // Component::create([
-        //     'divisi' => 'Yayasan',
-        //     'bagian' => 'galeri',
-        //     'judul' => 'Default 1',
-        //     'attachment' => 'default_pict2.jpg',
-        // ]);
-
-        // Component::create([
-        //     'divisi' => 'Yayasan',
-        //     'bagian' => 'galeri',
-        //     'judul' => 'Default 1',
-        //     'attachment' => 'default_pict2.jpg',
-        // ]);
-
-        // Component::create([
-        //     'divisi' => 'Yayasan',
-        //     'bagian' => 'galeri',
-        //     'judul' => 'Default 1',
-        //     'attachment' => 'default_pict2.jpg',
-        // ]);
         Galeri::create([
             'divisi' => 'Yayasan',
             'judul' => 'Default 1',
@@ -176,6 +134,18 @@ class YayasanSeeder extends Seeder
             'divisi' => 'Yayasan',
             'bagian' => 'youtube',
             'content' => 'UCg8r6lAzXP9OCyR0G1uBewg',
+        ]);
+
+        Component::create([
+            'divisi' => 'Yayasan',
+            'bagian' => 'youtube_single',
+            'content' => 'https://www.youtube.com/watch?v=5HfCScWbJOs',
+        ]);
+
+        Component::create([
+            'divisi' => 'Yayasan',
+            'bagian' => 'galeri_setting',
+            'content' => '6',
         ]);
 
         //Default Kontak

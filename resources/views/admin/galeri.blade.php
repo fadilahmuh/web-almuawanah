@@ -92,10 +92,39 @@
           </div>
         </div>     
         
-        <h2 class="section-title">Youtube Channel</h2>
+        <h2 class="section-title">Youtube</h2>
         <!-- Youtube Channel -->
         <div class="row">
           <div class="col-12">
+            <div class="card">
+              <form action="{{ route('editsingleyt', [$yt_single->id]) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <input type="hidden" name="divisi" value="{{session('divisi')}}">
+                <input type="hidden" name="bagian" value="youtube_single">
+                <div class="card-header">
+                  <h4></h4>              
+                </div>
+              <div class="card-body">
+                <!-- Text Area -->
+                <div class="form-group row mb-4">
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Video Link</label>
+                  <div class="col-sm-12 col-md-7">
+                    <input name="content" type="text" class="form-control" disabled value="{{$yt_single->content}}">
+                  </div>
+                </div>                                      
+              </div>
+              <!-- Buttons -->
+              <div class="card-footer text-right">
+                <div class="buttons">
+                    <button class="cancel btn btn-danger collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                    <button class="save btn btn-success collapse" data-bagian="Video Link"><i class="far fa-save"></i> Simpan</button>
+                    <button class="edit2 btn btn-warning collapse show" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
+                </div>
+              </div>
+            </form>
+            </div>
+
             <div class="card">
               <!-- Header Table -->
               <div class="card-header">
@@ -110,7 +139,7 @@
                 <!-- Banner Form -->                    
                 <!-- Isi Sambutan -->
                 <div class="form-group row mb-4">
-                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Youtube ID</label>
+                  <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Channel ID</label>
                   <div class="col-sm-12 col-md-7">
                     <input name="content" type="text" class="form-control" disabled value="{{$yt->content}}">
                   </div>
@@ -119,16 +148,50 @@
               <!-- Buttons -->
               <div class="card-footer text-right">
                   <div class="buttons">
-                    <button class="cancel btn btn-danger collapse multi-collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
-                    <button class="save btn btn-success collapse multi-collapse"><i class="far fa-save"></i> Simpan</button>
-                    <button class="edit2 btn btn-warning collapse multi-collapse show"  data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
+                    <button class="cancel btn btn-danger collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                    <button class="save btn btn-success collapse"  data-bagian="Channel ID"><i class="far fa-save"></i> Simpan</button>
+                    <button class="edit2 btn btn-warning collapse show"  data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
                   </div>
               </div>
               </form>
             </div>
           </div>
-        </div>  
+        </div> 
 
+        <h2 class="section-title">Setting</h2> 
+        <div class="row">
+          <div class="col-12">
+          <div class="card">
+            <form action="{{ route('editgalerisett', [$setting->id]) }}" method="POST" enctype="multipart/form-data">
+              @csrf
+              @method('PUT')
+              <input type="hidden" name="divisi" value="{{session('divisi')}}">
+              <input type="hidden" name="bagian" value="galeri_setting">
+            <!-- Header Table -->
+            <div class="card-header">
+              <h4></h4>              
+            </div>
+            <div class="card-body">
+              <!-- Text Area -->
+              <div class="form-group row mb-4">
+                <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jumlah Item Galeri</label>
+                <div class="col-sm-12 col-md-7">
+                  <input type="number" min="6" name="content" value="{{$setting->content}}"  step="2"/>
+                </div>
+              </div>                                       
+            </div>
+            <!-- Buttons -->
+            <div class="card-footer text-right">
+              <div class="buttons">
+                  <button class="cancel btn btn-danger collapse" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-times"></i> Cancel</button>
+                  <button class="save btn btn-success collapse" data-bagian="Item Galeri"><i class="far fa-save"></i> Simpan</button>
+                  <button class="edit2 btn btn-warning collapse show" data-toggle="collapse" data-target=".multi-collapse" ><i class="fas fa-edit"></i> Edit</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+        </div>
       </div>
     </section>
   </div>
@@ -191,10 +254,14 @@
 <script src="{{ asset('assets/modules/datatables/DataTables-1.10.16/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="{{ asset('assets/modules/sweetalert/sweetalert.min.js') }}"></script>
 <script src="{{ asset('assets/modules/chocolat/dist/js/jquery.chocolat.min.js') }}"></script>
+<script src="{{ asset('assets/modules/bootstrap-input-spinner/src/bootstrap-input-spinner.js') }}"></script>
 @endsection
 
 @section('scriptpage')
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/modules-datatables.js') }}"></script>
 <script src="{{ asset('assets/js/views/galeri.js') }}"></script>
+<script>
+
+</script>
 @endsection

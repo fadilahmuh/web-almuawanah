@@ -235,6 +235,7 @@
 
   if($("#slick-gallery").length){
     $("#slick-gallery").slick({
+      lazyLoad: 'ondemand',
       rows: 2,
       dots: true,
       prevArrow: '<i class="fas fa-chevron-left sa-left"></i>',

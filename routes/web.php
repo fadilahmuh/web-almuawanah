@@ -114,6 +114,8 @@ Route::middleware('role:admin_yys|admin_ra|admin_tka|admin_mts|admin_ma|admin_ps
     });
 
     Route::put('/update_yt/{id}',[ComponentController::class, 'update_yt'])->name('edityt');    
+    Route::put('/update_yt_link/{id}',[ComponentController::class, 'single_yt'])->name('editsingleyt');    
+    Route::put('/update_sett_galeri/{id}',[ComponentController::class, 'setting_galeri'])->name('editgalerisett');    
 
     Route::prefix('file')->group(function(){
         Route::post('/add_file',[ComponentController::class, 'add_file'])->name('newfile');

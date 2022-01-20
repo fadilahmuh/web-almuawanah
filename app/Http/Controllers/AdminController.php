@@ -114,8 +114,16 @@ class AdminController extends Controller
         $yt = DB::table('components')
             ->where('divisi', session('divisi'))
             ->where('bagian', 'youtube')->first();
+            
+        $yt_single = DB::table('components')
+        ->where('divisi', 'yayasan')
+        ->where('bagian', 'youtube_single')->first();
+    
+        $setting =  DB::table('components')
+        ->where('divisi', 'yayasan')
+        ->where('bagian', 'galeri_setting')->first();
 
-        return view('admin.galeri', compact('yt'))->with('galeri',$this->galeri);
+        return view('admin.galeri', compact('yt','yt_single','setting'))->with('galeri',$this->galeri);
     }
 
     public function kontak()
